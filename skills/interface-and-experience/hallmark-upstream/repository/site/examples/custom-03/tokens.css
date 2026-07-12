@@ -1,0 +1,95 @@
+/* Hallmark · custom-03 · tokens
+ * Apothecary tea-house system. All colour values are OKLCH; neutrals are tinted
+ * toward the warm parchment anchor (no zero-chroma greys, no #fff / #000).
+ * Family tints are LOW-chroma neutral tints (not the accent) so they carry the
+ * table's taxonomy without spending the accent budget.
+ */
+
+:root {
+  /* ---- Type ---------------------------------------------------------- */
+  /* display: Fraunces (characterful soft-serif, roman only)             */
+  /* body:    Newsreader (literary text serif, distinct from Fraunces)   */
+  /* data:    Space Mono (symbols, atomic numbers, stats, axis labels)   */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Newsreader", Georgia, serif;
+  --font-data: "Space Mono", ui-monospace, "Courier New", monospace;
+
+  /* ---- Paper / ink / accent ----------------------------------------- */
+  --color-paper:   oklch(95.5% 0.012 75);   /* warm parchment            */
+  --color-paper-2: oklch(97% 0.010 78);     /* lighter card / detail face */
+  --color-paper-3: oklch(93% 0.014 72);     /* recessed wells / footer    */
+  --color-ink:     oklch(25.5% 0.018 50);   /* steeped near-black brown   */
+  --color-ink-2:   oklch(34% 0.020 52);     /* secondary ink              */
+  --color-muted:   oklch(46% 0.020 55);     /* captions, labels           */
+  --color-line:    oklch(82% 0.016 70);     /* hairlines                  */
+  --color-line-2:  oklch(74% 0.018 68);     /* stronger rules             */
+
+  --color-accent:     oklch(52.5% 0.16 36); /* hot steeped vermilion      */
+  --color-accent-ink: oklch(97% 0.012 78);  /* text on accent fill (5.4:1)*/
+  --color-accent-soft: oklch(88% 0.045 40); /* faint accent wash          */
+  --color-focus:      oklch(48% 0.15 250);  /* cool blue ring, ≥3:1 both   */
+
+  /* ---- Family tints (low-chroma neutral tints, ink-on stays ≥12:1) --- */
+  --fam-white:  oklch(95.5% 0.008 95);   /* white tea     — pale grass    */
+  --fam-green:  oklch(95% 0.022 140);    /* green tea     — cool leaf     */
+  --fam-oolong: oklch(95% 0.028 75);     /* oolong        — amber         */
+  --fam-black:  oklch(93% 0.022 40);     /* black tea     — warm rust     */
+  --fam-puer:   oklch(92% 0.026 30);     /* pu-erh / dark — earth         */
+  --fam-herb:   oklch(95% 0.024 165);    /* herbal / tisane — soft teal   */
+
+  /* hover / selected lifts of the family tints (slightly deeper)        */
+  --fam-white-hi:  oklch(92% 0.012 95);
+  --fam-green-hi:  oklch(91.5% 0.03 140);
+  --fam-oolong-hi: oklch(91.5% 0.038 75);
+  --fam-black-hi:  oklch(89% 0.03 40);
+  --fam-puer-hi:   oklch(88% 0.034 30);
+  --fam-herb-hi:   oklch(91.5% 0.032 165);
+
+  /* ---- Spacing scale (4px base) ------------------------------------- */
+  --space-3xs: 0.25rem;  /* 4  */
+  --space-2xs: 0.5rem;   /* 8  */
+  --space-xs:  0.75rem;  /* 12 */
+  --space-sm:  1rem;     /* 16 */
+  --space-md:  1.5rem;   /* 24 */
+  --space-lg:  2rem;     /* 32 */
+  --space-xl:  3rem;     /* 48 */
+  --space-2xl: 4rem;     /* 64 */
+  --space-3xl: 6rem;     /* 96 */
+  --space-4xl: 8rem;     /* 128 */
+  --space-5xl: 11rem;    /* 176 */
+
+  /* ---- Type scale ---------------------------------------------------- */
+  --text-2xs: 0.6875rem;
+  --text-xs:  0.75rem;
+  --text-sm:  0.875rem;
+  --text-base: 1rem;
+  --text-md:  1.125rem;
+  --text-lg:  1.375rem;
+  --text-xl:  1.75rem;
+  --text-2xl: 2.25rem;
+  --text-3xl: clamp(2.4rem, 5vw + 1rem, 4.25rem);
+
+  --lh-tight: 1.04;   /* display (≥ 1.0; safe for any wrap, no uppercase) */
+  --lh-snug:  1.28;
+  --lh-body:  1.6;
+
+  /* ---- Radii / shadow / structure ----------------------------------- */
+  --radius-xs: 3px;
+  --radius-sm: 5px;
+  --radius-md: 9px;
+  --shadow-tile: 0 1px 0 oklch(82% 0.016 70 / 0.6);
+  --shadow-lift: 0 8px 24px -10px oklch(30% 0.03 50 / 0.35);
+  --shadow-panel: 0 1px 0 oklch(82% 0.016 70 / 0.7),
+                  0 18px 48px -28px oklch(30% 0.03 50 / 0.3);
+
+  --maxw-prose: 64ch;
+  --maxw-page: 78rem;
+
+  /* ---- z-index ------------------------------------------------------- */
+  --z-sticky: 200;
+  --z-sticky-nav: 300;
+
+  /* ---- Motion -------------------------------------------------------- */
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 320ms;
+}

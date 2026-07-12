@@ -1,0 +1,132 @@
+<!doctype html>
+<!-- Internal review sheet: all 20 themes as live, scaled previews of the landing
+     (../index.html?theme=KEY). Click any card to open it full. Not linked from
+     the public site. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hallmark — all 20 themes</title>
+  <style>
+    :root {
+      --thumb-w: 460px;
+      --thumb-h: 288px;          /* 460 * (800/1280) ≈ 287.5 */
+      --frame-w: 1280px;
+      --frame-h: 800px;
+      --scale: 0.359375;          /* 460 / 1280 */
+      --bg: #f4f4f2; --card:#ffffff; --ink:#1a1a1a; --muted:#6b6b6b; --rule:#e2e2de;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    header.top {
+      padding: 2.5rem clamp(1.5rem,4vw,3rem) 1.5rem;
+      border-bottom: 1px solid var(--rule);
+      position: sticky; top: 0; background: color-mix(in oklab, var(--bg) 88%, transparent);
+      backdrop-filter: blur(8px); z-index: 5;
+    }
+    h1 { margin: 0 0 0.4rem; font-size: clamp(1.4rem,2.5vw,2rem); letter-spacing: -0.02em; }
+    h1 b { font-weight: 800; }
+    .sub { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; max-width: 70ch; }
+    .legend { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-top: 1rem; font-size: 0.78rem; }
+    .legend span { display: inline-flex; align-items: center; gap: 0.4em; color: var(--muted); }
+    .dot { width: 9px; height: 9px; border-radius: 999px; display: inline-block; }
+    .dot--keep { background: #1f9d57; } .dot--warn { background: #d98a00; } .dot--cut { background: #d23b3b; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, var(--thumb-w));
+      justify-content: center;
+      gap: 2rem 1.75rem;
+      padding: 2rem clamp(1rem,3vw,2.5rem) 5rem;
+    }
+    .card { text-decoration: none; color: inherit; display: block; }
+    .thumb {
+      width: var(--thumb-w); height: var(--thumb-h);
+      overflow: hidden; position: relative;
+      border: 1px solid var(--rule); border-radius: 12px; background: #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      transition: box-shadow 180ms ease, transform 180ms ease;
+    }
+    .card:hover .thumb { box-shadow: 0 14px 36px -16px rgba(0,0,0,0.28); transform: translateY(-3px); }
+    .thumb iframe {
+      width: var(--frame-w); height: var(--frame-h); border: 0;
+      transform: scale(var(--scale)); transform-origin: top left;
+      pointer-events: none;       /* clicks go to the card link */
+    }
+    .thumb::after {               /* tiny "open" affordance */
+      content: "open →"; position: absolute; right: 8px; bottom: 8px;
+      font-size: 11px; letter-spacing: 0.04em; color: #fff;
+      background: rgba(20,20,20,0.7); padding: 3px 8px; border-radius: 999px;
+      opacity: 0; transition: opacity 160ms ease;
+    }
+    .card:hover .thumb::after { opacity: 1; }
+    .meta { display: flex; align-items: baseline; gap: 0.5rem; padding: 0.7rem 0.2rem 0; }
+    .num { font-variant-numeric: tabular-nums; font-size: 0.78rem; color: var(--muted); width: 1.6em; }
+    .name { font-weight: 650; font-size: 1rem; }
+    .tag {
+      margin-left: auto; font-size: 0.72rem; padding: 2px 8px; border-radius: 999px;
+      border: 1px solid var(--rule); color: var(--muted); white-space: nowrap;
+    }
+    .tag--keep { color: #157a43; border-color: #bfe6cf; background: #f0faf4; }
+    .tag--warn { color: #9a6500; border-color: #f0dcae; background: #fdf7e9; }
+    .tag--cut  { color: #b02a2a; border-color: #f0c4c4; background: #fdf0f0; }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <h1>Hallmark — all <b>20</b> themes</h1>
+    <p class="sub">Live previews of the landing in each theme. Click any card to open it full in a new tab. Tags are my recommendation, not a decision — yours to make.</p>
+    <div class="legend">
+      <span><i class="dot dot--keep"></i> Keep — distinctive</span>
+      <span><i class="dot dot--warn"></i> Crowded / rework</span>
+      <span><i class="dot dot--cut"></i> Cut candidate</span>
+    </div>
+  </header>
+
+  <main class="grid" id="grid"></main>
+
+  <script>
+    var THEMES = [
+      { k:"specimen",  n:"Specimen",  v:"Keep",          t:"keep" },
+      { k:"midnight",  n:"Midnight",  v:"Keep",          t:"keep" },
+      { k:"brutal",    n:"Brutal",    v:"Keep",          t:"keep" },
+      { k:"garden",    n:"Garden",    v:"Reworked",      t:"keep" },
+      { k:"atelier",   n:"Atelier",   v:"Keep",          t:"keep" },
+      { k:"newsprint", n:"Newsprint", v:"Keep",          t:"keep" },
+      { k:"terminal",  n:"Terminal",  v:"Keep",          t:"keep" },
+      { k:"manifesto", n:"Manifesto", v:"Keep",          t:"keep" },
+      { k:"almanac",   n:"Almanac",   v:"Keep",          t:"keep" },
+      { k:"sport",     n:"Sport",     v:"Keep",          t:"keep" },
+      { k:"studio",    n:"Studio",    v:"Keep",          t:"keep" },
+      { k:"riso",      n:"Riso",      v:"Keep",          t:"keep" },
+      { k:"bloom",     n:"Bloom",     v:"Reworked",      t:"keep" },
+      { k:"coral",     n:"Coral",     v:"Keep",          t:"keep" },
+      { k:"aurora",    n:"Aurora",    v:"Keep",          t:"keep" },
+      { k:"editorial", n:"Editorial", v:"Keep",          t:"keep" },
+      { k:"carnival",  n:"Carnival",  v:"Keep",          t:"keep" },
+      { k:"cobalt",    n:"Cobalt",    v:"New",           t:"keep" },
+      { k:"lumen",     n:"Lumen",     v:"Keep",          t:"keep" },
+      { k:"hum",       n:"Hum",       v:"Default",       t:"keep" }
+    ];
+    var grid = document.getElementById("grid");
+    THEMES.forEach(function (th, i) {
+      var a = document.createElement("a");
+      a.className = "card";
+      a.href = "../index.html?theme=" + th.k;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.setAttribute("aria-label", "Open " + th.n + " full");
+      a.innerHTML =
+        '<div class="thumb"><iframe loading="lazy" scrolling="no" tabindex="-1" title="' + th.n + ' preview" src="../index.html?theme=' + th.k + '"></iframe></div>' +
+        '<div class="meta"><span class="num">' + String(i + 1).padStart(2, "0") + '</span>' +
+        '<span class="name">' + th.n + '</span>' +
+        '<span class="tag tag--' + th.t + '">' + th.v + '</span></div>';
+      grid.appendChild(a);
+    });
+  </script>
+</body>
+</html>

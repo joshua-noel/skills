@@ -1,0 +1,629 @@
+/* Hallmark · route: custom · structure: a single physical ticket object on a desk — masthead, perforated tear-edge, detachable conductor's stub, vertical dusk→dawn route timeline · idea: "the page is the printed sleeper ticket, not a layout about one" · paper: oklch(93.5% 0.016 78) · accent: oklch(56% 0.190 32) · display: Bodoni Moda · body: Spectral · gates: all-pass · v1.1 */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R4 V5 */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { overflow-x: clip; }
+
+html {
+  font-family: var(--font-body);
+  line-height: var(--lh-relaxed);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-size: var(--text-base);
+  /* The desk the ticket sits on: a warm vignette, not a flat field */
+  background:
+    radial-gradient(120% 90% at 50% 0%, var(--canvas) 0%, var(--canvas-edge) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(var(--space-lg), 5vw, var(--space-4xl)) var(--space-md);
+  gap: var(--space-xl);
+}
+
+/* ── Accessibility scaffolding ───────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-md);
+  top: var(--space-md);
+  z-index: var(--z-stamp);
+  background: var(--ink);
+  color: var(--stock);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius);
+  font-family: var(--font-code);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  /* slide via transform (GPU), never animate `top` */
+  transform: translateY(calc(-100% - var(--space-lg)));
+  transition: transform var(--dur-short) var(--ease-out);
+}
+.skip-link:focus { transform: translateY(0); }
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+/* On the dark ink-filled wallet button the blue ring loses contrast against
+   the fill; pair it with a light inset halo so it clears 3:1 on both surfaces. */
+.walletbtn:focus-visible {
+  outline-offset: 3px;
+  box-shadow: inset 0 0 0 2px var(--on-ink-faint);
+}
+
+/* ── Masthead (page chrome, not a SaaS nav) ──────────────────── */
+.masthead {
+  width: min(var(--ticket-w), 100%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-inline: var(--space-2xs);
+}
+.masthead__service {
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-stamp);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.masthead__confirmed {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  line-height: 1;
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.masthead__dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--stamp);
+  box-shadow: 0 0 0 3px var(--stamp-soft);
+}
+
+/* ── The ticket object ───────────────────────────────────────── */
+#ticket {
+  width: min(var(--ticket-w), 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-xl);
+}
+
+.ticket {
+  position: relative;
+  background: var(--stock);
+  border-radius: var(--radius);
+  /* lifted, slightly punched card stock */
+  box-shadow:
+    0 1px 0 0 var(--rule) inset,
+    0 18px 40px -24px var(--cast-deep),
+    0 2px 6px -2px var(--cast-soft);
+  /* the printed border that frames every ticket */
+  outline: var(--hair) solid var(--rule-strong);
+  outline-offset: -7px;
+  overflow: hidden;
+}
+
+/* ── Main portion ────────────────────────────────────────────── */
+.stub-main {
+  position: relative;
+  padding: clamp(var(--space-xl), 4vw, var(--space-3xl));
+  padding-bottom: var(--space-xl);
+}
+
+/* reserve room on the right for the validation puck so the title never
+   runs under it; the puck is var(--stamp-size) wide + its inset offset */
+.nameplate { padding-right: calc(var(--stamp-size) + var(--space-2xl)); }
+.nameplate__class {
+  margin: 0 0 var(--space-xs);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-stamp);
+  text-transform: uppercase;
+  color: var(--stamp);
+}
+.nameplate__line {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-tight);
+  color: var(--ink);
+  /* keep words whole at comfortable widths; the narrow breakpoint switches to
+     break-word as a last resort so long names can't overflow (gate 51) */
+  overflow-wrap: normal;
+  min-width: 0;
+}
+.nameplate__sub {
+  margin: var(--space-sm) 0 0;
+  font-size: var(--text-sm);
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── Validation stamp (the one accent moment) ────────────────── */
+.stamp {
+  position: absolute;
+  top: clamp(var(--space-xl), 4vw, var(--space-3xl));
+  right: clamp(var(--space-xl), 4vw, var(--space-3xl));
+  z-index: var(--z-stamp);
+  margin: 0;
+  width: var(--stamp-size);
+  height: var(--stamp-size);
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--stamp);
+  border-radius: 50%;
+  color: var(--stamp);
+  transform: rotate(-13deg);
+  /* slightly ink-starved print look */
+  opacity: 0.92;
+}
+.stamp::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--stamp);
+  border-radius: 50%;
+  opacity: 0.55;
+}
+.stamp__inner {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3xs);
+  text-align: center;
+  font-family: var(--font-code);
+  text-transform: uppercase;
+}
+.stamp__top, .stamp__bottom {
+  font-size: var(--text-2xs);
+  letter-spacing: 0.16em;
+}
+.stamp__date {
+  font-size: var(--text-md);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* ── Route timeline (dusk → dawn) ────────────────────────────── */
+.route {
+  margin-top: clamp(var(--space-xl), 4vw, var(--space-2xl));
+  padding-top: var(--space-lg);
+  border-top: var(--hair) solid var(--rule);
+}
+.route__h {
+  margin: 0 0 var(--space-lg);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--track-stamp);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.route__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.leg {
+  position: relative;
+  display: grid;
+  grid-template-columns: 4.5rem 1.25rem minmax(0, 1fr);
+  align-items: start;
+  column-gap: var(--space-md);
+  padding-bottom: var(--space-lg);
+}
+.leg:last-child { padding-bottom: 0; }
+
+/* the connecting rail between station nodes */
+.leg:not(:last-child) .leg__node::after {
+  content: "";
+  position: absolute;
+  top: 1.05rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: calc(100% - 0.6rem);
+  background: var(--rail-soft);
+}
+.leg__time {
+  font-family: var(--font-code);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--ink);
+  text-align: right;
+  line-height: 1.3;
+}
+.leg__node {
+  position: relative;
+  justify-self: center;
+  margin-top: var(--space-2xs);   /* optical: center dot on the time baseline */
+  width: var(--node); height: var(--node);
+  border-radius: 50%;
+  background: var(--stock);
+  border: 2px solid var(--rail);
+}
+.leg--depart .leg__node,
+.leg--arrive .leg__node {
+  background: var(--stamp);
+  border-color: var(--stamp);
+}
+.leg__body { display: grid; gap: var(--space-3xs); }
+.leg__station {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: var(--lh-snug);
+}
+.leg--pass .leg__station {
+  font-weight: 400;
+  color: var(--ink-2);
+}
+.leg__note {
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+
+/* ── Berth / passenger details ───────────────────────────────── */
+.details {
+  margin: var(--space-xl) 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--hair);
+  background: var(--rule);
+  border: var(--hair) solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.details__cell {
+  margin: 0;
+  background: var(--stock-2);
+  padding: var(--space-md);
+}
+.details dt {
+  margin: 0 0 var(--space-2xs);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.details dd {
+  margin: 0;
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.mono { font-family: var(--font-code); font-weight: 700; letter-spacing: 0.01em; }
+
+/* ── Fare strip ──────────────────────────────────────────────── */
+.fare {
+  margin-top: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--stock-3);
+  border: var(--hair) solid var(--rule);
+  border-radius: var(--radius);
+}
+.fare__line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin: 0;
+  padding: var(--space-2xs) 0;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+}
+.fare__line .mono { font-size: var(--text-sm); color: var(--ink); }
+.fare__line--total {
+  margin-top: var(--space-xs);
+  padding-top: var(--space-sm);
+  border-top: var(--hair) dashed var(--rule-strong);
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: var(--ink);
+}
+.fare__line--total .mono { font-size: var(--text-md); color: var(--ink); }
+
+/* ── Perforated tear edge ────────────────────────────────────── */
+.perforation {
+  position: relative;
+  height: 0;
+  /* punched notches, repeating along the seam */
+  background:
+    radial-gradient(circle at var(--perf-r) 50%,
+      var(--canvas) 0 var(--perf-r),
+      transparent calc(var(--perf-r) + 0.5px))
+    left center / var(--perf-gap) calc(var(--perf-r) * 2) repeat-x;
+  /* dashed seam line above the notches */
+  border-top: 1.5px dashed var(--perf);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.perforation__rule {
+  position: relative;
+  transform: translateY(-50%);
+  background: var(--stock);
+  padding: 0 var(--space-sm);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+/* ── Detachable stub ─────────────────────────────────────────── */
+.stub {
+  background: var(--stock-2);
+  padding: clamp(var(--space-lg), 3vw, var(--space-2xl));
+  display: grid;
+  gap: var(--space-lg);
+}
+.stub__keep {
+  margin: 0;
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-stamp);
+  text-transform: uppercase;
+  color: var(--stamp);
+}
+.stub__codes {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-lg);
+}
+.stub__codes dt {
+  margin: 0 0 var(--space-2xs);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.stub__codes dd { margin: 0; color: var(--ink); }
+.mono--lg { font-size: var(--text-md); }
+
+/* a real-feeling barcode strip — pure CSS, no fake chrome */
+.barcode {
+  height: 3rem;
+  border-radius: 2px;
+  background:
+    repeating-linear-gradient(90deg,
+      var(--ink) 0 2px,
+      transparent 2px 4px,
+      var(--ink) 4px 5px,
+      transparent 5px 9px,
+      var(--ink) 9px 12px,
+      transparent 12px 13px,
+      var(--ink) 13px 14px,
+      transparent 14px 18px);
+  opacity: 0.86;
+}
+.stub__num {
+  margin: calc(-1 * var(--space-sm)) 0 0;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--ink-2);
+  text-align: center;
+}
+
+/* ── Stub actions ────────────────────────────────────────────── */
+.stub__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+.walletbtn {
+  flex: 1 1 12rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  min-height: 44px;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius);
+  background: var(--ink);
+  color: var(--stock);
+  text-decoration: none;
+  border: var(--hair) solid var(--ink);
+  transition: background var(--dur-short) var(--ease-out),
+              transform var(--dur-micro) var(--ease-out);
+}
+.walletbtn__label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-md);
+  line-height: 1;
+  white-space: nowrap;
+}
+.walletbtn__hint {
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--on-ink-faint);
+  line-height: 1;
+}
+.walletbtn:hover { background: var(--ink-2); }
+.walletbtn:active { transform: translateY(1px); }
+
+.ghostbtn {
+  flex: 0 1 auto;
+  min-height: 44px;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius);
+  background: transparent;
+  border: var(--hair) solid var(--rule-strong);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-md);
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color var(--dur-short) var(--ease-out),
+              background var(--dur-short) var(--ease-out),
+              transform var(--dur-micro) var(--ease-out);
+}
+.ghostbtn:hover { border-color: var(--ink-2); background: var(--stock-3); }
+.ghostbtn:active { transform: translateY(1px); }
+.ghostbtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  border-color: var(--rule);
+  color: var(--faint);
+}
+
+/* ── Conditions of carriage (back-of-ticket fine print) ──────── */
+.conditions {
+  width: min(56ch, 100%);
+  align-self: center;
+  color: var(--ink-2);
+}
+.conditions__h {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-code);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--track-stamp);
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.conditions p {
+  margin: 0 0 var(--space-md);
+  font-size: var(--text-sm);
+  line-height: var(--lh-relaxed);
+  max-width: 64ch;
+}
+.conditions__help { color: var(--muted); }
+
+/* ── Colophon ────────────────────────────────────────────────── */
+.colophon {
+  width: min(var(--ticket-w), 100%);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding-top: var(--space-md);
+  border-top: var(--hair) solid var(--rule);
+}
+.colophon__mark {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-md);
+  color: var(--ink);
+  letter-spacing: var(--track-tight);
+}
+.colophon__fine {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--muted);
+}
+.colophon__fine .mono { font-size: var(--text-xs); color: var(--ink-2); font-weight: 400; }
+
+/* ── ONE orchestrated motion ─────────────────────────────────────
+   The ticket prints, the stub tears free, then the stamp presses in.
+   One timeline; nothing else moves. The RESTING state is always visible —
+   the intro only plays when JS adds `.is-ready`, and uses `backwards` fill
+   so the hidden start lives in the keyframes, never on the base element.
+   No-JS, JS-failure, and reduced-motion all leave a fully legible ticket. */
+.is-ready .ticket {
+  animation: ticket-print var(--dur-long) var(--ease-out) both;
+}
+.is-ready .stub {
+  animation: stub-tear var(--dur-long) var(--ease-out) 80ms both;
+}
+.is-ready .stamp {
+  animation: stamp-press 360ms var(--ease-out) calc(var(--dur-long) - 60ms) both;
+}
+
+/* Settled state — JS adds `.is-done` when the intro ends (or after a
+   timeout). Cancels the animation and pins the resting values, so even an
+   environment that freezes the animation clock lands on a visible ticket. */
+.is-done .ticket,
+.is-done .stub,
+.is-done .stamp { animation: none; }
+.is-done .ticket { opacity: 1; transform: none; }
+.is-done .stamp  { opacity: 0.92; transform: rotate(-13deg); }
+
+@keyframes ticket-print {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes stub-tear {
+  0%   { transform: translateY(-6px); clip-path: inset(0 0 100% 0); }
+  60%  { clip-path: inset(0 0 0 0); }
+  100% { transform: translateY(0); clip-path: inset(0 0 0 0); }
+}
+@keyframes stamp-press {
+  0%   { opacity: 0; transform: rotate(-13deg) scale(1.6); }
+  70%  { opacity: 0.92; transform: rotate(-13deg) scale(0.94); }
+  100% { opacity: 0.92; transform: rotate(-13deg) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticket, .stub, .stamp { animation: none !important; }
+  .ticket { opacity: 1; transform: none; }
+  .stamp  { opacity: 0.92; transform: rotate(-13deg); }
+  .skip-link { transition: none; }
+  .walletbtn, .ghostbtn { transition: none; }
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 34rem) {
+  .stamp {
+    width: var(--stamp-size-s);
+    height: var(--stamp-size-s);
+    top: var(--space-lg);
+    right: var(--space-lg);
+  }
+  .stamp__date { font-size: var(--text-base); }
+  .stamp__top, .stamp__bottom { font-size: var(--text-2xs); }
+  /* reserve a column for the stamp puck so the title wraps to its left,
+     never under it; the puck is var(--stamp-size-s) + its inset offset */
+  .nameplate { padding-right: var(--stamp-clear); }
+  /* narrow widths: allow last-resort intra-word breaks so a long station/line
+     name can never overflow the slimmer column (gate 51) */
+  .nameplate__line { font-size: var(--text-xl); overflow-wrap: break-word; }
+
+  .perforation__rule { letter-spacing: 0.08em; }
+
+  .details { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stub__codes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .leg { grid-template-columns: 3.5rem 1rem minmax(0, 1fr); column-gap: var(--space-sm); }
+}
+
+@media (max-width: 24rem) {
+  .stub__codes { grid-template-columns: minmax(0, 1fr); }
+  .walletbtn, .ghostbtn { flex: 1 1 100%; justify-content: center; }
+}

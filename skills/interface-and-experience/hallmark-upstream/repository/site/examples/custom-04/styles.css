@@ -1,0 +1,598 @@
+/* Hallmark · route: custom · structure: corner-cropped broadsheet — masthead rule, off-axis fold slogan, five hand-numbered broken-grid manifesto planks, a skewed taped tally marquee, a printer's colophon · idea: "a poster you scroll through, printed in two off-register riso passes that snap into register on load" · paper: oklch(94% 0.012 85) · accent: oklch(58% 0.205 32) · display: Big Shoulders Display · body: Fraunces · gates: all-pass · v1.1 */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R4 V5 */
+/* Hallmark · route: custom · axes: bone-newsprint / condensed-poster-grotesque / riso-vermilion 32°
+ * contrast: pass (46–50) · nav: bespoke masthead · footer: bespoke colophon · slop: pass (51–55)
+ * honest: pass (56) · chrome: pass (57) · tokens: pass (58) · responsive: pass (59) · icons: pass (60) · mobile: pass (36, 59, 61–69)
+ */
+
+@import url("./tokens.css");
+
+/* ───────────────────────── Reset ───────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; overflow-x: clip; }
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink-2);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--lh-body);
+  font-optical-sizing: auto;
+  font-feature-settings: "kern", "liga", "onum";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+h1, h2, h3, p, figure, blockquote, ul, ol { margin: 0; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-accent);
+}
+a:hover { text-decoration: underline; }
+
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+::selection { background: var(--color-accent); color: var(--color-accent-ink); }
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* Skip link — printed tab that drops in on focus */
+.skip-link {
+  position: absolute;
+  left: var(--space-md);
+  top: -3rem;
+  z-index: 60;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: var(--space-xs) var(--space-md);
+  transition: top var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus-visible { top: var(--space-md); }
+
+/* ─────────────── The sheet: paper grain + halftone dot ─────────────── */
+/* Two fixed, decorative layers — pure CSS, no animation. Footprint is full
+   sheet but each is a faint single-ink texture, not an accent fill. */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+body::before { /* halftone dot grid */
+  background-image: radial-gradient(var(--dot-ink) 0.9px, transparent 1px);
+  background-size: 6px 6px;
+  background-position: 0 0;
+}
+body::after { /* directional grain — fine diagonal hatch */
+  background-image:
+    repeating-linear-gradient(115deg, var(--grain-ink) 0 1px, transparent 1px 3px);
+  mix-blend-mode: multiply;
+  opacity: 0.7;
+}
+
+/* ─────────────── Corner crop marks + edition stamp (fixed) ─────────────── */
+.press-marks { position: fixed; inset: 0; z-index: 40; pointer-events: none; }
+.press-marks .crop {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-color: var(--color-ink);
+  border-style: solid;
+}
+.press-marks .crop--tl { top: var(--crop); left: var(--crop);  border-width: 2px 0 0 2px; }
+.press-marks .crop--tr { top: var(--crop); right: var(--crop); border-width: 2px 2px 0 0; }
+.press-marks .crop--bl { bottom: var(--crop); left: var(--crop);  border-width: 0 0 2px 2px; }
+.press-marks .crop--br { bottom: var(--crop); right: var(--crop); border-width: 0 2px 2px 0; }
+/* registration target — bottom-left, the printer's bullseye */
+.reg-target {
+  position: fixed;
+  left: calc(var(--crop) + 34px);
+  bottom: calc(var(--crop) - 2px);
+  z-index: 40;
+  width: 22px; height: 22px;
+  pointer-events: none;
+}
+.reg-target::before,
+.reg-target::after {
+  content: ""; position: absolute; background: var(--color-ink);
+}
+.reg-target::before { left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%); }
+.reg-target::after  { top: 50%; left: 0; right: 0; height: 1px; transform: translateY(-50%); }
+.reg-target span {
+  position: absolute; inset: 4px; border: 1px solid var(--color-accent-deep);
+  border-radius: 50%;
+}
+/* Hide fixed press furniture on small screens — it crowds the slogan */
+@media (max-width: 40rem) {
+  .reg-target { display: none; }
+  .press-marks .crop { width: 16px; height: 16px; }
+}
+
+/* ───────────────────────── Shell ───────────────────────── */
+.sheet {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--sheet-max);
+  margin-inline: auto;
+  padding-inline: var(--sheet-pad);
+}
+
+/* ════════════════════════ Masthead (bespoke) ════════════════════════ */
+.masthead {
+  position: relative;
+  z-index: 1;
+  border-bottom: var(--rule-ink);
+  margin-top: clamp(var(--space-lg), 4vw, var(--space-2xl));
+}
+.masthead__bar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-md) var(--space-lg);
+  padding-block: var(--space-sm) var(--space-md);
+}
+/* Narrow: stack wordmark over edition so neither column gets crushed */
+@media (max-width: 34rem) {
+  .masthead__bar { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .masthead__edition { text-align: left; }
+}
+.masthead__mark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 6vw, 2.25rem);  /* scales down so it never breaks per-glyph */
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  overflow-wrap: break-word;   /* wraps at spaces; word-internal break only as last resort */
+  text-wrap: balance;
+  min-width: 0;
+}
+.masthead__mark .no {
+  color: var(--color-accent-deep);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.62em;
+  letter-spacing: 0;
+  vertical-align: 0.18em;
+}
+.masthead__edition {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-mute);
+  text-align: right;
+  line-height: 1.5;
+}
+.masthead__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(var(--space-md), 3vw, var(--space-xl));
+  padding-block: var(--space-sm);
+  border-top: var(--rule-hair);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.masthead__nav a { white-space: nowrap; line-height: 1; color: var(--color-ink); }
+.masthead__nav a:hover { color: var(--color-accent-deep); }
+.masthead__nav .dot { color: var(--color-accent-deep); }
+
+/* Sub-line: the broadsheet strapline, runs under the rule */
+.strapline {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink-mute);
+  padding-block: var(--space-sm);
+}
+
+/* ════════════════════ The fold — hero slogan ════════════════════ */
+.fold {
+  position: relative;
+  padding-block: clamp(var(--space-lg), 4vw, var(--space-2xl))
+                 clamp(var(--space-3xl), 13vw, var(--space-5xl)); /* trimmed top so the slogan clears the fold; heavy bottom keeps the asymmetry */
+}
+.fold__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-xl);
+}
+@media (min-width: 60rem) {
+  .fold__inner { grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.9fr); align-items: end; }
+}
+.fold__slogan {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-fold);
+  line-height: var(--lh-slab);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+  /* pull off the left margin into the crop edge */
+  margin-left: clamp(-0.5rem, -2vw, -1.75rem);
+}
+.fold__slogan .ln { display: block; }
+.fold__slogan .ln--red { color: var(--color-accent); }
+.fold__slogan .ln--indent { padding-left: clamp(1.5rem, 9vw, 7rem); } /* broken grid */
+
+/* Off-register ghost: a teal/vermilion second pass set just behind the ink. */
+.ghost { position: relative; }
+.ghost > .ink { position: relative; z-index: 1; display: block; }
+.ghost > .reg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  color: var(--color-accent);
+  opacity: 0.42;
+  transform: translate(var(--reg-shift), calc(var(--reg-shift) * 0.6));
+  pointer-events: none;
+  user-select: none;
+}
+.ghost > .reg.reg--teal { color: var(--color-teal); transform: translate(calc(var(--reg-shift) * -0.7), calc(var(--reg-shift) * 0.4)); }
+
+.fold__lede {
+  font-size: var(--text-lg);
+  line-height: var(--lh-body);
+  color: var(--color-ink-2);
+  max-width: 38ch;
+  border-left: var(--rule-press);
+  padding-left: var(--space-md);
+}
+.fold__lede strong { color: var(--color-ink); font-weight: 600; }
+.fold__lede .em { color: var(--color-accent-deep); font-style: normal; font-weight: 600; }
+
+.fold__meta {
+  margin-top: var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-mute);
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+}
+
+/* ════════════════════ Manifesto spine — broken grid ════════════════════ */
+.spine {
+  border-top: var(--rule-ink);
+  padding-top: clamp(var(--space-xl), 5vw, var(--space-3xl));
+}
+.spine__head {
+  display: block; /* gate 54 — eyebrow + heading single column */
+  margin-bottom: clamp(var(--space-xl), 6vw, var(--space-3xl));
+}
+.spine__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent-deep);
+}
+.spine__title {
+  margin-top: var(--space-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+  max-width: 22ch;
+}
+
+.plank {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md) clamp(var(--space-lg), 4vw, var(--space-2xl));
+  padding-block: clamp(var(--space-xl), 5vw, var(--space-3xl));
+  border-bottom: var(--rule-hair);
+}
+@media (min-width: 56rem) {
+  .plank { grid-template-columns: minmax(0, 6.2rem) minmax(0, 1fr); align-items: start; }
+}
+.plank__num {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-lg);
+  color: var(--color-accent-deep);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  padding-top: 0.4em;
+}
+.plank__num::after { content: ""; display: block; width: 2.5rem; height: 2px; background: var(--color-rule); margin-top: var(--space-sm); }
+
+.plank__slab {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-slab);
+  line-height: var(--lh-slab);
+  letter-spacing: -0.005em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.plank__slab .red { color: var(--color-accent); }
+.plank__slab .balloon {
+  font-size: 1.32em;            /* a numeral that balloons to fill the column */
+  letter-spacing: -0.02em;
+}
+/* per-plank broken-grid moves */
+.plank--hang .plank__slab { margin-left: clamp(-0.4rem, -2.5vw, -2.25rem); }
+.plank--drop .plank__slab .drop { display: inline-block; transform: translateY(0.16em); } /* a clause drops a baseline */
+.plank--wide { }
+
+.plank__gloss {
+  font-size: var(--text-base);
+  line-height: var(--lh-body);
+  color: var(--color-ink-2);
+  max-width: 52ch;
+  margin-top: var(--space-md);
+}
+.plank__gloss em { font-style: italic; color: var(--color-ink); } /* italic allowed in body */
+
+/* ════════════════════ Tape marquee — the one persistent motion ════════════════════ */
+.tally {
+  position: relative;
+  margin-block: clamp(var(--space-2xl), 7vw, var(--space-4xl));
+  background: var(--color-paper-3);
+  border-block: var(--rule-press);
+  /* skewed, taped-on fly-poster band */
+  transform: rotate(-1.4deg);
+}
+.tally__strip {
+  overflow: hidden;
+  padding-block: clamp(var(--space-md), 2.5vw, var(--space-xl));
+  /* Mask uses alpha only — the colour is irrelevant; tinted-ink keeps the
+     token discipline clean (no pure #000 anywhere on the page). */
+  -webkit-mask-image: linear-gradient(90deg, transparent, var(--mask-opaque) 7%, var(--mask-opaque) 93%, transparent);
+          mask-image: linear-gradient(90deg, transparent, var(--mask-opaque) 7%, var(--mask-opaque) 93%, transparent);
+}
+.tally__track {
+  display: flex;
+  gap: clamp(var(--space-lg), 4vw, var(--space-2xl));
+  width: max-content;
+  white-space: nowrap;
+  align-items: baseline;
+  animation: tape-scroll var(--dur-tape) linear infinite;
+  will-change: transform;
+}
+.tally__item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.tally__item .n { color: var(--color-accent); font-family: var(--font-mono); font-weight: 600; }
+.tally__item .n--teal { color: var(--color-teal); }
+.tally__item .sep { color: var(--color-ink-mute); font-family: var(--font-mono); font-weight: 400; }
+/* torn-tape ends */
+.tally::before, .tally::after {
+  content: ""; position: absolute; top: -7px; bottom: -7px; width: clamp(48px, 9vw, 96px);
+  background: var(--color-paper-2);
+  opacity: 0.92;
+  transform: rotate(2.6deg);
+  z-index: 2;
+}
+.tally::before { left: -6px; }
+.tally::after  { right: -6px; transform: rotate(-2.6deg); }
+.tally__cap {
+  position: absolute; z-index: 3; top: 50%; transform: translateY(-50%) rotate(1.4deg);
+  font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--color-ink-2);
+}
+.tally__cap--l { left: clamp(0.5rem, 2vw, 1.75rem); }
+
+/* ════════════════════ The bill — what / bring / find ════════════════════ */
+.bill {
+  border-top: var(--rule-ink);
+  padding-block: clamp(var(--space-2xl), 6vw, var(--space-3xl));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(var(--space-lg), 4vw, var(--space-2xl));
+}
+@media (min-width: 52rem) {
+  .bill { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.bill__line { position: relative; }
+.bill__k {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-deep);
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+.bill__v {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  line-height: var(--lh-tight);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.bill__v .red { color: var(--color-accent); }
+.bill__note { margin-top: var(--space-sm); color: var(--color-ink-2); font-size: var(--text-base); max-width: 30ch; }
+
+/* The pledge CTA — set as a printed call, not a pill farm */
+.pledge {
+  border-top: var(--rule-ink);
+  border-bottom: var(--rule-ink);
+  padding-block: clamp(var(--space-2xl), 7vw, var(--space-4xl));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-xl);
+}
+@media (min-width: 58rem) {
+  .pledge { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: end; }
+}
+.pledge__call {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.pledge__call .red { color: var(--color-accent); }
+.pledge__action { justify-self: start; }
+@media (min-width: 58rem) { .pledge__action { justify-self: end; } }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 48px;
+  padding: 0 var(--space-lg);
+  background: var(--color-accent-btn);
+  color: var(--color-accent-ink);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  border: 2px solid var(--color-accent-btn);
+  white-space: nowrap;
+  transition: background var(--dur-base) var(--ease-out),
+              color var(--dur-base) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.btn:hover { background: var(--color-ink); border-color: var(--color-ink); color: var(--color-paper); text-decoration: none; }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 3px; }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn .arw { font-family: var(--font-mono); }
+
+.pledge__small {
+  margin-top: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-mute);
+}
+
+/* ════════════════════ Colophon footer (bespoke) ════════════════════ */
+.colophon {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(var(--space-xl), 5vw, var(--space-3xl));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg) var(--space-2xl);
+}
+@media (min-width: 50rem) {
+  .colophon { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: start; }
+}
+.colophon__mark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-xl);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.colophon__body {
+  margin-top: var(--space-md);
+  font-size: var(--text-base);
+  color: var(--color-ink-2);
+  max-width: 56ch;
+}
+.colophon__meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-mute);
+  line-height: 1.9;
+}
+.colophon__meta a:hover { color: var(--color-accent-deep); }
+.colophon__rule { grid-column: 1 / -1; border-top: var(--rule-hair); padding-top: var(--space-md);
+  font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--color-ink-mute);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--space-md); }
+
+/* ════════════════════ One orchestrated motion: registration sweep ════════════════════ */
+/* THE PRINCIPLE: the base state is fully PRINTED (ink opaque, in register).
+   Motion is an *entrance* layered on top — a one-shot CSS animation that runs
+   the ink in from off-register on load and ends `forwards` in the same printed
+   state. No JS, no class toggle: if the animation never plays (no-JS, throttled
+   rAF, reduced-motion), the slogan is already visible. This is why the headline
+   can never get stranded invisible. Stagger comes from per-element --i delay. */
+
+/* The INK (the readable text) is ALWAYS opaque and in register — it carries no
+   animation, so legibility can never depend on an animation clock that might be
+   paused, throttled, or pre-start. Only the coloured off-register GHOST animates:
+   on load it slides from a wider offset into its resting register-miss. If that
+   animation never advances, the only consequence is the ghost sits at its start
+   offset — the headline itself is fully readable regardless. */
+.ghost > .ink { opacity: 1; }
+.ghost > .reg { opacity: 0.42; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ghost > .reg {
+    animation: reg-settle var(--dur-reg) var(--ease-snap) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+}
+
+/* The ghost prints first (further adrift, fainter) then settles toward the ink —
+   the two-pass registration "snap". Ends at the same resting offset the static
+   `.reg`/`.reg--teal` rules define, so motion and no-motion converge visually. */
+@keyframes reg-settle {
+  from { opacity: 0.16; transform: translate(calc(var(--reg-shift) * 2.1), calc(var(--reg-shift) * 1.3)); }
+}
+
+/* Reduced-motion: no entrance — the printed base state (ink + resting ghost) stands. */
+@media (prefers-reduced-motion: reduce) {
+  .tally__track { animation: none; }
+}
+
+@keyframes tape-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Utility */
+.u-vh { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }

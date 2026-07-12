@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Mend Assembly — Don't bin it. Fix it.</title>
+  <meta name="description" content="A broadsheet manifesto for the neighbourhood repair-café movement. Bring the broken thing. We mend it together, the third Saturday of the month, for nothing." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800&family=Fraunces:opsz,wght@9..40,400;9..40,500;9..40,600&family=Fraunces:ital,opsz,wght@1,9..40,400;1,9..40,500&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#manifesto">Skip to the manifesto</a>
+
+  <!-- Press furniture — fixed crop marks + registration target (decorative) -->
+  <div class="press-marks" aria-hidden="true">
+    <span class="crop crop--tl"></span>
+    <span class="crop crop--tr"></span>
+    <span class="crop crop--bl"></span>
+    <span class="crop crop--br"></span>
+  </div>
+  <div class="reg-target" aria-hidden="true"><span></span></div>
+
+  <!-- ═══════════ Masthead ═══════════ -->
+  <header class="sheet masthead">
+    <div class="masthead__bar">
+      <a class="masthead__mark" href="#top" aria-label="The Mend Assembly — home">
+        The Mend Assembly <span class="no">FIX&nbsp;Nº&nbsp;03</span>
+      </a>
+      <p class="masthead__edition">
+        Free sheet · printed by hand<br />
+        Third Saturday · this month
+      </p>
+    </div>
+    <nav class="masthead__nav" aria-label="Primary">
+      <a href="#manifesto">The Manifesto</a>
+      <span class="dot" aria-hidden="true">·</span>
+      <a href="#tally">The Count</a>
+      <span class="dot" aria-hidden="true">·</span>
+      <a href="#bring">Come Mend</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- ═══════════ The fold — hero slogan ═══════════ -->
+    <section class="sheet fold" aria-labelledby="fold-title">
+      <p class="strapline">A broadsheet for things worth keeping · est. on a workbench</p>
+      <div class="fold__inner">
+        <h1 class="fold__slogan" id="fold-title" style="--i:0">
+          <span class="ln ghost">
+            <span class="ink">Don't</span>
+            <span class="reg reg--teal" aria-hidden="true">Don't</span>
+          </span>
+          <span class="ln ghost">
+            <span class="ink">bin it.</span>
+            <span class="reg" aria-hidden="true">bin it.</span>
+          </span>
+          <span class="ln ln--red ln--indent ghost">
+            <span class="ink">Fix it.</span>
+            <span class="reg reg--teal" aria-hidden="true">Fix it.</span>
+          </span>
+        </h1>
+        <div>
+          <p class="fold__lede">
+            A broken kettle is not rubbish. It is a kettle with
+            <strong>one bad part</strong> and a story you're not done with.
+            Every third Saturday we set out the tools, pull up a stool, and
+            <span class="em">mend it with you</span> — not for you.
+          </p>
+          <p class="fold__meta">
+            <span>No appointment</span>
+            <span>No charge</span>
+            <span>No landfill</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ The manifesto spine ═══════════ -->
+    <section class="sheet spine" id="manifesto" aria-labelledby="spine-title">
+      <div class="spine__head">
+        <p class="spine__eyebrow">Five things we hold to be true</p>
+        <h2 class="spine__title">The right to repair what is yours</h2>
+      </div>
+
+      <!-- 01 — hangs into the left margin -->
+      <article class="plank plank--hang" style="--i:1">
+        <p class="plank__num">01</p>
+        <div>
+          <p class="plank__slab ghost">
+            <span class="ink">Throwing it <br />away is a <span class="red">choice</span>.</span>
+            <span class="reg" aria-hidden="true">Throwing it<br />away is a choice.</span>
+          </p>
+          <p class="plank__gloss">
+            Nothing breaks itself on purpose. A frayed cable, a seized hinge, a
+            split seam — these are <em>repairs waiting to happen</em>, not verdicts.
+            The bin is the lazy answer; the workbench is the honest one.
+          </p>
+        </div>
+      </article>
+
+      <!-- 02 — a clause drops a baseline -->
+      <article class="plank plank--drop" style="--i:2">
+        <p class="plank__num">02</p>
+        <div>
+          <p class="plank__slab ghost">
+            <span class="ink">Skills belong <br /><span class="drop red">to everyone.</span></span>
+            <span class="reg reg--teal" aria-hidden="true">Skills belong<br />to everyone.</span>
+          </p>
+          <p class="plank__gloss">
+            We don't hand back a fixed object — we hand back the
+            <em>knowing-how</em>. Solder, stitch, re-glue, re-wire: you do it,
+            we steady your hand. Next month you steady someone else's.
+          </p>
+        </div>
+      </article>
+
+      <!-- 03 — a numeral balloons to fill the column -->
+      <article class="plank plank--wide" style="--i:3">
+        <p class="plank__num">03</p>
+        <div>
+          <p class="plank__slab ghost">
+            <span class="ink"><span class="balloon">8</span> in 10 <br />things <span class="red">can</span> be saved.</span>
+            <span class="reg" aria-hidden="true">8 in 10<br />things can be saved.</span>
+          </p>
+          <p class="plank__gloss">
+            Most failures are one cheap part or one loose joint away from another
+            decade of use. We log every repair on the strip below — kept honest, no
+            number we didn't count ourselves. <em>The bin can wait.</em>
+          </p>
+        </div>
+      </article>
+
+      <!-- 04 — hangs left again, different rhythm -->
+      <article class="plank plank--hang" style="--i:4">
+        <p class="plank__num">04</p>
+        <div>
+          <p class="plank__slab ghost">
+            <span class="ink">A street that<br />mends, <span class="red">holds</span>.</span>
+            <span class="reg reg--teal" aria-hidden="true">A street that<br />mends, holds.</span>
+          </p>
+          <p class="plank__gloss">
+            The café is the excuse; the neighbours are the point. People who fix
+            things together <em>look out for each other</em> — the toaster gets a
+            second life, and so does the afternoon.
+          </p>
+        </div>
+      </article>
+
+      <!-- 05 — the turn -->
+      <article class="plank plank--drop" style="--i:5">
+        <p class="plank__num">05</p>
+        <div>
+          <p class="plank__slab ghost">
+            <span class="ink">Keep it. <br /><span class="drop red">Pass it on.</span></span>
+            <span class="reg" aria-hidden="true">Keep it.<br />Pass it on.</span>
+          </p>
+          <p class="plank__gloss">
+            What we mend, we keep in use; what we outgrow, we give away mended.
+            <em>Nothing leaves whole and ends up broken in a skip.</em> That is the
+            whole movement, in one line.
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ═══════════ Tape marquee — the count ═══════════ -->
+    <section class="sheet" id="tally" aria-labelledby="tally-label">
+      <h2 class="u-vh" id="tally-label">Repairs counted at the bench</h2>
+      <div class="tally">
+        <span class="tally__cap tally__cap--l" aria-hidden="true">Saved, not skipped</span>
+        <div class="tally__strip">
+          <div class="tally__track" id="tally-track" aria-hidden="true">
+            <!-- Track content is duplicated by script.js for a seamless loop -->
+            <span class="tally__item"><span class="n">214</span> Kettles <span class="sep">/</span></span>
+            <span class="tally__item"><span class="n n--teal">91</span> Lamps <span class="sep">/</span></span>
+            <span class="tally__item"><span class="n">1,330</span> Zips <span class="sep">/</span></span>
+            <span class="tally__item"><span class="n">58</span> Toasters <span class="sep">/</span></span>
+            <span class="tally__item"><span class="n n--teal">402</span> Hems <span class="sep">/</span></span>
+            <span class="tally__item"><span class="n">73</span> Radios <span class="sep">/</span></span>
+            <span class="tally__item"><span class="n">186</span> Bicycles <span class="sep">/</span></span>
+            <span class="tally__item"><span class="n n--teal">29</span> Clocks <span class="sep">/</span></span>
+          </div>
+        </div>
+      </div>
+      <p class="u-vh">Counts are tallied by hand at each session; figures are illustrative of a single neighbourhood chapter.</p>
+    </section>
+
+    <!-- ═══════════ The bill — what / bring / find ═══════════ -->
+    <section class="sheet bill" id="bring" aria-label="What to bring and where to find us">
+      <div class="bill__line">
+        <span class="bill__k">What it costs</span>
+        <p class="bill__v"><span class="red">Nothing.</span></p>
+        <p class="bill__note">Donations buy solder and biscuits. Repairs are always free.</p>
+      </div>
+      <div class="bill__line">
+        <span class="bill__k">What to bring</span>
+        <p class="bill__v">The broken thing</p>
+        <p class="bill__note">Small electricals, textiles, ceramics, bikes, toys. If it fits through the door, bring it.</p>
+      </div>
+      <div class="bill__line">
+        <span class="bill__k">When &amp; where</span>
+        <p class="bill__v">Third Sat.</p>
+        <p class="bill__note">10 till 2, at the old print room behind the library. No booking, no rush.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════ The pledge ═══════════ -->
+    <section class="sheet pledge" aria-labelledby="pledge-title">
+      <h2 class="pledge__call" id="pledge-title">
+        Bring one broken thing.<br />Leave with it <span class="red">working</span>.
+      </h2>
+      <div class="pledge__action">
+        <a class="btn" href="#top">
+          Pin the next date <span class="arw" aria-hidden="true">&rarr;</span>
+        </a>
+        <p class="pledge__small">A reminder, not a sign-up. We never sell your details.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════ Colophon ═══════════ -->
+  <footer class="sheet colophon">
+    <div>
+      <p class="colophon__mark">The Mend Assembly</p>
+      <p class="colophon__body">
+        A volunteer-run repair café with no head office and no membership card —
+        just a workbench, a kettle of our own, and the stubborn belief that most
+        broken things are only resting.
+      </p>
+    </div>
+    <address class="colophon__meta" style="font-style: normal;">
+      Third Saturday · 10:00–14:00<br />
+      The Old Print Room, behind the library<br />
+      <a href="#top">Add to your calendar</a><br />
+      <a href="#manifesto">Read the manifesto</a>
+    </address>
+    <div class="colophon__rule">
+      <span>Set in Big Shoulders &amp; Fraunces · printed two-pass, off-register on purpose</span>
+      <span>Fix Nº 03 · free to copy, free to post</span>
+    </div>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>

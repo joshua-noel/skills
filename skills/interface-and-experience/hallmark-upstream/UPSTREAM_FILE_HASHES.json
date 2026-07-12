@@ -1,0 +1,1421 @@
+{
+  "schema_version": "1.0",
+  "source": "https://github.com/nutlope/hallmark",
+  "source_archive": "hallmark-main.zip",
+  "source_archive_sha256": "22508f6acc344148f5d32e777fc5799782c95a60f5c9ea32e2db2b877df4c29a",
+  "source_commit": "aeb42fb354ff4efa36ab475773a082315a3af2ce",
+  "package_version": "1.1.0",
+  "repository_file_count": 282,
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 1567,
+      "sha256": "b62d1b17c408e3135fd92912fc2f9bdccf4df8b653e1a8610b2a61d685b90d0a"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1078,
+      "sha256": "06088a8b94598626f27612dea42300154bf7be967c85d9d3eee4490cb056af7d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6313,
+      "sha256": "2e0c3ce2f27441c445da2e9e198ebcb555ef85d04fee2c96bbe58188980954e8"
+    },
+    {
+      "path": "ROADMAP.md",
+      "bytes": 3928,
+      "sha256": "a6199d266f5f4701772319bdc6d7a7f3746f571e6d3aa9256a0fb4e4d64e15e9"
+    },
+    {
+      "path": "docs/recipes.md",
+      "bytes": 13097,
+      "sha256": "f7c732c49c698c103035fb0450a15385170a2db2c23075180890757524b5ee2c"
+    },
+    {
+      "path": "docs/screenshots/hero-anya.jpg",
+      "bytes": 211700,
+      "sha256": "41f222ce315fb9f1790c86d15dec7b6c71b7c22e89276ceea365459012aeedd0"
+    },
+    {
+      "path": "docs/screenshots/hero-bananastudio.jpg",
+      "bytes": 164776,
+      "sha256": "5a9bf1f6b6f19dc7a80fa209e31c3a0d0b5925e959b931834477937b0bb7a11b"
+    },
+    {
+      "path": "docs/screenshots/hero-carnival-01.jpg",
+      "bytes": 147978,
+      "sha256": "2d1d27d3b77a7ee11d57f7f772a29d0252b4225f8c3e6b3f715cf2a2e72836a6"
+    },
+    {
+      "path": "docs/screenshots/hero-cobalt-01.jpg",
+      "bytes": 158420,
+      "sha256": "8e62b5422d4d6212d91539689c27ea33195ca6fe19859eab971b9cb1fde6264e"
+    },
+    {
+      "path": "docs/screenshots/hero-custom-02.jpg",
+      "bytes": 117544,
+      "sha256": "9f065e90fe1eaa22759fc841a48c0ecaa0b5f6348703d284c8e1f7867d11a3b8"
+    },
+    {
+      "path": "docs/screenshots/hero-custom-03.jpg",
+      "bytes": 138093,
+      "sha256": "c77a7b4cb9c24941faa3c20a604cf737b34760b9254501d18d31478132a42a12"
+    },
+    {
+      "path": "docs/screenshots/hero-custom-04.jpg",
+      "bytes": 401434,
+      "sha256": "81b742996320b90b1a309a123334a519ca256171e77bdd132f70b1348e28cbba"
+    },
+    {
+      "path": "docs/screenshots/hero-garden-01.jpg",
+      "bytes": 140782,
+      "sha256": "a574cab87c9d9029b92a70175f8cfb87877ead5337ac8b32fb508fe2d4fb8be0"
+    },
+    {
+      "path": "docs/screenshots/hero-hum-07.jpg",
+      "bytes": 152942,
+      "sha256": "9ab11c761aff86d6382df3b15b2e31d1f8e3f754857e462f2d1da96c56e1b8b5"
+    },
+    {
+      "path": "docs/screenshots/hero-hyperlane.jpg",
+      "bytes": 137401,
+      "sha256": "8b01aa2635672214af13de9916f747d01a98829f2ef40a3a58102222dbdd8f43"
+    },
+    {
+      "path": "docs/screenshots/hero-lumen-01.jpg",
+      "bytes": 168282,
+      "sha256": "e20a35baa9a9886176bb7a04e952f9d04f01e724c8c3301a0c4f054b34a615ae"
+    },
+    {
+      "path": "docs/screenshots/hero-najm.jpg",
+      "bytes": 191756,
+      "sha256": "6e13d5f5ed7fcff23020539f97344fe8dd987bc3a3525bc1fdf42100cbaee5f4"
+    },
+    {
+      "path": "docs/screenshots/hero-press-01.jpg",
+      "bytes": 134075,
+      "sha256": "e0ea245bd227886dc667f7e9c3ea6040722455920642330de8521054dd07de6b"
+    },
+    {
+      "path": "docs/screenshots/hero-riso-01.jpg",
+      "bytes": 202157,
+      "sha256": "793df9902db674c8f2b46f5d7a7923741209738ec8d5af16d678f23d23449d2b"
+    },
+    {
+      "path": "docs/screenshots/hero-slow-pour.jpg",
+      "bytes": 141237,
+      "sha256": "bb627ee98429f4cce7fe22c5523432e8cb1015094f83ee25d6824d1c996150be"
+    },
+    {
+      "path": "docs/screenshots/hero-soroe.jpg",
+      "bytes": 145245,
+      "sha256": "35ad80f91131acb2f4f1cb5cf6083cca352e8b3faa94c0c30cfbf99731118c7d"
+    },
+    {
+      "path": "docs/screenshots/hero-tally.jpg",
+      "bytes": 180347,
+      "sha256": "79cd6487a1da70f2567752eee0948f9d149143befb9990900ec75d62c8234625"
+    },
+    {
+      "path": "docs/screenshots/hero-wayfare.jpg",
+      "bytes": 163332,
+      "sha256": "3a05e1b0b8e6fbffe7086cf59f4d743c1fc0b031513bf937f93ec2e67855a538"
+    },
+    {
+      "path": "docs/study-examples.md",
+      "bytes": 12380,
+      "sha256": "3cbbbc1e1515114e0e1cee6eb8534793539342f33ed074b0917ff378aac91616"
+    },
+    {
+      "path": "docs/talk-slides.md",
+      "bytes": 14340,
+      "sha256": "83083b5e37b99cb8211268b778aa0cb3f677f8fe53f8d817f54fcad799882e0e"
+    },
+    {
+      "path": "package.json",
+      "bytes": 707,
+      "sha256": "e40a01ef874cb2400c81915319359e40ff5532ec8bad94e819236e1973f4198b"
+    },
+    {
+      "path": "site/.gitignore",
+      "bytes": 8,
+      "sha256": "56537ebe03160a28fdb6e59ae18f408d6f8aba609df73c45917c9358fd3bad52"
+    },
+    {
+      "path": "site/OG-hallmark.png",
+      "bytes": 804638,
+      "sha256": "23451da664d8227a3bcab36a7742e87d1b6b8aad9483799333a701c4134135fe"
+    },
+    {
+      "path": "site/_tests/01-tide-podcast/brief.md",
+      "bytes": 3728,
+      "sha256": "da2dcd9297b28c945fa443060a000d83f86f073c2128b8fc904863670437f63e"
+    },
+    {
+      "path": "site/_tests/01-tide-podcast/index.html",
+      "bytes": 3208,
+      "sha256": "51c34c8ca338ce1ee961985d8159d266e0cb734474f05f49618531dee0ada016"
+    },
+    {
+      "path": "site/_tests/01-tide-podcast/style.css",
+      "bytes": 5686,
+      "sha256": "f342ee7f0372ffde03c291e9c4764c9cba37914c16fa2252db2da256346731f9"
+    },
+    {
+      "path": "site/_tests/02-streampipe-cli/brief.md",
+      "bytes": 3507,
+      "sha256": "1feb8cb9ab17e53cdc75564bcd75c4071a431b064017177abc9b5a890adc92c4"
+    },
+    {
+      "path": "site/_tests/02-streampipe-cli/index.html",
+      "bytes": 6843,
+      "sha256": "c486e0aa1f5d10505c57a0e710a90a2e60f0f962169423777996646598466dfe"
+    },
+    {
+      "path": "site/_tests/02-streampipe-cli/style.css",
+      "bytes": 6047,
+      "sha256": "d4e756160942b92807e158b32780327d9ff5557eadc644d89c0a3ba86ef14c46"
+    },
+    {
+      "path": "site/_tests/03-maple-bakery/brief.md",
+      "bytes": 3400,
+      "sha256": "bc7419a83a03f43a034becf8a00fa713d557ed128d1822ff117f9fd24aaf4359"
+    },
+    {
+      "path": "site/_tests/03-maple-bakery/index.html",
+      "bytes": 6182,
+      "sha256": "8217a9261f82152eb66a4b928c210e3c6c9cc024a3011d2d14fc6087a5b8048a"
+    },
+    {
+      "path": "site/_tests/03-maple-bakery/style.css",
+      "bytes": 5546,
+      "sha256": "c199958f4da082c98537e69982f463b100a249780a3be16831f90785903a6c1a"
+    },
+    {
+      "path": "site/_tests/04-meridian-manifesto/brief.md",
+      "bytes": 3546,
+      "sha256": "2e64d726b368d18608e9a2dc680e2a6b59f78af23fe8db20747b0cbec82a48d1"
+    },
+    {
+      "path": "site/_tests/04-meridian-manifesto/index.html",
+      "bytes": 4412,
+      "sha256": "9c7aed08ac55445ed609e7b017c5ed5d54cb8e0da67d6e4cea893f158c91caea"
+    },
+    {
+      "path": "site/_tests/04-meridian-manifesto/style.css",
+      "bytes": 5999,
+      "sha256": "e118f93d79adbf1f64f133e9c7107c67f1fa24d595abb1ce4c6bb3f9f726a7c3"
+    },
+    {
+      "path": "site/_tests/05-tracejam-saas/brief.md",
+      "bytes": 3738,
+      "sha256": "bf0f654597d56be4e9a7d0b58b5d448a598b1c35bd65ae7462f9b7a51111a2d7"
+    },
+    {
+      "path": "site/_tests/05-tracejam-saas/index.html",
+      "bytes": 9137,
+      "sha256": "80780dd4c99e9f1edf46d74ba6a2a42fe663ccf267d9875d2ab2f1d077ba4ffa"
+    },
+    {
+      "path": "site/_tests/05-tracejam-saas/style.css",
+      "bytes": 11577,
+      "sha256": "74a0afe80b022cb4499eb76aac1f00401b822cba02ecaee43c444a4d9b4ebcb3"
+    },
+    {
+      "path": "site/_tests/06-anya-portfolio/brief.md",
+      "bytes": 3861,
+      "sha256": "f3d91f48cc8ccd3f347e013095b3f6d3a9a8a13a0fe2860e890d7dc114e71c1d"
+    },
+    {
+      "path": "site/_tests/06-anya-portfolio/index.html",
+      "bytes": 7559,
+      "sha256": "d042e3abd187f4a4d85d6c69f9e1e2547c50ab1a01e9ce301075763149e0b663"
+    },
+    {
+      "path": "site/_tests/06-anya-portfolio/style.css",
+      "bytes": 7327,
+      "sha256": "56c6ee3d4420772a4d08562072c72cbae42b2ad5e028e22a6d97b519d7cf3bd5"
+    },
+    {
+      "path": "site/_tests/07-foundry-compliance/brief.md",
+      "bytes": 3820,
+      "sha256": "5b0d52c7063177d3d679517aecf963f6559f94efeb80034c28fe42adee214ff1"
+    },
+    {
+      "path": "site/_tests/07-foundry-compliance/index.html",
+      "bytes": 7020,
+      "sha256": "70d255db6ab12246e10aeb27e297d05110b6af5b4dfe03df15eb03c5baf62ca4"
+    },
+    {
+      "path": "site/_tests/07-foundry-compliance/style.css",
+      "bytes": 12057,
+      "sha256": "a2a0fd94ba11cef5c3806b8eab2a8c2c160710783bb1877ce14c9eadfa377fe4"
+    },
+    {
+      "path": "site/_tests/08-cohort-courses/brief.md",
+      "bytes": 3650,
+      "sha256": "c5a8aa9b2f8ae28917855c031bfcd9ddd140b624fb671da49356ab6714f47ed6"
+    },
+    {
+      "path": "site/_tests/08-cohort-courses/index.html",
+      "bytes": 5066,
+      "sha256": "55975799190745c1c2aeef7e561dc3663ff0e4714ed1aec9154bf0a3388896a8"
+    },
+    {
+      "path": "site/_tests/08-cohort-courses/style.css",
+      "bytes": 9390,
+      "sha256": "9d9271f8f3950c40ec1c9bcf885f55ad174d46dd1957a98a5ddae28721bb8c13"
+    },
+    {
+      "path": "site/_tests/09-slow-pour/index.html",
+      "bytes": 18974,
+      "sha256": "0f3ba02f14e65dc3100a50a3aea430833802362dd453e4d7272e0e9a2e84824f"
+    },
+    {
+      "path": "site/_tests/10-owl-hours/index.html",
+      "bytes": 15602,
+      "sha256": "bdf445113cd22db19b2780e5f26f4ec835416747eb920281c243ba33c9bf7599"
+    },
+    {
+      "path": "site/_tests/11-soroe-ceramics/index.html",
+      "bytes": 17094,
+      "sha256": "6d0d41a80de2a5654144ea7fcee4181a990cab32c7f0a4c760590ec7310b8791"
+    },
+    {
+      "path": "site/_tests/12-loafer/index.html",
+      "bytes": 18768,
+      "sha256": "147935a4747cd65b0aa886a2998d80f5c85fb63798352bb124bbb9f2586e68b3"
+    },
+    {
+      "path": "site/_tests/13-alma/index.html",
+      "bytes": 17228,
+      "sha256": "610ed1176e07786fcc452a7418f827c6721b510b9624513396e998b5aa5ce1fc"
+    },
+    {
+      "path": "site/_tests/README.md",
+      "bytes": 18864,
+      "sha256": "0f2315864403c6fb01326d6a5dbc1da4b06423e707df69c21228011af35a8d9d"
+    },
+    {
+      "path": "site/_tests/_thumbs/Podcast-loop.mp4",
+      "bytes": 482329,
+      "sha256": "14fd356945427ec4d0dc8f8c2e107dec88c4cc967bf4f793be468645fa49deae"
+    },
+    {
+      "path": "site/_tests/_thumbs/after-quiet-hour.png",
+      "bytes": 228939,
+      "sha256": "9409781b7d2eae0013acadace05f6569728f1f71b042bb87e5b64e53cd417481"
+    },
+    {
+      "path": "site/_tests/_thumbs/anya.jpg",
+      "bytes": 275359,
+      "sha256": "514b36e063f6f8d4229c0cf6a2fc71d3e0528c0471d16fc6201b1fab41c42042"
+    },
+    {
+      "path": "site/_tests/_thumbs/audit-example.png",
+      "bytes": 581413,
+      "sha256": "912a561436fade2e62f41e85db128450c68616ede56434942a33ef1636b7c0d1"
+    },
+    {
+      "path": "site/_tests/_thumbs/bananastudio.jpg",
+      "bytes": 521827,
+      "sha256": "63b4eec0da3dbb6420a62c5372962bad5cdaf37259a0721b83a7d243ccf39c66"
+    },
+    {
+      "path": "site/_tests/_thumbs/before-quiet-hour.png",
+      "bytes": 251151,
+      "sha256": "371085608ca51945e45033173bbb09736476286b47d9665b753b27fcce948079"
+    },
+    {
+      "path": "site/_tests/_thumbs/carnival-01.jpg",
+      "bytes": 549545,
+      "sha256": "12c695e8a5154017ef5f32a7e9984e010f9cab33a0294ba41f52b20b69d2d028"
+    },
+    {
+      "path": "site/_tests/_thumbs/cobalt-01.jpg",
+      "bytes": 361006,
+      "sha256": "9bf56ce902583cf1abcfce42de4b25f70f4ad432f3e8b3945dd4d9f348babdff"
+    },
+    {
+      "path": "site/_tests/_thumbs/custom-04.jpg",
+      "bytes": 1152350,
+      "sha256": "c25d8ad294f6579ca3d1c58b45a469f23f5fbbbcca7998f1c12978175d046415"
+    },
+    {
+      "path": "site/_tests/_thumbs/example-redesign-uractivation.png",
+      "bytes": 273417,
+      "sha256": "13c34d1dbd6acb2477940a25b2b784f643690ecb4cbca3ee9d9fc94fef2944fc"
+    },
+    {
+      "path": "site/_tests/_thumbs/garden-01.jpg",
+      "bytes": 791709,
+      "sha256": "81fdb3eeec9b9486007aefc332b80fefe1b8af1e1a4bb96685aa1f16df4073fa"
+    },
+    {
+      "path": "site/_tests/_thumbs/hum-07.jpg",
+      "bytes": 494628,
+      "sha256": "0e26e827a6125ba7fdbf5922cce07553a45fa1faabcdd13cb0d21df603dcec49"
+    },
+    {
+      "path": "site/_tests/_thumbs/hyperlane.jpg",
+      "bytes": 523078,
+      "sha256": "c03b811bdbad9093447a41bd54c0a1a839c5343d85b7b5d0ec4c2656675bb582"
+    },
+    {
+      "path": "site/_tests/_thumbs/lumen-01.jpg",
+      "bytes": 447840,
+      "sha256": "587e06fe9d5f8765f687efa4f4d0e247dbed5251c03c66e116b2dc98373c99fe"
+    },
+    {
+      "path": "site/_tests/_thumbs/najm.jpg",
+      "bytes": 317024,
+      "sha256": "c2ad6015bfc74a8ae6e68319813a81412024c2ccce96fb6bb02682dc130892c5"
+    },
+    {
+      "path": "site/_tests/_thumbs/press-01.jpg",
+      "bytes": 833216,
+      "sha256": "e69d840293120d915fe33df7df04d8f50eb51215d82486d18250fb209b1c927a"
+    },
+    {
+      "path": "site/_tests/_thumbs/riso-01.jpg",
+      "bytes": 977804,
+      "sha256": "1cd32d8d0ca34ebadfccfc25019b7dd96494a8817537dd72da4f8fafc17f4851"
+    },
+    {
+      "path": "site/_tests/_thumbs/study-example.png",
+      "bytes": 260004,
+      "sha256": "07711ac8aa85f4ecfca26ddc39da89ddfbecb4a6fb6fab1a34c28fa2bf90b12a"
+    },
+    {
+      "path": "site/_tests/_thumbs/tally.jpg",
+      "bytes": 572178,
+      "sha256": "783404778f1951217e4e6f66016bd75b65afc6ae85d18caba0d541377747cc13"
+    },
+    {
+      "path": "site/_tests/_thumbs/uractivation-after-loop.mp4",
+      "bytes": 913061,
+      "sha256": "1e43158635e73708186fa8496cbf353fca73860dc25d7732b5dd1d02869d3420"
+    },
+    {
+      "path": "site/_tests/_thumbs/wayfare.jpg",
+      "bytes": 447918,
+      "sha256": "ff1954a8d9f7eeecda26c01c23479ae66ddca143d102888c73acf4f3517f9f35"
+    },
+    {
+      "path": "site/_tests/all-themes.html",
+      "bytes": 6500,
+      "sha256": "e4e565ad3d98e881389286df187c52a7c5ce707db8324628bb01473965aca59b"
+    },
+    {
+      "path": "site/_tests/custom/01-coffeebox/index.html",
+      "bytes": 3238,
+      "sha256": "e9d968ea8f25df6000d9b72d813823add2559eedaac251c4a9889179e18fd08d"
+    },
+    {
+      "path": "site/_tests/custom/01-coffeebox/style.css",
+      "bytes": 6117,
+      "sha256": "646c1ec6563c4042837f0937a760f8950f51e8d7fd45abb6fa24da8ec507749b"
+    },
+    {
+      "path": "site/_tests/custom/02-loop/index.html",
+      "bytes": 6169,
+      "sha256": "5e446284109b828b11d2e7f00fdaaefe666041a6c1365b7efc66a99e4fd6b5b9"
+    },
+    {
+      "path": "site/_tests/custom/02-loop/style.css",
+      "bytes": 9001,
+      "sha256": "53567c9a0e3679f87905b455cbe7ac569d15848dc5a710858304f92f9fb06eac"
+    },
+    {
+      "path": "site/_tests/custom/03-mossroot/index.html",
+      "bytes": 6490,
+      "sha256": "8ff67297857f9bdf3d97601a6c5ed3577d972134599a5c7cf5eb4f428972e786"
+    },
+    {
+      "path": "site/_tests/custom/03-mossroot/style.css",
+      "bytes": 6375,
+      "sha256": "d2fc66b4f4e22226ac3e9c2924df70dbe1009d83919a24a48dadb84819ff3e72"
+    },
+    {
+      "path": "site/_tests/custom/README.md",
+      "bytes": 3112,
+      "sha256": "5a1e8324f5b45e5a73c3ad1b74b8557afc508725a622c665a32c9719b35928ed"
+    },
+    {
+      "path": "site/_tests/verbs/README.md",
+      "bytes": 1392,
+      "sha256": "9ab5466793e27c9b085ea039d1cb69ac3a19e9836769f525ee02e7526e97ca41"
+    },
+    {
+      "path": "site/_tests/verbs/audit/audit-report.md",
+      "bytes": 6164,
+      "sha256": "4f791854ee5e244fcdf0e17f9a8fa263d77c9ef63023085fc90655540460873c"
+    },
+    {
+      "path": "site/_tests/verbs/audit/input.html",
+      "bytes": 4501,
+      "sha256": "f70326bc8a0258a459a55bffe228a4f1a4a91192ceb9df8929542a7db098667a"
+    },
+    {
+      "path": "site/_tests/verbs/audit/notes.md",
+      "bytes": 1554,
+      "sha256": "e71ab7fe1de60b4b9b889ba1ddda183c4cc8de3d05172069b59ecd84ebaf8a52"
+    },
+    {
+      "path": "site/_tests/verbs/redesign/input.html",
+      "bytes": 3717,
+      "sha256": "0bc19cdf6e35f1c932384eefb117fd227cbcc5a8a94fe80ad50fb01e9e209c94"
+    },
+    {
+      "path": "site/_tests/verbs/redesign/notes.md",
+      "bytes": 6313,
+      "sha256": "ad848c2ab0919765dd4da4541b2bf3109e46239724fadf80bbe1c89355cebd24"
+    },
+    {
+      "path": "site/_tests/verbs/redesign/output.html",
+      "bytes": 12097,
+      "sha256": "0351f2b8830cfe65a5b87e45243120d1be01fec84df1ecb8e02c03aad48e04d9"
+    },
+    {
+      "path": "site/_tests/verbs/study/diagnosis.md",
+      "bytes": 3782,
+      "sha256": "6dc34633a6b0e1d05ff54caf5a623bdfa9fc6ec55a291681878dd3f8273a4409"
+    },
+    {
+      "path": "site/_tests/verbs/study/input-description.md",
+      "bytes": 2300,
+      "sha256": "725c8d592b514a69617bb9bfb3bfef79527b2569814cf9a1be3f7c7339b18b9c"
+    },
+    {
+      "path": "site/_tests/verbs/study/notes.md",
+      "bytes": 4913,
+      "sha256": "21176409951b1fa6e9983e48d3221c596d5c90405f5b64df598e484153e5906d"
+    },
+    {
+      "path": "site/_tests/verbs/study/output.css",
+      "bytes": 4981,
+      "sha256": "00167c2c143b20326893bf809b11bf89ce7016d52873b7c59b0d004b7378945a"
+    },
+    {
+      "path": "site/_tests/verbs/study/output.html",
+      "bytes": 2804,
+      "sha256": "220103f9b35a385ab951350a0d842c88e0ed3db857583891342a35358ebe62f3"
+    },
+    {
+      "path": "site/css/base.css",
+      "bytes": 6335,
+      "sha256": "fac606f10805ecbb89542d0a964f03c276f38c09f1f5a7e643cd81fee61f8c2e"
+    },
+    {
+      "path": "site/css/components.css",
+      "bytes": 133993,
+      "sha256": "7b6ddf95a8f2bcc55bfd203f0250d17034a77c76cd4ece41bd30911257c06b30"
+    },
+    {
+      "path": "site/css/sections.css",
+      "bytes": 60302,
+      "sha256": "6da763d00c5a61524a5a1b1944f3131a16aa62cb3fdbbe13f81de48628319f38"
+    },
+    {
+      "path": "site/css/tokens.css",
+      "bytes": 53192,
+      "sha256": "1d28e3ade777c4519d786cfbb003f999c9e3d227c314f7071e816fac837a80f4"
+    },
+    {
+      "path": "site/examples/bananastudio/.hallmark/log.json",
+      "bytes": 1092,
+      "sha256": "2f76b1d640df78734caaa2b9846c6db43412f2969b8bd859df310f4c2a83a0cd"
+    },
+    {
+      "path": "site/examples/bananastudio/index.html",
+      "bytes": 23467,
+      "sha256": "f08a61d9d105c6fa06bd6d565757e4d4f88ade30396149c50b52d5566d040a8f"
+    },
+    {
+      "path": "site/examples/bananastudio/styles.css",
+      "bytes": 44597,
+      "sha256": "f72f2c804a732325ada17c1e61b1881b02039342ae6e2c3b57d10af997a4ebc4"
+    },
+    {
+      "path": "site/examples/bananastudio/tokens.css",
+      "bytes": 3305,
+      "sha256": "c997d236d45f23c1428c067ae462576515d1b7ec6e36aba81fc609483f279fc6"
+    },
+    {
+      "path": "site/examples/carnival-01/index.html",
+      "bytes": 12126,
+      "sha256": "1c4e47d0041d9b2ea58c2a325dde93856a090ff8d85e0efed4b2b0c138c6355c"
+    },
+    {
+      "path": "site/examples/carnival-01/styles.css",
+      "bytes": 21280,
+      "sha256": "0b64fcc7fbf678dc44edaa5a21367db4621663f3b1a0fdfe4bb11b26875bcfb8"
+    },
+    {
+      "path": "site/examples/carnival-01/tokens.css",
+      "bytes": 3448,
+      "sha256": "a708c975d9409bf67999879c4c01c88e0df9d1da9884285a6eceedf2ec0cc915"
+    },
+    {
+      "path": "site/examples/cobalt-01/index.html",
+      "bytes": 19244,
+      "sha256": "af706ef5367a88fc88965551aa82c7a6c0ed849eb03294b827a57a02c8c2422f"
+    },
+    {
+      "path": "site/examples/cobalt-01/script.js",
+      "bytes": 7998,
+      "sha256": "0c94ec7d54d41ff8fd680d5d6404956e74703d4e2f9fe21e2e97a273ca6e7432"
+    },
+    {
+      "path": "site/examples/cobalt-01/styles.css",
+      "bytes": 29767,
+      "sha256": "2a4d262f234839ca9799831ca2fee999f3df4cdf23304cddbddbb7f1a2c2e582"
+    },
+    {
+      "path": "site/examples/cobalt-01/tokens.css",
+      "bytes": 4064,
+      "sha256": "81ac69a84d5d9975e4651648bbc014e087f3f63c7ccec9b0f7d4e01012b6645a"
+    },
+    {
+      "path": "site/examples/custom-01/index.html",
+      "bytes": 4451,
+      "sha256": "f36b1e975d30b846fd395f94bd075f97541b63ac0e186c07d74c91843fb962eb"
+    },
+    {
+      "path": "site/examples/custom-01/styles.css",
+      "bytes": 12960,
+      "sha256": "8fd7508e3a92ddba9f379da40f7250648584a6a5b5d7ce823a74d362c8214156"
+    },
+    {
+      "path": "site/examples/custom-01/tokens.css",
+      "bytes": 2845,
+      "sha256": "cedb31839b419e792551e6a75e1882872241ab99ba508a8a7fb5db18cc8c7976"
+    },
+    {
+      "path": "site/examples/custom-02/index.html",
+      "bytes": 7662,
+      "sha256": "d2b14f83eab002f62dea8b9cea96e1b098f0b83465b6afcc70ef0f2340ea1c81"
+    },
+    {
+      "path": "site/examples/custom-02/script.js",
+      "bytes": 1566,
+      "sha256": "9caba930ac9bbefb9156edef5bbb2ef1ad972187fe6902b50ed5c06972d07f32"
+    },
+    {
+      "path": "site/examples/custom-02/styles.css",
+      "bytes": 18965,
+      "sha256": "5344dcc1598130cc331b93b7cffd7d471cc9d799b76ca64fdbc430c5130a73ed"
+    },
+    {
+      "path": "site/examples/custom-02/tokens.css",
+      "bytes": 4274,
+      "sha256": "4b7202765b05c10d45171e35ed17bf7c54831040e77f352245d34c20f0d23f51"
+    },
+    {
+      "path": "site/examples/custom-03/index.html",
+      "bytes": 27021,
+      "sha256": "44046e057823ebf241728350cecfb82694ebf64caef74de04e567b83bcc84cd6"
+    },
+    {
+      "path": "site/examples/custom-03/script.js",
+      "bytes": 4253,
+      "sha256": "ed3f9db549691d3e7e6806c80167c76f080a2ad6826ec7ebaaa8fcd3b0ecc729"
+    },
+    {
+      "path": "site/examples/custom-03/styles.css",
+      "bytes": 18518,
+      "sha256": "dc34dac35cd3b14ad71fffefca8c70e6e0bbdc503b070dbe0d53ebc665205efe"
+    },
+    {
+      "path": "site/examples/custom-03/tokens.css",
+      "bytes": 4268,
+      "sha256": "0e8a03fa21cedda642a8d8542503ad07ae8de788e8217831a55b282ac7977291"
+    },
+    {
+      "path": "site/examples/custom-04/index.html",
+      "bytes": 11692,
+      "sha256": "97950637cb7f065743d9e47302e4415e39e4bc74724c06226c1914e63f421609"
+    },
+    {
+      "path": "site/examples/custom-04/script.js",
+      "bytes": 740,
+      "sha256": "7bcb1a1cda4bc0d09e1b5fdb7437f344b51385f3a0a13b50625e14210a9e9d86"
+    },
+    {
+      "path": "site/examples/custom-04/styles.css",
+      "bytes": 21407,
+      "sha256": "fc585acbb32bc5c21586ef8b67b7a9583784c304179c3ecb811fbd04e659206d"
+    },
+    {
+      "path": "site/examples/custom-04/tokens.css",
+      "bytes": 3987,
+      "sha256": "d8e6f5cd4a4adac42e4a28a7ebab83fef1b5578841688797613349af21862bd7"
+    },
+    {
+      "path": "site/examples/custom-05/index.html",
+      "bytes": 11319,
+      "sha256": "398f94f23272c9064adf728334c4824f7c325e426e42dd5874fb9f726e15a583"
+    },
+    {
+      "path": "site/examples/custom-05/script.js",
+      "bytes": 7187,
+      "sha256": "a99f256260bcd4f2343d2ffb1126c3eefe577d2f977db546399a97f79eeaa526"
+    },
+    {
+      "path": "site/examples/custom-05/styles.css",
+      "bytes": 17899,
+      "sha256": "8b3c314927ebbee5625db3b957ce5c039f3220564054a64f703852b90af90c3c"
+    },
+    {
+      "path": "site/examples/custom-05/tokens.css",
+      "bytes": 3514,
+      "sha256": "de59afb85ef3a2e74bb8e6af9e93bcfb17d53733c945f01399b61c1a0ebed594"
+    },
+    {
+      "path": "site/examples/garden-01/index.html",
+      "bytes": 19602,
+      "sha256": "62af9e74bcc0caa5fcb114be79d6595e1aa7dcdcca4fcb55a4879c18d07e463d"
+    },
+    {
+      "path": "site/examples/garden-01/script.js",
+      "bytes": 2919,
+      "sha256": "69e59661c89d2d7e1a10b8bf37f10acc7ace5c3e0c5b9884b4bcb6f3adce192c"
+    },
+    {
+      "path": "site/examples/garden-01/styles.css",
+      "bytes": 30395,
+      "sha256": "b18646796e191e51258bc9785e71852be59603014d8403c37a4705236823771f"
+    },
+    {
+      "path": "site/examples/garden-01/tokens.css",
+      "bytes": 6941,
+      "sha256": "bd9888d7c0154b5e02d5eb403c466f96d2947991e8a2c229607d7de385e25ae1"
+    },
+    {
+      "path": "site/examples/hum-07/index.html",
+      "bytes": 16762,
+      "sha256": "4175362a2e8a4d887be8d0159cb1d2f620c8f31c463ef02689f2c8ab0807767a"
+    },
+    {
+      "path": "site/examples/hum-07/script.js",
+      "bytes": 3410,
+      "sha256": "251f19406b39f052b0e017f4008defeb9ba6ce52fa5e2ee0c31014b32afdcca4"
+    },
+    {
+      "path": "site/examples/hum-07/styles.css",
+      "bytes": 32184,
+      "sha256": "c6b5224bea9dda3eb81a1efc9fed555675dd12158927cdc64dd9a654d695922f"
+    },
+    {
+      "path": "site/examples/hum-07/tokens.css",
+      "bytes": 3951,
+      "sha256": "6b657b6a72b7c2cd70c625d4f5741d7d0b31448105e8b535f803f0ad6917d153"
+    },
+    {
+      "path": "site/examples/hyperlane/.hallmark/log.json",
+      "bytes": 354,
+      "sha256": "e0342adb0d66b9b493ffb0834c3992f3a157f8783a215f047d5704af65cc2ebb"
+    },
+    {
+      "path": "site/examples/hyperlane/index.html",
+      "bytes": 16203,
+      "sha256": "4ce6017d2ca305b74e0d85e424fb64b4c166124158ad6eda47de139af3f0fb86"
+    },
+    {
+      "path": "site/examples/hyperlane/script.js",
+      "bytes": 3516,
+      "sha256": "306a3e2098c158f315ab232449fa0f2a08a5655ca3a2ff354eba3a89e663ac89"
+    },
+    {
+      "path": "site/examples/hyperlane/styles.css",
+      "bytes": 28305,
+      "sha256": "656ebd10580105cf0074c0840222854eaa34beca5702abbee40cab17ed118182"
+    },
+    {
+      "path": "site/examples/hyperlane/tokens.css",
+      "bytes": 2856,
+      "sha256": "7c1757ac3f6efc6c069de7d014fb8a671f152344142a5a7b585c982db1c7e112"
+    },
+    {
+      "path": "site/examples/lumen-01/index.html",
+      "bytes": 18210,
+      "sha256": "d382010a5963c4d0ed70e0cc007f105ed0ae16ec43d54379f69445e4e98e8768"
+    },
+    {
+      "path": "site/examples/lumen-01/styles.css",
+      "bytes": 30252,
+      "sha256": "bc381ad254e5b320589c8562e47c7dd21db016c9a2e1079a4fe5f7784ba5cbea"
+    },
+    {
+      "path": "site/examples/lumen-01/tokens.css",
+      "bytes": 3188,
+      "sha256": "15aa340421e8a9db02dc2bbb22047b81a6ffe471e13d402e4bcc14cd7c95c059"
+    },
+    {
+      "path": "site/examples/najm/.hallmark/log.json",
+      "bytes": 362,
+      "sha256": "4d296ba3e556f95f62f8a7190be746b2133c53e805ac9ce121bc7137663fc160"
+    },
+    {
+      "path": "site/examples/najm/index.html",
+      "bytes": 14896,
+      "sha256": "003a69789020b13f5cc38dc3897d6adfc9cd73ecf5e80d9ed647250171ff04a6"
+    },
+    {
+      "path": "site/examples/najm/script.js",
+      "bytes": 4460,
+      "sha256": "fd4615e36a6e727f19235c4da4a60d33489ad7825e4660de64eaac6509d857f7"
+    },
+    {
+      "path": "site/examples/najm/styles.css",
+      "bytes": 28023,
+      "sha256": "ab6396910cd263a2be0f8476819db7bfeeb9b067b49a9eacf5b4dfb722055b0e"
+    },
+    {
+      "path": "site/examples/najm/tokens.css",
+      "bytes": 2887,
+      "sha256": "d17eb6144304b46f15c8aac1b947bfa2412d18542e3ce96c2dcadb740c39a450"
+    },
+    {
+      "path": "site/examples/press-01/index.html",
+      "bytes": 17244,
+      "sha256": "fb8e493794c26f9f0220277a573f3a464898bb52095b92e20064cff38ad7a1d2"
+    },
+    {
+      "path": "site/examples/press-01/script.js",
+      "bytes": 5359,
+      "sha256": "8e201554bd0f2860bd35ad0c5d1952bbcec9e479c79edaddc3ef90790fe6eea3"
+    },
+    {
+      "path": "site/examples/press-01/styles.css",
+      "bytes": 32256,
+      "sha256": "2fe42398f7590e35c54fe9dc5b43eebcf6b742b76c97f85edfb92f7e90b36bd6"
+    },
+    {
+      "path": "site/examples/press-01/tokens.css",
+      "bytes": 5408,
+      "sha256": "7cdef78c418ff94d4c494d63dbe6b0bfb02c368590df878a06da7d77e6dd138d"
+    },
+    {
+      "path": "site/examples/riso-01/index.html",
+      "bytes": 18253,
+      "sha256": "3a944bd819fa9ab34a69c5856d8ce2994e171605d4df9fd941ac4f847b4abff1"
+    },
+    {
+      "path": "site/examples/riso-01/script.js",
+      "bytes": 5155,
+      "sha256": "d46128c1fdc781a086245e1e9e9409d483d61986866d324467c7d7b93768926c"
+    },
+    {
+      "path": "site/examples/riso-01/styles.css",
+      "bytes": 30980,
+      "sha256": "5e32baf569f3a59f69d83d1a97f18a8290b97ec073f5606571c2ba270dbb6cd3"
+    },
+    {
+      "path": "site/examples/riso-01/tokens.css",
+      "bytes": 4772,
+      "sha256": "00ca33da7cdc51802a0c5f7babaa585cc2216800c16adff3b8b4b662de57e018"
+    },
+    {
+      "path": "site/examples/scroll-demos.json",
+      "bytes": 2838,
+      "sha256": "4249e8f4a1906aafc0abdd8c6705e7720a3ebb138655410232f52798e916749f"
+    },
+    {
+      "path": "site/examples/tally/app.js",
+      "bytes": 2881,
+      "sha256": "26fd8adc6f8b3d18171ac58dda91b6c2a3064001810d27ba63001e6ef10f4c7c"
+    },
+    {
+      "path": "site/examples/tally/index.html",
+      "bytes": 19059,
+      "sha256": "c6bc61a41479311cb638506935a543d43294a2ceadccab3c03c66798ecd6799b"
+    },
+    {
+      "path": "site/examples/tally/styles.css",
+      "bytes": 30277,
+      "sha256": "446529305d4a4975dcf972df3bc96f7786d5eab4298988f8d4dc351bdd2b7142"
+    },
+    {
+      "path": "site/examples/tally/tokens.css",
+      "bytes": 2900,
+      "sha256": "63f19e081b1da297fae045ff2b09525ceb3bc6ce95f406bd725ea2b6960ccd10"
+    },
+    {
+      "path": "site/examples/wayfare/.hallmark/log.json",
+      "bytes": 713,
+      "sha256": "fb2b6c80d47fdd30b3f4d0891a11d6f8928f537ebacc9a960180bbb3d0babc11"
+    },
+    {
+      "path": "site/examples/wayfare/index.html",
+      "bytes": 18510,
+      "sha256": "5ecd1842b10cda182cbc080999ba2018364fde6e1dabe671a5d310b1714591b4"
+    },
+    {
+      "path": "site/examples/wayfare/style.css",
+      "bytes": 26198,
+      "sha256": "27fcaf9f58c0a3b31ab5ca763323793744e3366174016c79d56a09f05bc0f11a"
+    },
+    {
+      "path": "site/examples/wayfare/tokens.css",
+      "bytes": 2658,
+      "sha256": "827141dc026aae8837bf67cf7f0c25e1de6c256f23459c4cfe557e3e83a9c4ad"
+    },
+    {
+      "path": "site/favicon-dark.svg",
+      "bytes": 3777,
+      "sha256": "c1f60c7e7d39eb8cbbf15862c1c8ffa233692cbeba1483cdc0f4751304dcdc90"
+    },
+    {
+      "path": "site/favicon-light.svg",
+      "bytes": 3777,
+      "sha256": "ab81940ac6a81b053f96dce3a7610c488f225f56285e734885d35798a5f5b920"
+    },
+    {
+      "path": "site/index.html",
+      "bytes": 62799,
+      "sha256": "483aece3729e55b1ed95e6899ad5bbba4b2f393a2d6bc548b5a108c18e6ed0d8"
+    },
+    {
+      "path": "site/js/main.js",
+      "bytes": 46882,
+      "sha256": "e0036c89b16d6d89f40134fc85942f321300db55412bbc8355c7660273c82c8a"
+    },
+    {
+      "path": "skills/hallmark/SKILL.md",
+      "bytes": 67444,
+      "sha256": "5437b73a1a829210681ca21fa09b7276a5978875f960d3998846e0dc333e9343"
+    },
+    {
+      "path": "skills/hallmark/references/anti-patterns.md",
+      "bytes": 25676,
+      "sha256": "a36eb346ad59cafaa26119ed1e7c0bbb8aca6637209ee110eb630dd1a9307070"
+    },
+    {
+      "path": "skills/hallmark/references/assets.md",
+      "bytes": 25332,
+      "sha256": "60929b3dc2258b69caf3012d99d174e1ad73da9645263db81a9b271cd6fd7d61"
+    },
+    {
+      "path": "skills/hallmark/references/color.md",
+      "bytes": 4339,
+      "sha256": "31c470d16ceb17ccce290cbdd00b9e9a88f2094df8eaaefb67c86ec1e1cdb876"
+    },
+    {
+      "path": "skills/hallmark/references/component-cookbook.md",
+      "bytes": 30980,
+      "sha256": "4d9ff4eeb675b9d668516ce5d098031d3552453b3671e50da30fb38cb9ab58bb"
+    },
+    {
+      "path": "skills/hallmark/references/components/c1-outlined-chip.md",
+      "bytes": 464,
+      "sha256": "bfc3bcef6e23062710845dd8986dbf98574c6c46ffade1db255dbe13a3203262"
+    },
+    {
+      "path": "skills/hallmark/references/components/c2-inline-form-as-cta.md",
+      "bytes": 672,
+      "sha256": "1a6e3d564f49a1d3345117bf2f8af5aea46938c6974bf7eb86cf890e5068bc95"
+    },
+    {
+      "path": "skills/hallmark/references/components/c3-typographic-link.md",
+      "bytes": 280,
+      "sha256": "59362c6d9f683ec15c3e09862f2ea6cd8e2a84574738ece98e479c58607d0d69"
+    },
+    {
+      "path": "skills/hallmark/references/components/c4-sticky-bottom-bar.md",
+      "bytes": 671,
+      "sha256": "67234a8d8722bf0685d00a64ac737748c82af7e0c25271d0c50f418739bd03c6"
+    },
+    {
+      "path": "skills/hallmark/references/components/f1-bento-grid.md",
+      "bytes": 782,
+      "sha256": "d696a5ab7d6258cff0d2d9527fe07651bfbda6a725a4dfd8de00f678e1fb2bbc"
+    },
+    {
+      "path": "skills/hallmark/references/components/f2-sticky-scroll-stack.md",
+      "bytes": 899,
+      "sha256": "0079ce8c01e8d008882411ed807aa367276cc67af9b956c4f06da1714007ae83"
+    },
+    {
+      "path": "skills/hallmark/references/components/f3-tabular-spec-sheet.md",
+      "bytes": 419,
+      "sha256": "16331628cf441c7b570055c8edd60693d0aa793d1bc5eb2bfd145da700d9f072"
+    },
+    {
+      "path": "skills/hallmark/references/components/f4-step-sequence.md",
+      "bytes": 448,
+      "sha256": "d3ca2aa99f7e639b8ccda20f5e263f3a33b03830f8c93d666f469b8e629975e2"
+    },
+    {
+      "path": "skills/hallmark/references/components/f5-annotated-screenshot.md",
+      "bytes": 410,
+      "sha256": "58f9f4811ea60f923b2f44e0f3e9bac95c40929f8b1af4fdeedd1eae424051ec"
+    },
+    {
+      "path": "skills/hallmark/references/components/f6-product-card-grid.md",
+      "bytes": 2729,
+      "sha256": "22ebc07b00d71c950be8d1a0fdad2cc0e7340cfbbf2cd62c43804bfcfaaf106a"
+    },
+    {
+      "path": "skills/hallmark/references/components/ft1-mast-headed.md",
+      "bytes": 501,
+      "sha256": "7f5671b583e9991f9a4671c223d6c15efdee5c1161dc616cbe2b398eb8d1b6db"
+    },
+    {
+      "path": "skills/hallmark/references/components/ft2-inline-rule-single-line.md",
+      "bytes": 362,
+      "sha256": "de13bf7d9bfaddb42a84fc8584646e914f2273abdb34aa98ea9bd2f5d7ff0493"
+    },
+    {
+      "path": "skills/hallmark/references/components/ft3-index-style-category-list.md",
+      "bytes": 483,
+      "sha256": "9f70608d62872be05af910a6168017c872ee1c17b2dbb8329128569231aa3cce"
+    },
+    {
+      "path": "skills/hallmark/references/components/ft4-dense-typographic.md",
+      "bytes": 501,
+      "sha256": "b8d087773614698036e63474a8546024d874bb6da2b575e64fcaacc2fba0ad60"
+    },
+    {
+      "path": "skills/hallmark/references/components/ft5-statement.md",
+      "bytes": 1303,
+      "sha256": "71be63a51def6a3b59badcd481e49d4d5c5d9f3d63a3b4a5b9c05482110f4000"
+    },
+    {
+      "path": "skills/hallmark/references/components/ft6-letter-close.md",
+      "bytes": 1119,
+      "sha256": "8119d22fbbfb3efa83d0bdc41acbfc5037f2c80cb7c39659623d5216eb16c03e"
+    },
+    {
+      "path": "skills/hallmark/references/components/ft7-newsletter-first.md",
+      "bytes": 1755,
+      "sha256": "2cd766761a8e18bff7bc473b3303392b806a15e461187ac325138f77a308dd48"
+    },
+    {
+      "path": "skills/hallmark/references/components/ft8-marquee-scroll.md",
+      "bytes": 1500,
+      "sha256": "32b8d38df984b0db385e9ce2251bbf6bb8df279e3933c441b97a0b703961e9f0"
+    },
+    {
+      "path": "skills/hallmark/references/components/h1-marquee.md",
+      "bytes": 507,
+      "sha256": "8258b25e27232994126701a4f72bf05267fc9c5dfdc14bcf186efaf96a7dbb10"
+    },
+    {
+      "path": "skills/hallmark/references/components/h2-split-diptych.md",
+      "bytes": 600,
+      "sha256": "f6077864f5c58414d7a10648aa8a3162767f2e356d0701d01953181a83cf3364"
+    },
+    {
+      "path": "skills/hallmark/references/components/h3-quote-led.md",
+      "bytes": 420,
+      "sha256": "4b1427750c5041ab9201cd18fcdd3dd7a93622644eff518d9ad300339f9a46b7"
+    },
+    {
+      "path": "skills/hallmark/references/components/h4-stat-led.md",
+      "bytes": 509,
+      "sha256": "9ada00461ea12be83dec2fba58e19fffd2c559925e68eb72ec18e0ec434f6cec"
+    },
+    {
+      "path": "skills/hallmark/references/components/h5-letter-hero.md",
+      "bytes": 361,
+      "sha256": "afcd7bb6b4c888d7e8460e7af5e86dc50149ca253419757bed2834bf66083321"
+    },
+    {
+      "path": "skills/hallmark/references/components/h6-photographic-fold.md",
+      "bytes": 586,
+      "sha256": "59e046afd5648bfe2737966f1203c0212e7311fbf0e1edee448e3f68f45aa0d0"
+    },
+    {
+      "path": "skills/hallmark/references/components/h7-demo-video-clipped-by-viewport-edge.md",
+      "bytes": 1613,
+      "sha256": "12b6f32a47a0b2e73547a0ac8b641cc19b1caa05dda4ffde424defb53afaa0de"
+    },
+    {
+      "path": "skills/hallmark/references/components/h8-mockup-split-browser-framed.md",
+      "bytes": 1309,
+      "sha256": "954b0a3aebfe6de8a3be70fedda669099125dd2ebc9c07948fbdb457fd8dc166"
+    },
+    {
+      "path": "skills/hallmark/references/components/h9-custom-illustration-centerpiece.md",
+      "bytes": 1479,
+      "sha256": "1d3d32859e6e451a67bfc38a403bd80115a42b6898a4d8788e4cfadb8c83e8d6"
+    },
+    {
+      "path": "skills/hallmark/references/components/n1-wordmark-2-links.md",
+      "bytes": 388,
+      "sha256": "8504774127e33f24a09844eb4c678e91b09ed513690fce51f7863d7cf3fdeab1"
+    },
+    {
+      "path": "skills/hallmark/references/components/n10-floating-on-scroll-morph.md",
+      "bytes": 1387,
+      "sha256": "056c2107492ab0eb9dafc7ab4c7ff5454222c1ee127fa45615ccc7b8955da36a"
+    },
+    {
+      "path": "skills/hallmark/references/components/n11-mega-menu.md",
+      "bytes": 3155,
+      "sha256": "b715421012d0997d25d5739c209be6129132fc91add677d75a8ad82d8672e1d4"
+    },
+    {
+      "path": "skills/hallmark/references/components/n12-banner-retract.md",
+      "bytes": 2858,
+      "sha256": "2d52ecb8725b1991d4f6b78301cd6f112464f7b17315bdf0febbff67bca50a56"
+    },
+    {
+      "path": "skills/hallmark/references/components/n13-inline-cmdk-pill.md",
+      "bytes": 3314,
+      "sha256": "6375fa0a1bbc92cba9a435159aa46cb084fc030c63e1abf8f073688959d7be75"
+    },
+    {
+      "path": "skills/hallmark/references/components/n1b-saas-three-section.md",
+      "bytes": 3047,
+      "sha256": "c2631c7807e33eea9b02faa9121a0f9e64861467b57b8635ee97f5fa52bb60ae"
+    },
+    {
+      "path": "skills/hallmark/references/components/n2-floating-chip.md",
+      "bytes": 617,
+      "sha256": "70ea848537c5fe29be30f5e4b7478ecc39f86d0089f207549dc98a873b6c8fc1"
+    },
+    {
+      "path": "skills/hallmark/references/components/n3-side-rail.md",
+      "bytes": 536,
+      "sha256": "20ed8a06a599d73190502a4801a3be2933b8e06874371167196b7d32dae66111"
+    },
+    {
+      "path": "skills/hallmark/references/components/n4-hidden-behind-k.md",
+      "bytes": 373,
+      "sha256": "bccddb3a25a6afd457163b71e09de07ac23bf5d922fdeb9561e25d825bb97dcf"
+    },
+    {
+      "path": "skills/hallmark/references/components/n5-floating-pill.md",
+      "bytes": 1418,
+      "sha256": "6dc8ffb9628fd7ee3669208091e11497864cecea69becc6b513ebdc1f3a737a3"
+    },
+    {
+      "path": "skills/hallmark/references/components/n6-newspaper-masthead.md",
+      "bytes": 1619,
+      "sha256": "243a28d1165328c3479a1b75a3ae05dbfe2a6b8c9f867df8e35873b391f8edd5"
+    },
+    {
+      "path": "skills/hallmark/references/components/n7-brutal-slab.md",
+      "bytes": 1380,
+      "sha256": "6c58d29129f7fd89b9fc755143648397749cdd06043ae0c0b51e6f07e7e6dcb5"
+    },
+    {
+      "path": "skills/hallmark/references/components/n8-terminal-command.md",
+      "bytes": 1651,
+      "sha256": "c88d787bd2e5cf8bf6fb2c4121602dc0289760b41235d437468322821ee4334b"
+    },
+    {
+      "path": "skills/hallmark/references/components/n9-edge-aligned-minimal.md",
+      "bytes": 868,
+      "sha256": "cc20c76a5abe7099ed2bde3480c81f75f02a760a4c0d2ac79de1503dca9f9ee3"
+    },
+    {
+      "path": "skills/hallmark/references/components/s1-left-margin-numbered.md",
+      "bytes": 495,
+      "sha256": "074ed68eafb03ca775b0593d0599fe20c7891356f473f04996f42425e6586585"
+    },
+    {
+      "path": "skills/hallmark/references/components/s2-hanging.md",
+      "bytes": 357,
+      "sha256": "7b6d04cb896051006fe41b041a67ed77d25010edb579c60b03d88f68ae471462"
+    },
+    {
+      "path": "skills/hallmark/references/components/s3-sticky-pinned.md",
+      "bytes": 1179,
+      "sha256": "4101cd7a28fe21a9b8094848ac6cc13c89f9e6f9bf801f04ac69b986c76727b4"
+    },
+    {
+      "path": "skills/hallmark/references/components/s4-inline-no-break.md",
+      "bytes": 438,
+      "sha256": "4b6d36da05383df1b29afe17b96645b816de07373016deb667efca340bb61ac6"
+    },
+    {
+      "path": "skills/hallmark/references/components/s5-bottom-anchored.md",
+      "bytes": 358,
+      "sha256": "55c159e2d8299501f14ac97468404dc8cad35695c2b7eaad2e972d314620eca0"
+    },
+    {
+      "path": "skills/hallmark/references/components/t1-pull-quote-with-marginalia.md",
+      "bytes": 465,
+      "sha256": "c7139796972c5f47d723742cbff02916a1ee0f2496456b86ac05d8839542be38"
+    },
+    {
+      "path": "skills/hallmark/references/components/t2-logo-wall-hairline.md",
+      "bytes": 733,
+      "sha256": "942121342a61bb4650722f7ba1b605347c6178d69ebeb740139b0bfb5c810e7f"
+    },
+    {
+      "path": "skills/hallmark/references/components/t3-single-huge-quote.md",
+      "bytes": 490,
+      "sha256": "7bca56e2cd630da3669f7cf8befd1bd654a5b249cf38b6d9af5a7c62e33b9239"
+    },
+    {
+      "path": "skills/hallmark/references/components/t4-numbered-stat-strip.md",
+      "bytes": 470,
+      "sha256": "a5fb5615902f9c4026f4ae7b0c96b536bb3cbb2fb4259031342d1cd190dab729"
+    },
+    {
+      "path": "skills/hallmark/references/contract.md",
+      "bytes": 2027,
+      "sha256": "2923a056b95da63d04100ac56bc8cdff6bc0a717ac3e5da5cef69eb5feb4619c"
+    },
+    {
+      "path": "skills/hallmark/references/copy.md",
+      "bytes": 12261,
+      "sha256": "703cdbf81fbef6f71d90596a32041d2a33a46fb71ba07ccf5ede6b4b1471d347"
+    },
+    {
+      "path": "skills/hallmark/references/custom-craft.md",
+      "bytes": 34133,
+      "sha256": "417ff74cd83e1fea50c41948c53e18365269b880806ef4f31d9e0ebda0f99246"
+    },
+    {
+      "path": "skills/hallmark/references/custom-theme.md",
+      "bytes": 24053,
+      "sha256": "a5026a0b00f69180ba9c24acec6e717bae0fb6e01daf998e8e900c57958a9eea"
+    },
+    {
+      "path": "skills/hallmark/references/design-md.md",
+      "bytes": 6846,
+      "sha256": "a9368b64dd9b6e53e8c707830ce28fd8601d3195a81647ea46b6995aa3556b3c"
+    },
+    {
+      "path": "skills/hallmark/references/export-formats.md",
+      "bytes": 14620,
+      "sha256": "de0a73d9bec7a31abbd0cbbf1ecd51c2e440f1f3fdc08f476a343959ca6c22f3"
+    },
+    {
+      "path": "skills/hallmark/references/floating-nav.md",
+      "bytes": 5266,
+      "sha256": "c8c80f6560700bf6ee6baf28b81ec1539e9ff920d885624707de5fe8803c25d1"
+    },
+    {
+      "path": "skills/hallmark/references/genres/atmospheric.md",
+      "bytes": 5075,
+      "sha256": "58d36e9a59c7d9e0ca99edeaaadab885f2635386fa69d52ea9eda3c29977e190"
+    },
+    {
+      "path": "skills/hallmark/references/genres/editorial.md",
+      "bytes": 4121,
+      "sha256": "1e88cd0c94435c6a9edd1c0b93b67db4321fb3481ff0d66ee24869e655847319"
+    },
+    {
+      "path": "skills/hallmark/references/genres/modern-minimal.md",
+      "bytes": 4836,
+      "sha256": "6125db00e38f2baca9369ed4d4aa917d977b85dd5eac6f19dac89707c3c3534b"
+    },
+    {
+      "path": "skills/hallmark/references/genres/playful.md",
+      "bytes": 5218,
+      "sha256": "e52c6ff3fe21b5024c83ac1f03285e1d627e3469ff140d6bea728642026c4f95"
+    },
+    {
+      "path": "skills/hallmark/references/hero-enrichment.md",
+      "bytes": 32151,
+      "sha256": "63c14cc2c256dd78a69a1c36f4bcb764940aa7f1ba2e6dd40ca36013f8884a83"
+    },
+    {
+      "path": "skills/hallmark/references/imagery-kit.md",
+      "bytes": 8544,
+      "sha256": "39d71df8dd6186b27f174fd8ab8ffd379553be3917cff50810c72365f6d6cb53"
+    },
+    {
+      "path": "skills/hallmark/references/interaction-and-states.md",
+      "bytes": 13537,
+      "sha256": "e816eb2d067ba9f6f288a3831549da95624a05f432ed2a50f54136f27dd2d67f"
+    },
+    {
+      "path": "skills/hallmark/references/layout-and-space.md",
+      "bytes": 6766,
+      "sha256": "987f3a45f5dbe81547117a77987bcedf5376608a6412067e04337047e0c7c839"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/01-bento-grid.md",
+      "bytes": 1836,
+      "sha256": "aa268415862188414f8db94715e20ae7d29df3dc7c494083683378705f3f8493"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/02-long-document.md",
+      "bytes": 1722,
+      "sha256": "8ca81106396f2bd00eb9ef5d5d1f00c3aab0500394e706d6a2b3221a6c0d910f"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/03-marquee-hero.md",
+      "bytes": 1645,
+      "sha256": "2b7c35860086da6232cb3725c059bead9a31a91872d464266ce6e07a5a75f755"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/04-stat-led.md",
+      "bytes": 2120,
+      "sha256": "a6930b4ba6377c8ef5fcb7af6bf4393cd924292cf03871a37636dd4b77de22b7"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/05-workbench.md",
+      "bytes": 1690,
+      "sha256": "0cbe92772c7b2ffd9b24b9e446b1e1cd9ed22930b39030ef5a6e9cba5512d31f"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/06-conversational-faq.md",
+      "bytes": 1621,
+      "sha256": "373473bed23d055164edc04b16344fcd3861c1ab39ff73f3c75dc1719663d488"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/07-manifesto.md",
+      "bytes": 1711,
+      "sha256": "dc1327bad300179c1b233d02d20137776dc98c9affcfd3942b9f3f796ca67b93"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/08-photographic.md",
+      "bytes": 1491,
+      "sha256": "e5c77bb6ca6d82616c9c63bb6e68ee17c6af7bbca935f9ff29481294d7d1f74c"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/09-quote-led.md",
+      "bytes": 1817,
+      "sha256": "39069a564d9ebd76daf26f46ec7776828dc45fc6a72ae712b3bf7a4fd012f650"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/10-specimen.md",
+      "bytes": 1614,
+      "sha256": "7f23cead7f91c2ee2335eb2c87fb0aa1e7826f4573748d549756523085ed6ad4"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/11-catalogue.md",
+      "bytes": 1186,
+      "sha256": "99ff614600f18cfc80dfa3b9a2158dbea3b3674f76f40b70e721b9255796c265"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/12-letter.md",
+      "bytes": 1253,
+      "sha256": "6f3ad86e87223bd9b6b1267e27532811efbb60f50606e7f72c8525d2cc01d709"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/13-index-first.md",
+      "bytes": 1208,
+      "sha256": "25c832844a1b5e6ce17a335ac98e81d98d9e3372f514d83dc26ac299cc077865"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/14-narrative-workflow.md",
+      "bytes": 1428,
+      "sha256": "e604a1106131fe3a65721066a304922e757a78c997c197227840931079c780fd"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/15-split-studio.md",
+      "bytes": 1336,
+      "sha256": "400effa4de50d5f2fabd88be37447aa845deb3b67810ed4f2b995df458c852e4"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/16-feature-stack.md",
+      "bytes": 1386,
+      "sha256": "a389fae7fe39550352bdf1ce68cdaa3965a434fa1154f67d3c276e550d1d165a"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/17-type-specimen.md",
+      "bytes": 1271,
+      "sha256": "a1487fde891f73bf34a2ca38a631a2cb5c71d3a7b2ccd940114354e291ea8034"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/18-portfolio-grid.md",
+      "bytes": 1057,
+      "sha256": "af5d0f34a7ef7b81d6f4c8c845497ae553d44f418526d7e503346c9243b034e3"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/19-map-diagram.md",
+      "bytes": 1269,
+      "sha256": "5a576f25f4c8d58c14f574e3413560118343df9a9669db80c6c452daf509c3c3"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/20-ecosystem-index.md",
+      "bytes": 1209,
+      "sha256": "fe206580a39ffc4b3534f3a7414155aa626fe16b82b608a0b8b415c1510f17ad"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures/21-component-playground.md",
+      "bytes": 1171,
+      "sha256": "ad3cbdbe9181e9472cb7b7fffbbe35021dc9b5b99ea86adc026f34d6b2c2f01f"
+    },
+    {
+      "path": "skills/hallmark/references/macrostructures.md",
+      "bytes": 11595,
+      "sha256": "a9024133c43e9ef388c331b5bc2f60de3d4a8c22b07b2d277bbafde941b24ea2"
+    },
+    {
+      "path": "skills/hallmark/references/microinteractions.md",
+      "bytes": 20017,
+      "sha256": "613ca56c2c16e40aeb594af21fabd651732d9de63c848aee51113602525f6e64"
+    },
+    {
+      "path": "skills/hallmark/references/motion.md",
+      "bytes": 4340,
+      "sha256": "330d056810315f65819579f8207afe402703a9192bc76a2009558a59b7c84ccf"
+    },
+    {
+      "path": "skills/hallmark/references/preview-examples.md",
+      "bytes": 2834,
+      "sha256": "df61c24c9a67457ef7369ec5f20575095326df72ffe6534c8fa9730581ebf7d9"
+    },
+    {
+      "path": "skills/hallmark/references/responsive.md",
+      "bytes": 5918,
+      "sha256": "2bf18d72af704ca5dd3c220359a4c77c718efa19c40f62d9bff61ac4a90209b0"
+    },
+    {
+      "path": "skills/hallmark/references/slop-test.md",
+      "bytes": 31065,
+      "sha256": "6eb49fc64ca54929d2c1600e2a6014268f1a7593787c0ed3f6ecb4ac8390ad86"
+    },
+    {
+      "path": "skills/hallmark/references/structure.md",
+      "bytes": 15714,
+      "sha256": "ca5c0296ae428f8c4c5214407d431bbda5c453f98f2e7abdec03d644271af32b"
+    },
+    {
+      "path": "skills/hallmark/references/study.md",
+      "bytes": 42639,
+      "sha256": "021fe4d001b38ee87414c1bb69321d2e44b67df8ede76ecec225c41a634aab20"
+    },
+    {
+      "path": "skills/hallmark/references/themes/carnival.md",
+      "bytes": 19616,
+      "sha256": "119a9c803eac74958e5df6151da8a2575a1cc2d061a619bdb7f32cf972308ee2"
+    },
+    {
+      "path": "skills/hallmark/references/themes/cobalt.md",
+      "bytes": 11273,
+      "sha256": "13be92af729e6b82d1b1e51aa078f7c007e2900c8f0798b2c0fd2c0eeac7019e"
+    },
+    {
+      "path": "skills/hallmark/references/themes/hum.md",
+      "bytes": 32317,
+      "sha256": "bbdd1e89a32d6b15e99493ba9497816a0915bd4e9bf150b95868db597c20e1d5"
+    },
+    {
+      "path": "skills/hallmark/references/themes/lumen.md",
+      "bytes": 28180,
+      "sha256": "d5459478d3aa1ea6330c221dfe011b717a70dbb036f597403b3a6b3cf82dd53b"
+    },
+    {
+      "path": "skills/hallmark/references/typography.md",
+      "bytes": 18381,
+      "sha256": "94d7b2d2b138bd8687e09dc3dd618eaafff500b0497a6d69cb4c29b764e94b9c"
+    },
+    {
+      "path": "skills/hallmark/references/verbs/audit.md",
+      "bytes": 2803,
+      "sha256": "0a5b484453f1697a8675a7020df9159d0b4ce22f059b873501bfd82c26d6a31a"
+    },
+    {
+      "path": "skills/hallmark/references/verbs/redesign.md",
+      "bytes": 13849,
+      "sha256": "c2830f3b7d68e9622f55d376048a5a454c5ef59d309a211e716d1142e86acbdf"
+    },
+    {
+      "path": "vercel.json",
+      "bytes": 103,
+      "sha256": "46a805e8b52caf64bd7400493bce34a3d89c4d8cf370cbd3ede397a1aacaa7dd"
+    }
+  ]
+}

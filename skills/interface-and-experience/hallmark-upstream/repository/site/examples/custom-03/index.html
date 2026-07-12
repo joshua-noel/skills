@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Periodic Index of Blends — Ferns &amp; Fathom Tea House</title>
+  <meta name="description" content="Every blend Ferns &amp; Fathom steeps, placed by how it is made: rows by process, columns by body. Select an element to read its full assay." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Newsreader:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#table">Skip to the table</a>
+
+  <header class="masthead" role="banner">
+    <div class="masthead__inner">
+      <a class="wordmark" href="#top" id="top">
+        <span class="wordmark__mark" aria-hidden="true">Ff</span>
+        <span class="wordmark__name">Ferns &amp; Fathom</span>
+        <span class="wordmark__sub">Tea House &middot; est. an imaginary spring</span>
+      </a>
+      <nav class="masthead__nav" aria-label="Primary">
+        <a href="#reading">How to read it</a>
+        <a href="#table">The index</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Intro / the central explainer ------------------------------- -->
+    <section class="intro" aria-labelledby="intro-title">
+      <p class="eyebrow">The Periodic Index of Blends</p>
+      <h1 class="intro__title" id="intro-title">
+        Twenty-eight teas, placed by how each one is made.
+      </h1>
+      <p class="intro__lede">
+        We stopped writing our menu as a list. A list flattens a leaf that has
+        been withered, bruised, oxidised and fired into a single price and a
+        single line. So we built a table instead &mdash; rows for what the leaf
+        went through, columns for how it lands on the tongue. The grid is the
+        menu. Pick a cell to read its assay.
+      </p>
+
+      <dl class="axes" aria-label="How the table is arranged">
+        <div class="axes__row">
+          <dt>Down the rows</dt>
+          <dd>Process, least to most worked: white, green, oolong, black, dark.</dd>
+        </div>
+        <div class="axes__row">
+          <dt>Across the columns</dt>
+          <dd>Body on the cup, delicate on the left to full on the right.</dd>
+        </div>
+        <div class="axes__row">
+          <dt>The detached row</dt>
+          <dd>Caffeine-free tisanes &mdash; herbs and flowers, off the leaf entirely.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- The table + detail panel ------------------------------------ -->
+    <section class="catalog" id="table" aria-labelledby="table-title">
+      <h2 class="visually-hidden" id="table-title">The index of blends</h2>
+
+      <div class="catalog__grid-wrap">
+
+        <!-- legend of families -->
+        <ul class="legend" id="reading" aria-label="Process families">
+          <li><span class="legend__chip legend__chip--white" aria-hidden="true"></span>White</li>
+          <li><span class="legend__chip legend__chip--green" aria-hidden="true"></span>Green</li>
+          <li><span class="legend__chip legend__chip--oolong" aria-hidden="true"></span>Oolong</li>
+          <li><span class="legend__chip legend__chip--black" aria-hidden="true"></span>Black</li>
+          <li><span class="legend__chip legend__chip--puer" aria-hidden="true"></span>Dark / pu&#8209;er</li>
+          <li><span class="legend__chip legend__chip--herb" aria-hidden="true"></span>Tisane</li>
+        </ul>
+
+        <!-- THE TABLE: each blend is a focusable element cell.
+             data-* attributes feed the detail panel via script.js;
+             the cell content stays meaningful with JS off. -->
+        <div class="ptable" role="list" aria-label="Blends, arranged by process and body">
+
+          <!-- row 1 · white -->
+          <button class="cell" data-fam="white" style="--col:1" role="listitem"
+            data-num="01" data-sym="Sv" data-name="Silver Veil"
+            data-fam-label="White" data-body="Whisper" data-caf="15" data-temp="80" data-time="3"
+            data-origin="High terraces, the Cloud Coast"
+            data-notes="Downy buds, barely worked. Melon water, warm hay, a finish like the inside of a peony.">
+            <span class="cell__num">01</span>
+            <span class="cell__sym">Sv</span>
+            <span class="cell__name">Silver Veil</span>
+            <span class="cell__stat"><span class="cell__caf">15</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="white" style="--col:2" role="listitem"
+            data-num="02" data-sym="Pn" data-name="Peony Drift"
+            data-fam-label="White" data-body="Soft" data-caf="22" data-temp="82" data-time="3"
+            data-origin="Old gardens below the Cloud Coast"
+            data-notes="Whole leaf-and-bud. Apricot skin and almond, a little woodsmoke far off.">
+            <span class="cell__num">02</span>
+            <span class="cell__sym">Pn</span>
+            <span class="cell__name">Peony Drift</span>
+            <span class="cell__stat"><span class="cell__caf">22</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="white" style="--col:8" role="listitem"
+            data-num="03" data-sym="Ag" data-name="Aged Gardenia"
+            data-fam-label="White" data-body="Round" data-caf="28" data-temp="90" data-time="4"
+            data-origin="Pressed cakes, cellared seven years"
+            data-notes="A white tea grown sweet with age. Dried date, honeycomb, a resinous depth that pretends to be black tea.">
+            <span class="cell__num">03</span>
+            <span class="cell__sym">Ag</span>
+            <span class="cell__name">Aged Gardenia</span>
+            <span class="cell__stat"><span class="cell__caf">28</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <!-- row 2 · green -->
+          <button class="cell" data-fam="green" style="--col:1" role="listitem"
+            data-num="04" data-sym="Sn" data-name="Snowbreak"
+            data-fam-label="Green" data-body="Whisper" data-caf="20" data-temp="75" data-time="2"
+            data-origin="First flush, the Riverfog valleys"
+            data-notes="Earliest pluck of the year. Sweet pea, chestnut, a sugarcane snap on the swallow.">
+            <span class="cell__num">04</span>
+            <span class="cell__sym">Sn</span>
+            <span class="cell__name">Snowbreak</span>
+            <span class="cell__stat"><span class="cell__caf">20</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="green" style="--col:2" role="listitem"
+            data-num="05" data-sym="Jp" data-name="Jade Pellet"
+            data-fam-label="Green" data-body="Soft" data-caf="25" data-temp="78" data-time="2"
+            data-origin="Hand-rolled, the Terrace South"
+            data-notes="Tightly curled leaf that opens as it steeps. Steamed greens, toasted rice, a brothy savour.">
+            <span class="cell__num">05</span>
+            <span class="cell__sym">Jp</span>
+            <span class="cell__name">Jade Pellet</span>
+            <span class="cell__stat"><span class="cell__caf">25</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="green" style="--col:3" role="listitem"
+            data-num="06" data-sym="Mt" data-name="Stone Matcha"
+            data-fam-label="Green" data-body="Bright" data-caf="68" data-temp="72" data-time="1"
+            data-origin="Shade-grown, ground on granite"
+            data-notes="Whole leaf, milled to dust, whisked not steeped. Spinach and cream, a marine edge, a long sweet hum.">
+            <span class="cell__num">06</span>
+            <span class="cell__sym">Mt</span>
+            <span class="cell__name">Stone Matcha</span>
+            <span class="cell__stat"><span class="cell__caf">68</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="green" style="--col:4" role="listitem"
+            data-num="07" data-sym="Gp" data-name="Toasted Gunpowder"
+            data-fam-label="Green" data-body="Bold" data-caf="35" data-temp="80" data-time="3"
+            data-origin="Pan-fired, pellet-rolled, the Old Kiln"
+            data-notes="Fired hard until it rings. Roast chestnut, mineral smoke, a brisk almost-bitter pull that wants a second cup.">
+            <span class="cell__num">07</span>
+            <span class="cell__sym">Gp</span>
+            <span class="cell__name">Toasted Gunpowder</span>
+            <span class="cell__stat"><span class="cell__caf">35</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="green" style="--col:8" role="listitem"
+            data-num="08" data-sym="Gm" data-name="Genmai Hearth"
+            data-fam-label="Green" data-body="Round" data-caf="30" data-temp="82" data-time="3"
+            data-origin="Green leaf cut with fire-popped rice"
+            data-notes="Comfort in a cup. Popcorn, warm grain, a green-tea brightness underneath the toast.">
+            <span class="cell__num">08</span>
+            <span class="cell__sym">Gm</span>
+            <span class="cell__name">Genmai Hearth</span>
+            <span class="cell__stat"><span class="cell__caf">30</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <!-- row 3 · oolong -->
+          <button class="cell" data-fam="oolong" style="--col:2" role="listitem"
+            data-num="09" data-sym="Mi" data-name="Milk Orchid"
+            data-fam-label="Oolong" data-body="Soft" data-caf="38" data-temp="90" data-time="3"
+            data-origin="Lightly oxidised, the High Mist gardens"
+            data-notes="Barely oxidised, rolled in tight balls. Cream, lilac, fresh butter &mdash; the famous milk note, grown not added.">
+            <span class="cell__num">09</span>
+            <span class="cell__sym">Mi</span>
+            <span class="cell__name">Milk Orchid</span>
+            <span class="cell__stat"><span class="cell__caf">38</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="oolong" style="--col:3" role="listitem"
+            data-num="10" data-sym="Iy" data-name="Iron Lily"
+            data-fam-label="Oolong" data-body="Bright" data-caf="42" data-temp="92" data-time="4"
+            data-origin="Mid-oxidised, the Anvil ridge"
+            data-notes="Roasted between steepings for years. Toasted oats, baked plum, a warm mineral spine the locals call rock-rhyme.">
+            <span class="cell__num">10</span>
+            <span class="cell__sym">Iy</span>
+            <span class="cell__name">Iron Lily</span>
+            <span class="cell__stat"><span class="cell__caf">42</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="oolong" style="--col:6" role="listitem"
+            data-num="11" data-sym="Ho" data-name="Honey Phoenix"
+            data-fam-label="Oolong" data-body="Deep" data-caf="45" data-temp="95" data-time="4"
+            data-origin="Single-bush, the Phoenix shoulder"
+            data-notes="An oolong that smells like a fruit stand. Lychee, honey, orchid &mdash; high and loud, then a long cooling finish.">
+            <span class="cell__num">11</span>
+            <span class="cell__sym">Ho</span>
+            <span class="cell__name">Honey Phoenix</span>
+            <span class="cell__stat"><span class="cell__caf">45</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="oolong" style="--col:7" role="listitem"
+            data-num="12" data-sym="Cr" data-name="Charcoal Robe"
+            data-fam-label="Oolong" data-body="Full" data-caf="48" data-temp="96" data-time="4"
+            data-origin="Heavily roasted, the Cliff terraces"
+            data-notes="Dark-roasted to the edge of coffee. Caramel, roasted nut, a wisp of campfire and a sweetness that keeps surfacing.">
+            <span class="cell__num">12</span>
+            <span class="cell__sym">Cr</span>
+            <span class="cell__name">Charcoal Robe</span>
+            <span class="cell__stat"><span class="cell__caf">48</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <!-- row 4 · black -->
+          <button class="cell" data-fam="black" style="--col:3" role="listitem"
+            data-num="13" data-sym="Go" data-name="Golden Otter"
+            data-fam-label="Black" data-body="Bright" data-caf="52" data-temp="92" data-time="4"
+            data-origin="Tippy buds, the Otterbend river"
+            data-notes="All golden tips, no bitterness. Cocoa, sweet potato, malt &mdash; a black tea you can drink without milk and never miss it.">
+            <span class="cell__num">13</span>
+            <span class="cell__sym">Go</span>
+            <span class="cell__name">Golden Otter</span>
+            <span class="cell__stat"><span class="cell__caf">52</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="black" style="--col:4" role="listitem"
+            data-num="14" data-sym="Sm" data-name="Smoke Hollow"
+            data-fam-label="Black" data-body="Bold" data-caf="55" data-temp="95" data-time="4"
+            data-origin="Pinewood-smoked, the Hollow kilns"
+            data-notes="Dried over resinous pine. Campfire, smoked stone-fruit, single-malt &mdash; a tea that argues. Add a splash of milk and it turns to caramel.">
+            <span class="cell__num">14</span>
+            <span class="cell__sym">Sm</span>
+            <span class="cell__name">Smoke Hollow</span>
+            <span class="cell__stat"><span class="cell__caf">55</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="black" style="--col:6" role="listitem"
+            data-num="15" data-sym="Br" data-name="Bergamot Reverie"
+            data-fam-label="Black" data-body="Deep" data-caf="50" data-temp="95" data-time="4"
+            data-origin="Black base scented with bergamot oil"
+            data-notes="Our house Earl. Bright citrus oil over a malty base, a cornflower in the tin for luck. Brisk, fragrant, unmistakable.">
+            <span class="cell__num">15</span>
+            <span class="cell__sym">Br</span>
+            <span class="cell__name">Bergamot Reverie</span>
+            <span class="cell__stat"><span class="cell__caf">50</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="black" style="--col:7" role="listitem"
+            data-num="16" data-sym="Mb" data-name="Malt &amp; Bracken"
+            data-fam-label="Black" data-body="Full" data-caf="58" data-temp="98" data-time="5"
+            data-origin="Second-flush, the Bracken estate"
+            data-notes="Brisk and brawny, built for morning. Malt, dark honey, a muscatel grape lift. Takes milk like it was born for it.">
+            <span class="cell__num">16</span>
+            <span class="cell__sym">Mb</span>
+            <span class="cell__name">Malt &amp; Bracken</span>
+            <span class="cell__stat"><span class="cell__caf">58</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="black" style="--col:8" role="listitem"
+            data-num="17" data-sym="Spx" data-name="Spice Caravan"
+            data-fam-label="Black" data-body="Round" data-caf="54" data-temp="96" data-time="5"
+            data-origin="Black leaf, cardamom, clove, ginger, pepper"
+            data-notes="A masala built for boiling with milk. Cardamom forward, warm pepper, a clove-and-ginger heat that lingers in the chest.">
+            <span class="cell__num">17</span>
+            <span class="cell__sym">Spx</span>
+            <span class="cell__name">Spice Caravan</span>
+            <span class="cell__stat"><span class="cell__caf">54</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <!-- row 5 · dark / pu-er -->
+          <button class="cell" data-fam="puer" style="--col:6" role="listitem"
+            data-num="18" data-sym="Rl" data-name="River Loam"
+            data-fam-label="Dark" data-body="Deep" data-caf="40" data-temp="98" data-time="5"
+            data-origin="Ripe pile-fermented cake, the Delta"
+            data-notes="Fermented dark and smooth. Wet earth, dark chocolate, a mushroom-and-camphor depth. Steeps a dozen times and stays sweet.">
+            <span class="cell__num">18</span>
+            <span class="cell__sym">Rl</span>
+            <span class="cell__name">River Loam</span>
+            <span class="cell__stat"><span class="cell__caf">40</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell" data-fam="puer" style="--col:7" role="listitem"
+            data-num="19" data-sym="An" data-name="Ancient Knot"
+            data-fam-label="Dark" data-body="Full" data-caf="46" data-temp="98" data-time="5"
+            data-origin="Old-growth raw cake, cellared a decade"
+            data-notes="Raw, aged, alive. Dried fruit, leather, forest floor, a bitterness that turns to honey on the second wave. The cellar's pride.">
+            <span class="cell__num">19</span>
+            <span class="cell__sym">An</span>
+            <span class="cell__name">Ancient Knot</span>
+            <span class="cell__stat"><span class="cell__caf">46</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <!-- detached row · tisanes (caffeine-free) -->
+          <button class="cell cell--detached" data-fam="herb" style="--col:1;--row:7" role="listitem"
+            data-num="20" data-sym="Cm" data-name="Chamomile Field"
+            data-fam-label="Tisane" data-body="Whisper" data-caf="0" data-temp="98" data-time="6"
+            data-origin="Whole dried flower-heads"
+            data-notes="The classic evening cup. Apple, hay, honey &mdash; soft and round, the colour of late sun. No leaf, no caffeine.">
+            <span class="cell__num">20</span>
+            <span class="cell__sym">Cm</span>
+            <span class="cell__name">Chamomile Field</span>
+            <span class="cell__stat"><span class="cell__caf">0</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell cell--detached" data-fam="herb" style="--col:2;--row:7" role="listitem"
+            data-num="21" data-sym="Pe" data-name="Peppermint Cliff"
+            data-fam-label="Tisane" data-body="Bright" data-caf="0" data-temp="98" data-time="6"
+            data-origin="Single-estate peppermint leaf"
+            data-notes="Cold to the back of the throat, clean to the finish. Pure mint oil, a touch of sweetness, nothing to hide behind.">
+            <span class="cell__num">21</span>
+            <span class="cell__sym">Pe</span>
+            <span class="cell__name">Peppermint Cliff</span>
+            <span class="cell__stat"><span class="cell__caf">0</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell cell--detached" data-fam="herb" style="--col:3;--row:7" role="listitem"
+            data-num="22" data-sym="Lv" data-name="Lavender Vespers"
+            data-fam-label="Tisane" data-body="Soft" data-caf="0" data-temp="96" data-time="5"
+            data-origin="Culinary lavender and linden flower"
+            data-notes="Floral but not soapy &mdash; we keep the lavender quiet. Linden honey, a little vanilla, a calm that arrives by the second sip.">
+            <span class="cell__num">22</span>
+            <span class="cell__sym">Lv</span>
+            <span class="cell__name">Lavender Vespers</span>
+            <span class="cell__stat"><span class="cell__caf">0</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell cell--detached" data-fam="herb" style="--col:4;--row:7" role="listitem"
+            data-num="23" data-sym="Rb" data-name="Red Bush Ember"
+            data-fam-label="Tisane" data-body="Round" data-caf="0" data-temp="98" data-time="6"
+            data-origin="Oxidised rooibos, the Ember flats"
+            data-notes="Naturally sweet, the colour of garnet. Vanilla, toasted nut, a faint woodiness. Takes milk, takes spice, takes ice.">
+            <span class="cell__num">23</span>
+            <span class="cell__sym">Rb</span>
+            <span class="cell__name">Red Bush Ember</span>
+            <span class="cell__stat"><span class="cell__caf">0</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell cell--detached" data-fam="herb" style="--col:5;--row:7" role="listitem"
+            data-num="24" data-sym="Tu" data-name="Turmeric Sun"
+            data-fam-label="Tisane" data-body="Bold" data-caf="0" data-temp="98" data-time="7"
+            data-origin="Turmeric, ginger, black pepper, orange peel"
+            data-notes="A warming golden brew. Earthy turmeric, ginger heat, a citrus lift and a pepper bite that makes the whole thing work.">
+            <span class="cell__num">24</span>
+            <span class="cell__sym">Tu</span>
+            <span class="cell__name">Turmeric Sun</span>
+            <span class="cell__stat"><span class="cell__caf">0</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell cell--detached" data-fam="herb" style="--col:6;--row:7" role="listitem"
+            data-num="25" data-sym="Hi" data-name="Hibiscus Tide"
+            data-fam-label="Tisane" data-body="Bright" data-caf="0" data-temp="98" data-time="6"
+            data-origin="Whole hibiscus calyx and rosehip"
+            data-notes="Tart, scarlet, loud. Cranberry, pomegranate, a clean acid snap. Magnificent over ice with a slice of orange.">
+            <span class="cell__num">25</span>
+            <span class="cell__sym">Hi</span>
+            <span class="cell__name">Hibiscus Tide</span>
+            <span class="cell__stat"><span class="cell__caf">0</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell cell--detached" data-fam="herb" style="--col:7;--row:7" role="listitem"
+            data-num="26" data-sym="Gv" data-name="Ginger Vault"
+            data-fam-label="Tisane" data-body="Full" data-caf="0" data-temp="98" data-time="7"
+            data-origin="Dried ginger root and lemongrass"
+            data-notes="Heat with a purpose. Sharp fresh ginger, lemongrass lift, a long warming burn. The cup you want when something aches.">
+            <span class="cell__num">26</span>
+            <span class="cell__sym">Gv</span>
+            <span class="cell__name">Ginger Vault</span>
+            <span class="cell__stat"><span class="cell__caf">0</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell cell--detached" data-fam="herb" style="--col:8;--row:7" role="listitem"
+            data-num="27" data-sym="Ya" data-name="Yaupon Holler"
+            data-fam-label="Tisane" data-body="Deep" data-caf="0" data-temp="92" data-time="5"
+            data-origin="Roasted yaupon holly leaf"
+            data-notes="The one leaf that breaks the rule &mdash; an herb that drinks like a tea. Roasted, smooth, faintly grassy. We keep ours decaffeinated.">
+            <span class="cell__num">27</span>
+            <span class="cell__sym">Ya</span>
+            <span class="cell__name">Yaupon Holler</span>
+            <span class="cell__stat"><span class="cell__caf">0</span><span class="cell__unit">mg</span></span>
+          </button>
+
+          <button class="cell cell--detached" data-fam="herb" style="--col:9;--row:7" role="listitem"
+            data-num="28" data-sym="Ts" data-name="Tulsi Sanctum"
+            data-fam-label="Tisane" data-body="Round" data-caf="0" data-temp="96" data-time="6"
+            data-origin="Three-leaf holy basil, sun-dried"
+            data-notes="Herbaceous and clarifying. Clove, mint, a peppery basil warmth. Tastes the way a deep breath feels.">
+            <span class="cell__num">28</span>
+            <span class="cell__sym">Ts</span>
+            <span class="cell__name">Tulsi Sanctum</span>
+            <span class="cell__stat"><span class="cell__caf">0</span><span class="cell__unit">mg</span></span>
+          </button>
+
+        </div><!-- /.ptable -->
+      </div><!-- /.catalog__grid-wrap -->
+
+      <!-- DETAIL PANEL · the assay of the selected element ----------- -->
+      <aside class="assay" id="assay" aria-labelledby="assay-name" aria-live="polite">
+        <p class="assay__eyebrow">
+          <span class="assay__index" id="assay-index">01</span>
+          <span class="assay__fam" id="assay-fam">White</span>
+        </p>
+
+        <div class="assay__plate" aria-hidden="true">
+          <span class="assay__sym" id="assay-sym">Sv</span>
+        </div>
+
+        <h3 class="assay__name" id="assay-name">Silver Veil</h3>
+        <p class="assay__origin" id="assay-origin">High terraces, the Cloud Coast</p>
+
+        <dl class="assay__stats">
+          <div>
+            <dt>Caffeine</dt>
+            <dd><span class="assay__caf" id="assay-caf">15</span> mg<span class="assay__caf-note"> / cup</span></dd>
+          </div>
+          <div>
+            <dt>Water</dt>
+            <dd><span id="assay-temp">80</span>&deg;C</dd>
+          </div>
+          <div>
+            <dt>Steep</dt>
+            <dd><span id="assay-time">3</span> min</dd>
+          </div>
+          <div>
+            <dt>Body</dt>
+            <dd id="assay-body">Whisper</dd>
+          </div>
+        </dl>
+
+        <p class="assay__notes" id="assay-notes">
+          Downy buds, barely worked. Melon water, warm hay, a finish like the inside of a peony.
+        </p>
+
+        <p class="assay__hint">Select any cell in the table to read its assay.</p>
+      </aside>
+
+    </section>
+
+    <!-- closing statement ------------------------------------------- -->
+    <section class="coda" aria-labelledby="coda-title">
+      <h2 class="coda__title" id="coda-title">
+        Twenty-eight cups, one honest map.
+      </h2>
+      <p class="coda__line">
+        Nothing on this table is rare for the sake of rare. We sell what we like
+        to drink, arranged so you can find the cup that matches the hour.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p class="site-footer__statement">
+      Ferns &amp; Fathom keep a kettle on and the table open.
+      <span class="site-footer__sub">A wholly fictional tea house, drawn for a design study.</span>
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

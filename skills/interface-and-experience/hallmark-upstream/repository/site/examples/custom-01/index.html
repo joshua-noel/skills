@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Setting the Night Edition — a broadside from Vellum &amp; Lamp</title>
+  <meta name="description" content="A single letterpress broadside: the poem 'Setting the Night Edition', set line by line as the sheet is read. Printed by Vellum & Lamp, Marrowfield." />
+  <meta name="theme-color" content="#f1ece0" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#poem">Skip to the poem</a>
+
+  <!-- The whole page is the broadside. No nav, no hero, no footer scaffolding:
+       a single printed sheet, read top to bottom. -->
+  <main id="main" class="sheet">
+    <div class="sheet__grain" aria-hidden="true"></div>
+
+    <article class="broadside" id="poem" aria-labelledby="broadside-title">
+
+      <!-- Imprint band — the only chrome. Doubles as the press's mark. -->
+      <header class="imprint">
+        <p class="imprint__line">
+          <span class="imprint__press">Vellum &amp; Lamp</span>
+          <span class="imprint__dot" aria-hidden="true">·</span>
+          <span>Marrowfield</span>
+        </p>
+        <p class="imprint__edition">Broadside No.&nbsp;VII &middot; set by hand &middot; one&nbsp;sheet</p>
+        <hr class="imprint__rule" aria-hidden="true" />
+      </header>
+
+      <!-- The title, set as a broadside poster line. -->
+      <h1 class="broadside__title" id="broadside-title">
+        <span class="broadside__drop" aria-hidden="true">S</span><span class="broadside__title-rest">etting the</span>
+        <span class="broadside__title-2">Night Edition</span>
+      </h1>
+      <p class="broadside__byline">a poem set after the presses cool</p>
+
+      <!-- The poem. Each line is its own measure; the motion inks them in
+           one at a time on scroll. With no scroll support or reduced motion,
+           every line is simply present and legible — content never depends
+           on JavaScript or on scrolling. -->
+      <div class="poem" role="group" aria-label="The poem, eleven lines">
+        <p class="poem__line poem__line--a">The compositor works after the presses cool.</p>
+        <p class="poem__line poem__line--b">Lead is patient; the alphabet, a drawer of weights.</p>
+        <p class="poem__line poem__line--a">She lifts each letter as one lifts a word</p>
+        <p class="poem__line poem__line--c">too true to say aloud at any speed.</p>
+        <p class="poem__line poem__line--a">A comma is a held breath set in metal.</p>
+        <p class="poem__line poem__line--b">The margin is not empty — it is listening.</p>
+        <p class="poem__line poem__line--a">Ink will remember what the hand let go,</p>
+        <p class="poem__line poem__line--c">and morning will arrive already printed.</p>
+
+        <!-- The form mirrors the content: line nine leaves "a line unset".
+             The gap is rendered, not described. -->
+        <p class="poem__line poem__line--a poem__line--unset">
+          So she leaves a line unset, a white space wide
+          <span class="poem__held" aria-hidden="true"></span>
+        </p>
+        <p class="poem__line poem__line--c">enough for the reader's own slow thought to dry —</p>
+        <p class="poem__line poem__line--a poem__line--last">then locks the forme, and turns the lamp&nbsp;down&nbsp;low.</p>
+      </div>
+
+      <!-- Colophon — the printer's note at the foot of the sheet. -->
+      <footer class="colophon">
+        <hr class="colophon__rule" aria-hidden="true" />
+        <p class="colophon__note">
+          Composed and pulled on a flat-bed Albion, eight&nbsp;forms,
+          on damp cotton&nbsp;rag. The red is a single hit of cinnabar.
+        </p>
+        <p class="colophon__mark">
+          <span>Vellum &amp; Lamp</span>
+          <span class="colophon__fleuron" aria-hidden="true"></span>
+          <span>impression&nbsp;7&nbsp;of&nbsp;40</span>
+        </p>
+      </footer>
+
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,92 @@
+/* Hallmark · macrostructure: Marquee Hero · H1 hero knobs: apparatus=filament-chamber, italic-pivot=think
+ * theme: Lumen (catalog) · drop: Night Foundry · paper: oklch(13% 0.014 265) · accent: oklch(76% 0.17 50) + oklch(68% 0.16 18)
+ * display: Instrument Serif 400 (italic pivot) · body: Geist Sans · labels: JetBrains Mono all-caps
+ * axes: dark / classical-serif / warm-brass
+ * nav: N5 floating pill · footer: Ft5 statement
+ * brief: "A serverless GPU inference platform — Cinder."
+ * v1.1.0
+ */
+
+:root, [data-theme="lumen"] {
+  color-scheme: dark;
+
+  /* NIGHT FOUNDRY palette — cool-violet paper, molten-brass accent */
+  --color-paper:      oklch(13% 0.014 265);
+  --color-paper-2:    oklch(17% 0.016 265);
+  --color-paper-3:    oklch(22% 0.018 263);
+  --color-rule:       oklch(30% 0.018 265);
+  --color-rule-2:     oklch(42% 0.020 263);
+  --color-muted:      oklch(60% 0.016 263);
+  --color-neutral:    oklch(72% 0.014 263);
+  --color-ink-2:      oklch(82% 0.010 262);
+  --color-ink:        oklch(96% 0.006 262);
+  --color-accent:     oklch(76% 0.17 50);
+  --color-accent-2:   oklch(68% 0.16 18);
+  --color-accent-ink: oklch(13% 0.014 265);
+  --color-focus:      oklch(76% 0.17 50);
+  --color-glow:       oklch(80% 0.16 50 / 0.42);
+  --color-glow-2:     oklch(80% 0.16 50 / 0.12);
+  --color-paper-emit: oklch(76% 0.17 50 / 0.05);
+  --rule-blueprint:   oklch(96% 0.006 262 / 0.04);
+
+  /* Type */
+  --font-display: "Instrument Serif", "Tiempos Headline", ui-serif, Georgia, serif;
+  --font-body:    "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-label:   "JetBrains Mono", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-mono:    "JetBrains Mono", "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-xs:        0.75rem;
+  --text-sm:        0.8125rem;
+  --text-base:      1rem;
+  --text-md:        1.0625rem;
+  --text-lg:        1.25rem;
+  --text-xl:        1.5rem;
+  --text-2xl:       2rem;
+  --text-3xl:       2.5rem;
+  --text-display:   clamp(3rem, 6.5vw + 0.75rem, 6.5rem);
+  --text-display-s: clamp(2.25rem, 3.75vw + 1rem, 3.75rem);
+
+  --tracking-display: -0.032em;
+  --tracking-tight:   -0.014em;
+  --tracking-normal:   0;
+  --tracking-label:    0.10em;
+  --tracking-micro:    0.16em;
+
+  --lh-tight:   1.02;
+  --lh-snug:    1.18;
+  --lh-normal:  1.55;
+  --lh-relaxed: 1.7;
+
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6.5rem;
+  --space-4xl: 10rem;
+
+  --section-gap:      6.5rem;
+  --section-head-gap: 1.75rem;
+
+  --page-max:    80rem;
+  --page-gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure:     60ch;
+
+  --radius-card:  10px;
+  --radius-pill:  999px;
+  --radius-input: 8px;
+  --rule-card:    1px;
+  --shadow-card:  0 24px 60px -28px oklch(0% 0 0 / 0.55),
+                  0 1px 2px oklch(0% 0 0 / 0.4);
+
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft:    cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in:      cubic-bezier(0.7, 0, 0.84, 0);
+  --dur-micro:    120ms;
+  --dur-short:    220ms;
+  --dur-long:     420ms;
+  --dur-headline: 1100ms;
+  --dur-pulse:    4s;
+}

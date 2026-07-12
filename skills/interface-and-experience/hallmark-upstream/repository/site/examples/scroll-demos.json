@@ -1,0 +1,17 @@
+{
+  "_note": "Source-of-truth for Remotion scroll-capture previews of the v1.1 showcase pages (the 4 new themes + the 5 bespoke/custom pages). A Remotion composition iterates `demos`, loads each `url` in an <Iframe> at `viewport`, animates scrollTop from 0 to (content height - viewport.h) across `durationSec` (ease in/out, hold ~0.6s at each end), and renders to `out`. Drop the resulting .mp4 into site/_tests/_thumbs/ and swap that card's <img> for <video data-hover-play src=... poster=...> in index.html. Hallmark does the page; Remotion does the scrolling. (The original 8 example cards already ship pre-rendered loops and are not listed here.)",
+  "viewport": { "w": 1280, "h": 800 },
+  "fps": 30,
+  "demos": [
+    { "slug": "cobalt-01",  "group": "theme",  "theme": "Cobalt",   "url": "examples/cobalt-01/",  "title": "Distil",                    "kind": "content-extraction API",        "durationSec": 16, "out": "_tests/_thumbs/cobalt-01-scroll.mp4" },
+    { "slug": "carnival-01", "group": "theme",  "theme": "Carnival", "url": "examples/carnival-01/", "title": "Cold Snap",                 "kind": "record-label EP page",          "durationSec": 12, "out": "_tests/_thumbs/carnival-01-scroll.mp4" },
+    { "slug": "lumen-01",   "group": "theme",   "theme": "Lumen",    "url": "examples/lumen-01/",   "title": "Cinder",                    "kind": "AI reasoning tool",             "durationSec": 13, "out": "_tests/_thumbs/lumen-01-scroll.mp4" },
+    { "slug": "hum-07",     "group": "theme",   "theme": "Hum",      "url": "examples/hum-07/",     "title": "Bubble",                    "kind": "guided sourdough app",          "durationSec": 13, "out": "_tests/_thumbs/hum-07-scroll.mp4" },
+
+    { "slug": "custom-01",  "group": "custom",  "url": "examples/custom-01/", "title": "Setting the Night Edition", "kind": "letterpress poem broadside",      "durationSec": 14, "out": "_tests/_thumbs/custom-01-scroll.mp4" },
+    { "slug": "custom-02",  "group": "custom",  "url": "examples/custom-02/", "title": "The Cascadia Nightjar",     "kind": "sleeper-train ticket",            "durationSec": 12, "out": "_tests/_thumbs/custom-02-scroll.mp4" },
+    { "slug": "custom-03",  "group": "custom",  "url": "examples/custom-03/", "title": "Ferns & Fathom",            "kind": "tea menu as a periodic table",    "durationSec": 12, "out": "_tests/_thumbs/custom-03-scroll.mp4" },
+    { "slug": "custom-04",  "group": "custom",  "url": "examples/custom-04/", "title": "The Mend Assembly",         "kind": "repair-café manifesto poster",    "durationSec": 14, "out": "_tests/_thumbs/custom-04-scroll.mp4" },
+    { "slug": "custom-05",  "group": "custom",  "url": "examples/custom-05/", "title": "Hollow Coast",              "kind": "sound-artist portfolio",          "durationSec": 12, "out": "_tests/_thumbs/custom-05-scroll.mp4" }
+  ]
+}

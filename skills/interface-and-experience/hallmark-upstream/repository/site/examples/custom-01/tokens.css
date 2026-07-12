@@ -1,0 +1,68 @@
+/* Hallmark · custom tokens — one-off, not written back to the catalog.
+   A letterpress broadside: warm cotton-rag paper, oxidised-sepia ink,
+   a single cinnabar (printer's red) reserved for the imprint rule and
+   the drop-figure. OKLCH throughout; every neutral tinted toward the
+   paper's warm hue (86–64). No pure #fff / #000 anywhere. */
+
+:root {
+  /* ── Paper · warm cotton rag, never white ── */
+  --paper:        oklch(95.5% 0.014 86);   /* the sheet */
+  --paper-deep:   oklch(92.5% 0.018 84);   /* vignette / edges */
+  --paper-fold:   oklch(90%   0.020 82);   /* deckle shadow */
+
+  /* ── Ink · oxidised sepia-black, the impression of letterpress ── */
+  --ink:          oklch(24%   0.018 64);   /* the poem */
+  --ink-soft:     oklch(35%   0.020 62);   /* secondary / debossed */
+  --ink-faint:    oklch(50%   0.016 60);   /* colophon, edition marks */
+  --rule:         oklch(78%   0.016 78);   /* hairlines on paper */
+
+  /* ── Accent · cinnabar — the printer's red. Signal only (<5% area) ── */
+  --red:          oklch(50%   0.170 36);
+  --red-ink:      oklch(98%   0.010 86);   /* text that ever sits on red */
+
+  /* ── Focus · the ink — ≥3:1 against paper (14:1) and against the
+        skip-link's ink fill via outline-offset onto paper. Robust
+        wherever focus lands; the red stays a content accent. ── */
+  --focus:        oklch(24%   0.018 64);
+
+  /* ── Type · Bodoni Moda (broadside display), Spectral (the poem),
+        Spline Sans Mono (the colophon/edition — the one outlier) ── */
+  --font-display: "Bodoni Moda", "Didot", ui-serif, Georgia, serif;
+  --font-body:    "Spectral", "Iowan Old Style", ui-serif, Georgia, serif;
+  --font-mono:    "Spline Sans Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* ── Type scale ── */
+  --text-xs:    0.75rem;
+  --text-sm:    0.8125rem;
+  --text-base:  1.0625rem;
+  --text-md:    1.25rem;
+  --text-lg:    clamp(1.5rem, 0.9rem + 2.6vw, 2.4rem);   /* the poem lines */
+  --text-title: clamp(2.05rem, 0.6rem + 6.8vw, 6.5rem);  /* the broadside title */
+  --text-drop:  clamp(4rem, 2rem + 9vw, 9rem);           /* the drop-figure */
+
+  --lh-tight:   1.04;
+  --lh-poem:    1.18;
+  --lh-normal:  1.5;
+
+  --track-title: -0.018em;
+  --track-cap:   0.34em;   /* the wide letterspacing of a printed imprint */
+
+  /* ── Spacing · 4px-based scale ── */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6.5rem;
+  --space-4xl: 10rem;
+  --space-5xl: 13rem;
+
+  /* ── The sheet measure ── */
+  --measure:    52ch;        /* the poem reads within 45–75ch */
+  --sheet-max:  44rem;
+  --gutter:     clamp(1.5rem, 6vw, 4rem);
+  --rule-hair:  1px;
+}

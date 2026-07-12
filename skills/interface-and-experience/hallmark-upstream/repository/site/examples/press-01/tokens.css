@@ -1,0 +1,121 @@
+/* Hallmark · tokens — gen-13
+ * route: custom (tuned) · vibe: "ink-black press, off-register, broken-grid, kinetic"
+ * paper: oklch(13% 0.014 25) · accent: oklch(60% 0.21 25) signal-red
+ * display: Bricolage Grotesque (variable) · body: Fraunces (variable) · outlier: JetBrains Mono
+ * axes: dark / display-heavy / warm
+ *
+ * One palette, two surfaces: the page runs on an ink-black press ground;
+ * the "proof sheet" sections invert to a warm bone paper so the specimens
+ * read like a printed proof pulled off the press. Both carry the warm-red tilt.
+ */
+
+:root {
+  /* ── Press ground — the dark default surface ──────────────── */
+  --color-paper:      oklch(13%  0.014 25);   /* ink-black, warm-red tilt — never #000 */
+  --color-paper-2:    oklch(17%  0.018 25);   /* elevated panel */
+  --color-paper-3:    oklch(22%  0.022 24);   /* deeper hover / plate */
+  --color-rule:       oklch(32%  0.020 24);   /* hairline divider */
+  --color-rule-2:     oklch(44%  0.024 22);   /* heavier rule */
+  --color-muted:      oklch(64%  0.020 26);   /* de-emphasised text */
+  --color-neutral:    oklch(74%  0.016 28);   /* mid text */
+  --color-ink-2:      oklch(86%  0.012 30);   /* secondary headings/body */
+  --color-ink:        oklch(95%  0.010 32);   /* primary text — warm bone */
+  --color-accent:     oklch(60%  0.21  25);   /* signal red — the one chromatic note */
+  --color-accent-2:   oklch(78%  0.15  85);   /* off-register amber ghost (misprint only) */
+  --color-accent-ink: oklch(97%  0.012 30);   /* bone text on red fill — APCA-checked */
+  --color-focus:      oklch(72%  0.19  25);   /* brighter red, ≥3:1 on ground + on red */
+
+  /* Off-register misprint ghosts — translucent, decorative only */
+  --ghost-cyan:  oklch(70% 0.16 220 / 0.42);
+  --ghost-red:   oklch(62% 0.22 25  / 0.40);
+
+  /* ── Proof sheet — warm bone surface for inverted sections ── */
+  --proof-paper:    oklch(93%  0.020 70);     /* warm bone proof stock */
+  --proof-paper-2:  oklch(89%  0.024 68);
+  --proof-rule:     oklch(74%  0.024 60);
+  --proof-rule-2:   oklch(48%  0.020 45);
+  --proof-muted:    oklch(46%  0.018 40);
+  --proof-ink-2:    oklch(28%  0.020 35);
+  --proof-ink:      oklch(17%  0.024 32);     /* near-black warm ink */
+  --proof-accent:   oklch(52%  0.20  25);     /* red reads darker on bone for contrast */
+
+  /* ── Type stack — 2+1: display + body + mono outlier ──────── */
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Fraunces", ui-serif, Georgia, serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* ── Type scale — major third (1.25), clamped display ─────── */
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 1rem;
+  --text-md:   1.125rem;
+  --text-lg:   1.375rem;
+  --text-xl:   1.75rem;
+  --text-2xl:  2.25rem;
+  --text-3xl:  3rem;
+  --text-display:   clamp(3rem, 7vw + 0.5rem, 6rem);
+  --text-display-s: clamp(2.25rem, 4vw + 0.75rem, 3.75rem);
+  /* the colossal living specimen — single short word, may exceed display cap */
+  --text-colossal:  clamp(3.75rem, 16vw, 12.5rem);
+
+  --lh-tight:   1.0;     /* display floor (no all-caps collision risk: mixed case) */
+  --lh-snug:    1.12;
+  --lh-normal:  1.55;
+  --lh-relaxed: 1.66;
+
+  --tracking-display: -0.03em;
+  --tracking-tight:   -0.015em;
+  --tracking-normal:  0;
+  --tracking-label:   0.16em;   /* mono specimen tags */
+  --tracking-micro:   0.26em;   /* rotated rail wordmark */
+
+  /* ── 4pt spacing scale ────────────────────────────────────── */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6.5rem;
+  --space-4xl: 10rem;
+  --space-5xl: 13rem;
+
+  --section-gap:      6.5rem;
+  --section-head-gap: 1.5rem;
+
+  /* ── Layout shell ─────────────────────────────────────────── */
+  --rail-width:   3.25rem;                      /* the fixed side-rail */
+  --page-max:     78rem;
+  --page-gutter:  clamp(1.25rem, 4vw, 3.5rem);
+  --measure:      62ch;
+  --rule-hair:    1px;
+  --rule-fine:    2px;
+  --rule-heavy:   4px;
+
+  /* Square edges — this is a press, not a soft app */
+  --radius-card:  0;
+  --radius-pill:  0;
+  --radius-input: 0;
+
+  /* ── Motion ───────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro:   120ms;
+  --dur-short:   220ms;
+  --dur-long:    420ms;
+  --dur-reveal:  560ms;
+  --dur-breathe: 9s;     /* ambient variable-axis loop on the living specimen */
+
+  /* ── Z scale ──────────────────────────────────────────────── */
+  --z-base:        1;
+  --z-raised:      10;
+  --z-dropdown:    100;
+  --z-sticky:      200;
+  --z-sticky-nav:  300;
+  --z-modal:       400;
+  --z-toast:       500;
+  --z-tooltip:     600;
+}

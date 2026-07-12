@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="riso" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OFF-REGISTER · A Risograph Print Fair · Pulp Yard, 18–19 Oct 2026</title>
+  <meta name="description" content="OFF-REGISTER is a two-day risograph print fair at the Pulp Yard, Govanhill. Thirty-four studios, eight presses, soy ink everywhere. Free entry, Saturday and Sunday." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23f0cdbf'/%3E%3Ccircle cx='15' cy='17' r='9' fill='%23f0c33a'/%3E%3Ccircle cx='13' cy='15' r='9' fill='none' stroke='%231aa3c2' stroke-width='3'/%3E%3Ccircle cx='18' cy='19' r='6' fill='none' stroke='%23e8497a' stroke-width='3'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#catalogue">Skip to the exhibitor list</a>
+
+  <!-- ░░ N6 · Newspaper masthead ░░ -->
+  <header class="masthead" role="banner">
+    <p class="masthead__issue">Edition 04 · Govanhill · 18–19 October 2026 · Free entry</p>
+    <a class="masthead__name riso-mis" href="#top" data-text="OFF-REGISTER" aria-label="Off-Register, home">OFF-REGISTER</a>
+    <nav class="masthead__nav" aria-label="Primary">
+      <ul>
+        <li><a href="#catalogue">Exhibitors</a></li>
+        <li><a href="#programme">Programme</a></li>
+        <li><a href="#workshops">Workshops</a></li>
+        <li><a href="#visit">Visit</a></li>
+      </ul>
+    </nav>
+    <hr class="masthead__rule" aria-hidden="true" />
+  </header>
+
+  <main id="top">
+
+    <!-- ░░ HERO · Catalogue inventory header + Tier-A CSS riso mark ░░ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <p class="kicker">A risograph print fair · Two days · One drum at a time</p>
+        <h1 id="hero-title" class="hero__title">
+          <span class="riso-mis" data-text="Thirty-four">Thirty-four</span>
+          studios. Eight presses. Soy&nbsp;ink everywhere.
+        </h1>
+        <p class="hero__lede">
+          design like print: warm, off-register, intentional. For one weekend the
+          Pulp Yard fills with spot colour — fluorescent pink that won&rsquo;t sit
+          still, teal that bleeds a hair past its edge, paper you can smell. Come
+          turn the drum.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--solid" href="#visit">Plan your visit</a>
+          <a class="btn btn--text" href="#catalogue">Read the exhibitor list <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <dl class="hero__facts">
+          <div class="fact"><dt>Where</dt><dd>The Pulp Yard, 31 Calder St, Govanhill</dd></div>
+          <div class="fact"><dt>When</dt><dd>Sat &amp; Sun, 11:00&ndash;18:00</dd></div>
+          <div class="fact"><dt>Entry</dt><dd>Free &mdash; first 200 get a printed map</dd></div>
+        </dl>
+      </div>
+
+      <!-- Pure-CSS risograph centrepiece: three overprinted ink layers,
+           deliberately misregistered, multiply-blended, with paper grain. -->
+      <figure class="hero__art" aria-label="A risographed poster mark: overlapping cyan, yellow and pink shapes printed slightly out of register.">
+        <div class="riso-plate">
+          <span class="riso-ink riso-ink--yellow"></span>
+          <span class="riso-ink riso-ink--cyan"></span>
+          <span class="riso-ink riso-ink--pink"></span>
+          <span class="riso-grain" aria-hidden="true"></span>
+        </div>
+        <figcaption class="riso-plate__cap">Plate 04 &middot; 3 colours &middot; 280 gsm</figcaption>
+      </figure>
+    </section>
+
+    <!-- ░░ EXHIBITOR CATALOGUE · the core — uniform filterable grid ░░ -->
+    <section id="catalogue" class="catalogue" aria-labelledby="cat-title">
+      <div class="band">
+        <h2 id="cat-title" class="band__title">The exhibitor list</h2>
+        <p class="band__count">Thirty-four studios &middot; Hall A &amp; the Mezzanine &middot; updated 2 Oct</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter exhibitors by medium">
+        <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">All&nbsp;<span class="chip__n">34</span></button>
+        <button type="button" class="chip" data-filter="zine" aria-pressed="false">Zines&nbsp;<span class="chip__n">14</span></button>
+        <button type="button" class="chip" data-filter="poster" aria-pressed="false">Posters&nbsp;<span class="chip__n">9</span></button>
+        <button type="button" class="chip" data-filter="comic" aria-pressed="false">Comics&nbsp;<span class="chip__n">7</span></button>
+        <button type="button" class="chip" data-filter="press" aria-pressed="false">Working presses&nbsp;<span class="chip__n">4</span></button>
+      </div>
+      <p class="filters__status" aria-live="polite" data-empty="No studios match that medium yet.">Showing all 34 studios.</p>
+
+      <ul class="grid" role="list">
+        <li class="card" data-medium="press">
+          <a class="card__media" href="#visit" aria-label="Brae &amp; Drum, working two-colour press, stand A1">
+            <span class="print print--1" aria-hidden="true"></span>
+          </a>
+          <div class="card__meta">
+            <p class="card__tag">Working press · Stand A1</p>
+            <h3 class="card__name">Brae &amp; Drum</h3>
+            <p class="card__line">A live two-colour MZ. Pull a print, keep it wet.</p>
+          </div>
+        </li>
+
+        <li class="card" data-medium="zine">
+          <a class="card__media" href="#visit" aria-label="Saltmarket Editions, zines, stand A4">
+            <span class="print print--2" aria-hidden="true"></span>
+          </a>
+          <div class="card__meta">
+            <p class="card__tag">Zines · Stand A4</p>
+            <h3 class="card__name">Saltmarket Editions</h3>
+            <p class="card__line">Perfect-bound photo zines, two spot colours, no black.</p>
+          </div>
+        </li>
+
+        <li class="card" data-medium="poster">
+          <a class="card__media" href="#visit" aria-label="Mono No Aware Press, posters, stand A6">
+            <span class="print print--3" aria-hidden="true"></span>
+          </a>
+          <div class="card__meta">
+            <p class="card__tag">Posters · Stand A6</p>
+            <h3 class="card__name">Mono No Aware Press</h3>
+            <p class="card__line">A2 gig posters. Fluoro pink that glows under the strip lights.</p>
+          </div>
+        </li>
+
+        <li class="card" data-medium="comic">
+          <a class="card__media" href="#visit" aria-label="Tenement Comics, comics, stand A9">
+            <span class="print print--4" aria-hidden="true"></span>
+          </a>
+          <div class="card__meta">
+            <p class="card__tag">Comics · Stand A9</p>
+            <h3 class="card__name">Tenement Comics</h3>
+            <p class="card__line">Riso-printed shorts about the close, the bin store, the No.&nbsp;6 bus.</p>
+          </div>
+        </li>
+
+        <li class="card" data-medium="zine">
+          <a class="card__media" href="#visit" aria-label="Verdigris &amp; Co, zines, stand A11">
+            <span class="print print--5" aria-hidden="true"></span>
+          </a>
+          <div class="card__meta">
+            <p class="card__tag">Zines · Stand A11</p>
+            <h3 class="card__name">Verdigris &amp; Co</h3>
+            <p class="card__line">Botanical risographs on grey speckle stock. Teal on teal.</p>
+          </div>
+        </li>
+
+        <li class="card" data-medium="poster">
+          <a class="card__media" href="#visit" aria-label="Halftone Social Club, posters, stand A13">
+            <span class="print print--6" aria-hidden="true"></span>
+          </a>
+          <div class="card__meta">
+            <p class="card__tag">Posters · Stand A13</p>
+            <h3 class="card__name">Halftone Social Club</h3>
+            <p class="card__line">Big dot screens, on purpose. Bring a loupe.</p>
+          </div>
+        </li>
+
+        <li class="card" data-medium="comic">
+          <a class="card__media" href="#visit" aria-label="Closemouth Press, comics, stand M2">
+            <span class="print print--7" aria-hidden="true"></span>
+          </a>
+          <div class="card__meta">
+            <p class="card__tag">Comics · Mezzanine M2</p>
+            <h3 class="card__name">Closemouth Press</h3>
+            <p class="card__line">A risograph graphic novel, four years in, finally bound.</p>
+          </div>
+        </li>
+
+        <li class="card" data-medium="press">
+          <a class="card__media" href="#visit" aria-label="The Spirit Master, working press, stand M5">
+            <span class="print print--8" aria-hidden="true"></span>
+          </a>
+          <div class="card__meta">
+            <p class="card__tag">Working press · Mezzanine M5</p>
+            <h3 class="card__name">The Spirit Master</h3>
+            <p class="card__line">We cut a master from your drawing while you wait. Bring a felt&nbsp;tip.</p>
+          </div>
+        </li>
+
+        <li class="card" data-medium="zine">
+          <a class="card__media" href="#visit" aria-label="Riso Riot, zines, stand M7">
+            <span class="print print--9" aria-hidden="true"></span>
+          </a>
+          <div class="card__meta">
+            <p class="card__tag">Zines · Mezzanine M7</p>
+            <h3 class="card__name">Riso Riot</h3>
+            <p class="card__line">A queer riso anthology, eighty pages, sold by donation.</p>
+          </div>
+        </li>
+      </ul>
+
+      <p class="catalogue__more">
+        &hellip; and twenty-five more, from <em>Govan Letterpress</em> to <em>Fluoro Bakery</em>.
+        The full A&ndash;Z and the floor plan go up the week before.
+      </p>
+    </section>
+
+    <!-- ░░ PROGRAMME · F3 tabular spec sheet (genuinely ordinal — a timetable) ░░ -->
+    <section id="programme" class="programme" aria-labelledby="prog-title">
+      <div class="band band--invert">
+        <h2 id="prog-title" class="band__title">Two days, hour by hour</h2>
+        <p class="band__count">Talks on the Mezzanine · printing in Hall A · all free, drop in</p>
+      </div>
+
+      <div class="prog__day">
+        <h3 class="prog__heading"><span class="riso-mis" data-text="Saturday">Saturday</span> &middot; 18 Oct</h3>
+        <dl class="timetable">
+          <div class="slot">
+            <dt class="slot__time"><time datetime="2026-10-18T11:00">11:00</time></dt>
+            <dd class="slot__body"><span class="slot__title">Doors &amp; first pull</span><span class="slot__where">Hall A</span></dd>
+          </div>
+          <div class="slot">
+            <dt class="slot__time"><time datetime="2026-10-18T12:30">12:30</time></dt>
+            <dd class="slot__body"><span class="slot__title">Why pink moves: a talk on misregistration</span><span class="slot__where">Mezzanine</span></dd>
+          </div>
+          <div class="slot">
+            <dt class="slot__time"><time datetime="2026-10-18T14:00">14:00</time></dt>
+            <dd class="slot__body"><span class="slot__title">Bind-your-own, with Closemouth Press</span><span class="slot__where">Hall A · table 3</span></dd>
+          </div>
+          <div class="slot">
+            <dt class="slot__time"><time datetime="2026-10-18T16:30">16:30</time></dt>
+            <dd class="slot__body"><span class="slot__title">Trade &amp; swap: bring a print, take a print</span><span class="slot__where">The yard</span></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="prog__day">
+        <h3 class="prog__heading"><span class="riso-mis" data-text="Sunday">Sunday</span> &middot; 19 Oct</h3>
+        <dl class="timetable">
+          <div class="slot">
+            <dt class="slot__time"><time datetime="2026-10-19T11:00">11:00</time></dt>
+            <dd class="slot__body"><span class="slot__title">Doors &amp; slow coffee</span><span class="slot__where">The yard</span></dd>
+          </div>
+          <div class="slot">
+            <dt class="slot__time"><time datetime="2026-10-19T13:00">13:00</time></dt>
+            <dd class="slot__body"><span class="slot__title">Soy ink &amp; paper: what actually composts</span><span class="slot__where">Mezzanine</span></dd>
+          </div>
+          <div class="slot">
+            <dt class="slot__time"><time datetime="2026-10-19T15:00">15:00</time></dt>
+            <dd class="slot__body"><span class="slot__title">Kids&rsquo; print hour &mdash; one colour, two hands</span><span class="slot__where">Hall A · table 1</span></dd>
+          </div>
+          <div class="slot">
+            <dt class="slot__time"><time datetime="2026-10-19T17:30">17:30</time></dt>
+            <dd class="slot__body"><span class="slot__title">Last drum spins &amp; pack-down</span><span class="slot__where">Hall A</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ░░ WORKSHOPS · three honest cards, varied — not an icon-tile grid ░░ -->
+    <section id="workshops" class="workshops" aria-labelledby="work-title">
+      <div class="band">
+        <h2 id="work-title" class="band__title">Get your hands inky</h2>
+        <p class="band__count">Small groups · materials included · book at the door</p>
+      </div>
+
+      <ul class="work-list" role="list">
+        <li class="work">
+          <p class="work__when">Sat 13:00 &middot; 90 min &middot; &pound;18</p>
+          <h3 class="work__name">Make a one-colour mini-zine</h3>
+          <p class="work__body">
+            Draw it, fold it, run it through the press, staple it. You leave with
+            twenty copies of an eight-page zine and ink under at least one fingernail.
+            No experience &mdash; we mean it.
+          </p>
+          <p class="work__cap">8 places &middot; ages 12+</p>
+        </li>
+        <li class="work">
+          <p class="work__when">Sat 15:30 &middot; 2 hrs &middot; &pound;26</p>
+          <h3 class="work__name">Two-colour overprint &amp; the art of being slightly wrong</h3>
+          <p class="work__body">
+            The whole point of riso is the misregister. We&rsquo;ll layer teal over
+            yellow, shift the paper a few millimetres on purpose, and chase the green
+            you can only get by accident. Bring a drawing or use one of ours.
+          </p>
+          <p class="work__cap">6 places &middot; ages 16+</p>
+        </li>
+        <li class="work">
+          <p class="work__when">Sun 15:00 &middot; 60 min &middot; free</p>
+          <h3 class="work__name">Kids&rsquo; print hour</h3>
+          <p class="work__body">
+            One colour, big shapes, no precious objects. Little ones cut a stencil
+            and pull their own poster to take home. Aprons supplied; the floor is
+            already a mess.
+          </p>
+          <p class="work__cap">Drop in &middot; under 12 with an adult</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ░░ VISIT · C2 inline form CTA + location detail ░░ -->
+    <section id="visit" class="visit" aria-labelledby="visit-title">
+      <div class="visit__lede">
+        <h2 id="visit-title" class="visit__title">Getting there is the easy part</h2>
+        <p class="visit__body">
+          Free entry, both days. No ticket needed &mdash; but leave your email and we&rsquo;ll
+          send the floor plan, the full A&ndash;Z of studios, and a heads-up when workshop
+          places open. One message, the week before. Nothing after.
+        </p>
+
+        <form class="signup" novalidate>
+          <label class="signup__label" for="email">Email address</label>
+          <div class="signup__row">
+            <input class="signup__input" type="email" id="email" name="email"
+                   inputmode="email" autocomplete="email"
+                   placeholder="you@studio.co" required
+                   aria-describedby="signup-help" />
+            <button class="btn btn--solid signup__submit" type="submit">Send me the map</button>
+          </div>
+          <p class="signup__help" id="signup-help">We print the map on the same presses. It&rsquo;s pink.</p>
+        </form>
+      </div>
+
+      <dl class="visit__info">
+        <div class="info">
+          <dt>Address</dt>
+          <dd>The Pulp Yard<br />31 Calder Street<br />Govanhill, Glasgow G42 7RA</dd>
+        </div>
+        <div class="info">
+          <dt>Getting in</dt>
+          <dd>Level access throughout. The Mezzanine has a lift. Guide dogs welcome; the presses are loud.</dd>
+        </div>
+        <div class="info">
+          <dt>Travel</dt>
+          <dd>4&nbsp;min from Queen&rsquo;s Park station. Bus 6, 38, 75. Bike racks in the yard.</dd>
+        </div>
+        <div class="info">
+          <dt>Ask us</dt>
+          <dd><a href="mailto:hello@offregister.print">hello@offregister.print</a></dd>
+        </div>
+      </dl>
+    </section>
+
+  </main>
+
+  <!-- ░░ Ft4 · Dense colophon ░░ -->
+  <footer class="colophon" role="contentinfo">
+    <p class="colophon__body">
+      <span class="colophon__mark riso-mis" data-text="OFF-REGISTER">OFF-REGISTER</span>
+      &mdash; a risograph print fair, run by volunteers from the Govanhill print room since 2022.
+      Edition 04 &middot; 18&ndash;19 October 2026 &middot; The Pulp Yard, 31 Calder Street, Glasgow G42 7RA.
+      Set in Public&nbsp;Sans, Newsreader and Space&nbsp;Mono. Every mark on this page is hand-built in CSS &mdash;
+      no photographs, printed on screen at 72&nbsp;dpi. Soy ink, recycled stock, no black plate.
+      Programme subject to which drums survive the weekend. Free entry, all welcome.
+      &copy; 2026 the fair &amp; its makers.
+    </p>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking confirmed · The Cascadia Nightjar · Saltmarsh Quay → Foghorn Point</title>
+  <meta name="description" content="Your overnight berth aboard the Cascadia Nightjar coastal sleeper is confirmed. Booking reference, coach and berth, boarding time, and the full dusk-to-dawn route.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;1,6..96,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#ticket">Skip to your ticket</a>
+
+  <header class="masthead">
+    <p class="masthead__service">Coastal Overnight Services</p>
+    <p class="masthead__confirmed" role="status">
+      <span class="masthead__dot" aria-hidden="true"></span>
+      Booking confirmed — boarding pass issued
+    </p>
+  </header>
+
+  <main id="ticket">
+    <h1 class="sr-only">The Cascadia Nightjar — booking confirmation and boarding pass, Saltmarsh Quay to Foghorn Point</h1>
+
+    <!-- The page IS a physical object: one ticket on the desk -->
+    <article class="ticket" aria-label="Boarding pass for the Cascadia Nightjar">
+
+      <!-- ── MAIN PORTION ── -->
+      <section class="stub-main" aria-labelledby="nameplate">
+        <div class="nameplate">
+          <p class="nameplate__class">Sleeper · First berth</p>
+          <p class="nameplate__line" id="nameplate">The Cascadia Nightjar</p>
+          <p class="nameplate__sub">Overnight coastal sleeper · Western Seaboard Line</p>
+        </div>
+
+        <!-- Punch / validation stamp, semantically anchored to the booking -->
+        <p class="stamp" aria-label="Ticket validated">
+          <span class="stamp__inner">
+            <span class="stamp__top">Validated</span>
+            <span class="stamp__date">31 OCT</span>
+            <span class="stamp__bottom">Quay Office</span>
+          </span>
+        </p>
+
+        <!-- Route as a vertical timeline: dusk → night → dawn -->
+        <section class="route" aria-labelledby="route-h">
+          <h2 class="route__h" id="route-h">Tonight&rsquo;s passage</h2>
+          <ol class="route__list">
+            <li class="leg leg--depart">
+              <span class="leg__time">20:14</span>
+              <span class="leg__node" aria-hidden="true"></span>
+              <span class="leg__body">
+                <span class="leg__station">Saltmarsh Quay</span>
+                <span class="leg__note">Departs · Platform 4 · doors close 20:09</span>
+              </span>
+            </li>
+            <li class="leg leg--pass">
+              <span class="leg__time">22:51</span>
+              <span class="leg__node" aria-hidden="true"></span>
+              <span class="leg__body">
+                <span class="leg__station">Hartlow Cutting</span>
+                <span class="leg__note">Passing · no stop · lounge car closes midnight</span>
+              </span>
+            </li>
+            <li class="leg leg--pass">
+              <span class="leg__time">02:36</span>
+              <span class="leg__node" aria-hidden="true"></span>
+              <span class="leg__body">
+                <span class="leg__station">Wexler Sound Bridge</span>
+                <span class="leg__note">Passing · curtains drawn · quiet hours in effect</span>
+              </span>
+            </li>
+            <li class="leg leg--arrive">
+              <span class="leg__time">06:42</span>
+              <span class="leg__node" aria-hidden="true"></span>
+              <span class="leg__body">
+                <span class="leg__station">Foghorn Point</span>
+                <span class="leg__note">Arrives · breakfast from 06:00 · alight starboard side</span>
+              </span>
+            </li>
+          </ol>
+        </section>
+
+        <!-- Berth + passenger details -->
+        <dl class="details">
+          <div class="details__cell">
+            <dt>Passenger</dt>
+            <dd>M. Aldercott</dd>
+          </div>
+          <div class="details__cell">
+            <dt>Coach</dt>
+            <dd class="mono">C&middot;07</dd>
+          </div>
+          <div class="details__cell">
+            <dt>Berth</dt>
+            <dd class="mono">14 &middot; LOWER</dd>
+          </div>
+          <div class="details__cell">
+            <dt>Boards</dt>
+            <dd class="mono">19:50</dd>
+          </div>
+        </dl>
+
+        <div class="fare">
+          <p class="fare__line">
+            <span>First berth · single occupancy</span>
+            <span class="mono">144.00</span>
+          </p>
+          <p class="fare__line">
+            <span>Breakfast in the dining car</span>
+            <span class="mono">incl.</span>
+          </p>
+          <p class="fare__line fare__line--total">
+            <span>Fare paid</span>
+            <span class="mono">¤ 144.00</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ── PERFORATED TEAR EDGE ── -->
+      <div class="perforation" aria-hidden="true">
+        <span class="perforation__rule">tear here &middot; retain the stub</span>
+      </div>
+
+      <!-- ── DETACHABLE STUB ── -->
+      <aside class="stub" aria-label="Conductor's stub — retain this portion">
+        <p class="stub__keep">Retain this portion</p>
+
+        <dl class="stub__codes">
+          <div>
+            <dt>Booking</dt>
+            <dd class="mono mono--lg">NJR&middot;7K42&middot;QF</dd>
+          </div>
+          <div>
+            <dt>Coach / Berth</dt>
+            <dd class="mono mono--lg">C07 &middot; 14L</dd>
+          </div>
+          <div>
+            <dt>Boards</dt>
+            <dd class="mono mono--lg">19:50</dd>
+          </div>
+        </dl>
+
+        <div class="barcode" aria-hidden="true"></div>
+        <p class="stub__num mono">NJR&nbsp;7K42&nbsp;QF&nbsp;&middot;&nbsp;31&middot;10</p>
+
+        <div class="stub__actions">
+          <a class="walletbtn" href="#ticket">
+            <span class="walletbtn__label">Save to wallet</span>
+            <span class="walletbtn__hint">.pkpass</span>
+          </a>
+          <button class="ghostbtn" type="button">Email a copy</button>
+        </div>
+      </aside>
+    </article>
+
+    <!-- Fine print, framed as the back-of-ticket conditions -->
+    <section class="conditions" aria-labelledby="cond-h">
+      <h2 class="conditions__h" id="cond-h">Conditions of carriage</h2>
+      <p>
+        Boarding closes four minutes before departure. Berths are released to the
+        standby list if unclaimed by 20:09. Quiet hours run midnight to 06:00; the
+        lounge car serves until midnight and the dining car opens for breakfast at
+        06:00. This pass is non-transferable and valid for the dated service only.
+      </p>
+      <p class="conditions__help">
+        Questions about your passage? Speak to the Quay Office, or reply to your
+        confirmation. A conductor will scan the stub above as you board.
+      </p>
+    </section>
+  </main>
+
+  <footer class="colophon">
+    <p class="colophon__mark">Cascadia Coastal Rail</p>
+    <p class="colophon__fine">
+      Western Seaboard Line · printed at Saltmarsh Quay ·
+      <span class="mono">issue 31&middot;10 · 20:14 dep</span>
+    </p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

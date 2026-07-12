@@ -1,0 +1,95 @@
+/* Hallmark tokens · route: custom · HOLLOW COAST (field recordist)
+ * idea: "the section nav IS a drawn waveform-timeline you scrub"
+ * axes: dark / soft-serif-old-style / phosphor-teal
+ */
+
+:root {
+  /* ── Colour · OKLCH · dark studio ground, every neutral tinted blue-graphite ── */
+  --paper:        oklch(17% 0.018 250);   /* deep monitoring-room ground (not #000) */
+  --paper-2:      oklch(21% 0.020 250);   /* panel */
+  --paper-3:      oklch(25% 0.022 252);   /* raised track / hover */
+  --paper-sink:   oklch(14% 0.016 250);   /* footer / well */
+
+  --ink:          oklch(93% 0.012 245);   /* warm-cool off-white (not #fff) — 15.6:1 on paper */
+  --ink-soft:     oklch(75% 0.014 248);   /* 8.6:1 */
+  --ink-mute:     oklch(63% 0.016 250);   /* ≥4.5:1 on paper AND on panel-2 (caption/stamp) */
+  --ink-faint:    oklch(60% 0.018 252);   /* secondary text (clock total, fine print) — 4.85:1 */
+
+  --rule:         oklch(30% 0.020 252);
+  --rule-soft:    oklch(26% 0.018 252);
+
+  /* Signal accent — phosphor teal (oscilloscope glow). Kept to <5% of any view. */
+  --accent:       oklch(81% 0.155 178);
+  --accent-deep:  oklch(68% 0.145 180);
+  --accent-dim:   oklch(81% 0.155 178 / 0.16);
+  --accent-ink:   oklch(17% 0.030 196);   /* text ON the accent fill (dark on teal) */
+
+  /* Tape-light amber — second signal, REC dot only */
+  --amber:        oklch(81% 0.125 72);
+
+  --focus:        oklch(85% 0.150 178);   /* ≥3:1 vs ground and panels */
+  --overlay:      oklch(14% 0.016 250 / 0.72);
+
+  /* translucent surfaces (glass docks, gradient stops, glow) — alpha variants of the above */
+  --banner-glass:    oklch(15% 0.016 250 / 0.86);
+  --timeline-top:    oklch(16% 0.017 250 / 0.96);
+  --timeline-bot:    oklch(18% 0.018 250 / 0.96);
+  --studio-bloom:    oklch(24% 0.045 184 / 0.55);   /* the one accent bloom, fixed, ~12% area */
+  --amber-glow:      oklch(81% 0.125 72 / 0.5);
+  --amber-glow-out:  oklch(81% 0.125 72 / 0);
+
+  /* ── Type · free Google fonts, no banned display ── */
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body:    "Spline Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "Spline Sans Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Scale (1.25-ish) */
+  --text-2xs: 0.6875rem;
+  --text-xs:  0.78rem;
+  --text-sm:  0.875rem;
+  --text-md:  1.0625rem;
+  --text-lg:  1.3125rem;
+  --text-xl:  1.75rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: clamp(2.75rem, 6vw, 4.75rem);
+  --text-4xl: clamp(3.5rem, 10vw, 7.5rem);
+
+  --leading-body:  1.6;
+  --leading-tight: 1.08;
+  --leading-snug:  1.22;
+
+  --track-tight: -0.02em;
+  --track-wide:  0.16em;
+  --track-mono:  0.04em;
+
+  /* Spacing · 4px scale */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs:  0.75rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.25rem;
+  --space-xl:  3.5rem;
+  --space-2xl: 5rem;
+  --space-3xl: 7.5rem;
+  --space-4xl: 10rem;
+
+  /* Structure */
+  --max-w:        76rem;
+  --gutter:       clamp(1.25rem, 4vw, 3rem);
+  --measure:      62ch;
+  --header-h:     58px;
+  --timeline-h:   132px;     /* the waveform-timeline nav strip */
+  --dock:         calc(var(--header-h) + var(--timeline-h));
+  --radius:       4px;
+  --radius-lg:    10px;
+  --hairline:     1px;
+
+  /* Z */
+  --z-timeline:   200;   /* sticky waveform nav (in-page) */
+  --z-header:     300;   /* top banner out-paints the timeline */
+  --z-skip:       400;
+
+  --ease:         cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur:          0.5s;
+}

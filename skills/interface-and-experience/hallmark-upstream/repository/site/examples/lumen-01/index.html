@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en" data-theme="lumen">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Cinder — Built to think in real time.</title>
+  <meta name="description" content="Cinder is a serverless GPU inference platform. P50 latency at 28 ms. Cold start at 0.4 s. Pay only when the model thinks." />
+  <meta name="theme-color" content="#0d1018" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="sr-only" href="#main">Skip to content</a>
+
+  <!-- ─── Nav — N5 floating pill ─── -->
+  <header class="nav" role="banner">
+    <div class="nav__pill">
+      <a class="nav__wordmark" href="#" aria-label="Cinder — home">
+        <span class="nav__mark" aria-hidden="true"></span>
+        Cinder
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#runtime">Runtime</a>
+        <a href="#code">Code</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#changelog">Changelog</a>
+      </nav>
+      <div class="nav__cta">
+        <a class="nav__signin" href="#">Sign in</a>
+        <a class="btn btn--accent" href="#">Start a project</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ─── Hero — Marquee Hero with filament-chamber apparatus ─── -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__emit" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow"><span class="ord">00</span><span class="dot-mid">·</span>Inference</p>
+          <h1 class="hero__title" id="hero-title">
+            Built to&nbsp;<em>think</em>&nbsp;in real time.
+          </h1>
+          <p class="hero__lede">
+            Cinder is a serverless runtime for any model that fits on a GPU.
+            Deploy with a single primitive. Scale down to zero between requests.
+            Pay only when the model thinks.
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--accent" href="#">Start a project</a>
+            <a class="btn btn--ghost" href="#code">Read the quickstart →</a>
+          </div>
+          <dl class="hero__spec" aria-label="Runtime specification">
+            <div class="hero__spec-pair"><dt>Runtime</dt><dd>Python 3.10 — 3.13</dd></div>
+            <div class="hero__spec-pair"><dt>Backends</dt><dd>vLLM · SGLang · Triton</dd></div>
+            <div class="hero__spec-pair"><dt>Regions</dt><dd>us-east-1 · us-west-2 · eu-central-1 · ap-northeast-1</dd></div>
+          </dl>
+        </div>
+
+        <!-- Apparatus — vertical filament chamber, annotated -->
+        <figure class="apparatus" aria-hidden="true">
+          <div class="chamber">
+            <span class="chamber__cap chamber__cap--top"></span>
+            <span class="chamber__cap chamber__cap--bottom"></span>
+            <span class="chamber__electrode" style="--y: 22%"></span>
+            <span class="chamber__electrode" style="--y: 42%"></span>
+            <span class="chamber__electrode" style="--y: 62%"></span>
+            <span class="chamber__electrode" style="--y: 82%"></span>
+            <span class="chamber__halo"></span>
+            <span class="chamber__filament"></span>
+            <span class="chamber__bloom"></span>
+            <p class="chamber__stencil">RX-04</p>
+          </div>
+
+          <ul class="callouts">
+            <li class="callout callout--left"  style="--y: 18%"><span>P50 · 28 ms</span></li>
+            <li class="callout callout--right" style="--y: 36%"><span>cold start · 0.4 s</span></li>
+            <li class="callout callout--left"  style="--y: 56%"><span>rps · 12 k</span></li>
+            <li class="callout callout--right" style="--y: 78%"><span>RX-04 · H100 80GB</span></li>
+          </ul>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ─── Meter strip — signature move 5 ─── -->
+    <aside class="meter" aria-label="Live signal readout">
+      <p class="meter__label meter__label--left">
+        <span class="meter__dot" aria-hidden="true"></span>
+        Reactor RX-04 · running
+      </p>
+      <div class="meter__bars" aria-hidden="true">
+        <!-- 80 vertical ticks, heights driven by JS-free sine envelope via CSS calc -->
+        <span style="--h: 28%"></span><span style="--h: 32%"></span><span style="--h: 38%"></span>
+        <span style="--h: 44%"></span><span style="--h: 52%"></span><span style="--h: 58%"></span>
+        <span style="--h: 64%"></span><span style="--h: 68%"></span><span style="--h: 72%"></span>
+        <span style="--h: 78%"></span><span style="--h: 82%"></span><span style="--h: 88%"></span>
+        <span style="--h: 92%"></span><span style="--h: 96%"></span><span style="--h: 100%"></span>
+        <span style="--h: 94%"></span><span style="--h: 88%"></span><span style="--h: 82%"></span>
+        <span style="--h: 74%"></span><span style="--h: 64%"></span><span style="--h: 58%"></span>
+        <span style="--h: 52%"></span><span style="--h: 44%"></span><span style="--h: 40%"></span>
+        <span style="--h: 36%"></span><span style="--h: 32%"></span><span style="--h: 28%"></span>
+        <span style="--h: 22%"></span><span style="--h: 28%"></span><span style="--h: 34%"></span>
+        <span style="--h: 38%"></span><span style="--h: 46%"></span><span style="--h: 54%"></span>
+        <span style="--h: 62%"></span><span style="--h: 70%"></span><span style="--h: 76%"></span>
+        <span style="--h: 82%"></span><span style="--h: 88%"></span><span style="--h: 92%"></span>
+        <span style="--h: 88%"></span><span style="--h: 84%"></span><span style="--h: 78%"></span>
+        <span style="--h: 72%"></span><span style="--h: 66%"></span><span style="--h: 60%"></span>
+        <span style="--h: 54%"></span><span style="--h: 48%"></span><span style="--h: 42%"></span>
+        <span style="--h: 36%"></span><span style="--h: 32%"></span><span style="--h: 28%"></span>
+        <span style="--h: 24%"></span><span style="--h: 32%"></span><span style="--h: 38%"></span>
+        <span style="--h: 46%"></span><span style="--h: 56%"></span><span style="--h: 62%"></span>
+        <span style="--h: 70%"></span><span style="--h: 78%"></span><span style="--h: 84%"></span>
+        <span style="--h: 88%"></span><span style="--h: 84%"></span><span style="--h: 78%"></span>
+        <span style="--h: 72%"></span><span style="--h: 64%"></span><span style="--h: 56%"></span>
+        <span style="--h: 50%"></span><span style="--h: 44%"></span><span style="--h: 38%"></span>
+        <span style="--h: 34%"></span><span style="--h: 32%"></span><span style="--h: 30%"></span>
+        <span style="--h: 28%"></span><span style="--h: 26%"></span><span style="--h: 24%"></span>
+        <span style="--h: 22%"></span><span style="--h: 24%"></span><span style="--h: 26%"></span>
+        <span style="--h: 30%"></span><span style="--h: 34%"></span>
+      </div>
+      <p class="meter__label meter__label--right">
+        12.4 k rps · drift 0.04 σ
+      </p>
+    </aside>
+
+    <!-- ─── Stat row — Instrument Serif numerals, tabular-nums ─── -->
+    <section class="stats" aria-label="Performance">
+      <dl class="stats__grid">
+        <div class="stat">
+          <dt class="stat__label">P50 latency</dt>
+          <dd class="stat__value"><span class="stat__num">28</span><span class="stat__unit">ms</span></dd>
+        </div>
+        <div class="stat">
+          <dt class="stat__label">Cold start</dt>
+          <dd class="stat__value"><span class="stat__num">0.4</span><span class="stat__unit">s</span></dd>
+        </div>
+        <div class="stat">
+          <dt class="stat__label">Throughput</dt>
+          <dd class="stat__value"><span class="stat__num">12</span><span class="stat__unit">k rps</span></dd>
+        </div>
+      </dl>
+      <p class="stats__note">
+        Measured on Llama-3.1 8B across 28 days of production traffic.
+        Hardware: H100 SXM5, 80 GB. Cinder telemetry, January 2026.
+      </p>
+    </section>
+
+    <!-- ─── Runtime cards — hairline + inner emission ─── -->
+    <section class="section" id="runtime" aria-labelledby="runtime-title">
+      <header class="section__head">
+        <p class="eyebrow"><span class="ord">01</span><span class="dot-mid">·</span>Runtime</p>
+        <h2 class="section__title" id="runtime-title">
+          One primitive that scales&nbsp;<em>down</em>&nbsp;to zero.
+        </h2>
+        <p class="section__lede">
+          A Cinder function is a Python file with a decorator and a model definition.
+          The runtime handles bin-packing, autoscaling, and cold starts. Nothing else.
+        </p>
+      </header>
+
+      <div class="cards">
+        <article class="card">
+          <p class="card__eyebrow">a · snapshot</p>
+          <h3 class="card__title">Snapshot cold starts</h3>
+          <p class="card__body">
+            Model weights and Python state restored from a CUDA memory snapshot.
+            Cold start at four-tenths of a second, regardless of model size up to 70 B.
+          </p>
+        </article>
+        <article class="card">
+          <p class="card__eyebrow">b · batching</p>
+          <h3 class="card__title">Continuous batching</h3>
+          <p class="card__body">
+            Requests join an in-flight batch on arrival. P50 latency stays flat under load,
+            then degrades gracefully past the GPU saturation point.
+          </p>
+        </article>
+        <article class="card">
+          <p class="card__eyebrow">c · billing</p>
+          <h3 class="card__title">Bin-packed billing</h3>
+          <p class="card__body">
+            You pay for the milliseconds a GPU is reserved for your function.
+            Idle replicas are reclaimed inside three seconds. No minimum spend.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Code — Workbench-style block ─── -->
+    <section class="section section--code" id="code" aria-labelledby="code-title">
+      <header class="section__head">
+        <p class="eyebrow"><span class="ord">02</span><span class="dot-mid">·</span>Code</p>
+        <h2 class="section__title" id="code-title">
+          Three files. <em>One</em> deploy.
+        </h2>
+        <p class="section__lede">
+          A quickstart that runs against a real model in production. Copy it, paste it,
+          run <code>cinder deploy</code>.
+        </p>
+      </header>
+
+      <div class="code">
+        <div class="code__head">
+          <p class="code__path">~/reactor/main.py</p>
+          <p class="code__sha">build d3f1c8</p>
+        </div>
+        <div class="code__tabs" role="tablist">
+          <button class="code__tab is-active" role="tab" aria-selected="true">main.py</button>
+          <button class="code__tab" role="tab" aria-selected="false">request.py</button>
+          <button class="code__tab" role="tab" aria-selected="false">cinder.toml</button>
+        </div>
+        <pre class="code__body"><code><span class="ln">01</span> <span class="tok-kw">import</span> cinder
+<span class="ln">02</span> <span class="tok-kw">from</span> transformers <span class="tok-kw">import</span> AutoTokenizer, AutoModelForCausalLM
+<span class="ln">03</span>
+<span class="ln">04</span> app = cinder.App(<span class="tok-str">"reactor"</span>)
+<span class="ln">05</span> gpu = cinder.GPU(<span class="tok-str">"H100"</span>, memory=<span class="tok-num">80</span>)
+<span class="ln">06</span>
+<span class="ln">07</span> <span class="tok-deco">@app.cls</span>(gpu=gpu, scaledown=<span class="tok-num">3</span>)
+<span class="ln">08</span> <span class="tok-kw">class</span> <span class="tok-cls">Reactor</span>:
+<span class="ln">09</span>     <span class="tok-deco">@cinder.enter()</span>
+<span class="ln">10</span>     <span class="tok-kw">def</span> <span class="tok-fn">load</span>(self):
+<span class="ln">11</span>         self.tok = AutoTokenizer.from_pretrained(<span class="tok-str">"meta/Llama-3.1-8B"</span>)
+<span class="ln">12</span>         self.model = AutoModelForCausalLM.from_pretrained(<span class="tok-str">"meta/Llama-3.1-8B"</span>)
+<span class="ln">13</span>
+<span class="ln">14</span>     <span class="tok-deco">@cinder.method()</span>
+<span class="ln">15</span>     <span class="tok-kw">def</span> <span class="tok-fn">think</span>(self, prompt: <span class="tok-cls">str</span>) -> <span class="tok-cls">str</span>:
+<span class="ln">16</span>         ids = self.tok.encode(prompt, return_tensors=<span class="tok-str">"pt"</span>)
+<span class="ln">17</span>         out = self.model.generate(ids, max_new_tokens=<span class="tok-num">512</span>)
+<span class="ln">18</span>         <span class="tok-kw">return</span> self.tok.decode(out[<span class="tok-num">0</span>])</code></pre>
+      </div>
+    </section>
+
+    <!-- ─── Pricing — three serif-numeral tiers ─── -->
+    <section class="section" id="pricing" aria-labelledby="pricing-title">
+      <header class="section__head">
+        <p class="eyebrow"><span class="ord">03</span><span class="dot-mid">·</span>Pricing</p>
+        <h2 class="section__title" id="pricing-title">
+          Per-second, per-GPU. <em>Stop</em> at any time.
+        </h2>
+        <p class="section__lede">
+          Three plans. No reserved-capacity contracts. The free tier runs on shared A10G;
+          paid tiers run on dedicated H100. Bring your own VPC on Enterprise.
+        </p>
+      </header>
+
+      <div class="tiers">
+        <article class="tier">
+          <p class="tier__eyebrow">Free</p>
+          <p class="tier__price"><span class="tier__num">$0</span><span class="tier__unit">/mo</span></p>
+          <p class="tier__note">$0.00012 / sec on shared A10G after 30 GPU-hours.</p>
+          <ul class="tier__list">
+            <li>30 GPU-hours / month</li>
+            <li>A10G shared pool</li>
+            <li>Community support</li>
+          </ul>
+          <a class="btn btn--ghost btn--block" href="#">Start free</a>
+        </article>
+        <article class="tier tier--feature">
+          <p class="tier__eyebrow">Reactor</p>
+          <p class="tier__price"><span class="tier__num">$0.0004</span><span class="tier__unit">/sec</span></p>
+          <p class="tier__note">Dedicated H100. Bin-packed across your fleet.</p>
+          <ul class="tier__list">
+            <li>H100 SXM5, 80 GB</li>
+            <li>Sub-second cold starts</li>
+            <li>Snapshot resume</li>
+            <li>Email support, four-hour response</li>
+          </ul>
+          <a class="btn btn--accent btn--block" href="#">Start a project</a>
+        </article>
+        <article class="tier">
+          <p class="tier__eyebrow">Enterprise</p>
+          <p class="tier__price"><span class="tier__num">Talk</span><span class="tier__unit"> · custom</span></p>
+          <p class="tier__note">Reserved capacity, BYO VPC, SLA on P99 latency.</p>
+          <ul class="tier__list">
+            <li>Reserved H100 / H200 clusters</li>
+            <li>BYO VPC, BYO networking</li>
+            <li>Custom SLA on P99</li>
+            <li>Solutions engineer assigned</li>
+          </ul>
+          <a class="btn btn--ghost btn--block" href="#">Talk to us</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ─── Changelog ─── -->
+    <section class="section section--changelog" id="changelog" aria-labelledby="changelog-title">
+      <header class="section__head">
+        <p class="eyebrow"><span class="ord">04</span><span class="dot-mid">·</span>Changelog</p>
+        <h2 class="section__title" id="changelog-title">
+          Shipped this <em>quarter</em>.
+        </h2>
+      </header>
+
+      <ol class="log">
+        <li class="log__entry">
+          <time class="log__date" datetime="2026-05-12">12 May 2026</time>
+          <p class="log__text"><strong>Snapshot resume.</strong> Cold starts on Llama-3.1 8B down to 380 ms — a 64 % drop vs. cold-load. Available on all paid tiers from today.</p>
+        </li>
+        <li class="log__entry">
+          <time class="log__date" datetime="2026-04-29">29 Apr 2026</time>
+          <p class="log__text"><strong>Continuous batching for vLLM.</strong> Throughput on H100 sustains 12 k rps for Llama-3.1 8B under saturating load.</p>
+        </li>
+        <li class="log__entry">
+          <time class="log__date" datetime="2026-04-08">8 Apr 2026</time>
+          <p class="log__text"><strong>H200 in preview.</strong> 141 GB memory per GPU. Enterprise preview opens via solutions engineering.</p>
+        </li>
+        <li class="log__entry">
+          <time class="log__date" datetime="2026-03-21">21 Mar 2026</time>
+          <p class="log__text"><strong>Region: Frankfurt.</strong> Cinder is now in eu-central-1 alongside us-east-1, us-west-2, and ap-northeast-1.</p>
+        </li>
+      </ol>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer — Ft5 statement ─── -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__statement">
+        <em>Inference</em>, billed per second.<br />
+        Built by engineers who'd rather not page anyone at three in the morning.
+      </p>
+      <div class="footer__meta">
+        <span class="footer__mark" aria-hidden="true"></span>
+        <p class="footer__col">
+          <span>Cinder Labs, Inc.</span>
+          <span>148 King St. · San Francisco</span>
+        </p>
+        <p class="footer__col">
+          <a href="#">Docs</a>
+          <a href="#">Status</a>
+          <a href="#">Security</a>
+          <a href="#">hello@cinder.dev</a>
+        </p>
+        <p class="footer__col footer__copy">
+          © 2026 Cinder Labs<br />
+          <span class="footer__hash">build · 2026.05.27 · 9af2</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

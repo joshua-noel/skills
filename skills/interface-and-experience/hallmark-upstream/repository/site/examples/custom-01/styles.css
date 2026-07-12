@@ -1,0 +1,342 @@
+/* Hallmark · route: custom · structure: single vertical broadside sheet — imprint rule, poster title with drop-figure, eleven poem lines each on its own measure, colophon foot · idea: "the poem IS the page; ink settles onto each line as the sheet is read, and line nine leaves its own gap unset" · paper: oklch(95.5% 0.014 86) · accent: oklch(50% 0.170 36) · display: Bodoni Moda · body: Spectral · gates: all-pass · v1.1 */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 */
+/* axes: warm-cream paper / high-contrast Didone display / cinnabar accent · contrast: pass (46–50) · nav: none (broadside, no chrome) · footer: colophon (Ft-bespoke) · slop: pass (51–55) · honest: pass (56) · chrome: pass (57) · tokens: pass (58) · responsive: pass (59) · icons: pass (60) · mobile: pass (36, 59, 61–69) */
+
+/* ─────────────────────────────────────────────────────────────
+   Reset
+   ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+
+html {
+  font-family: var(--font-body);
+  font-size: 100%;
+  line-height: var(--lh-normal);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  /* the deckle: paper that darkens toward the edges, like a sheet on a press bed */
+  background:
+    radial-gradient(125% 105% at 50% 8%,
+      var(--paper) 38%,
+      var(--paper-deep) 86%,
+      var(--paper-fold) 100%);
+}
+
+p { margin: 0; }
+
+::selection { background: oklch(50% 0.170 36 / 0.18); color: var(--ink); }
+
+/* ─────────────────────────────────────────────────────────────
+   Skip link
+   ───────────────────────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  left: var(--space-md);
+  top: -4rem;
+  z-index: 10;
+  padding: var(--space-xs) var(--space-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--red-ink);
+  background: var(--ink);
+  text-decoration: none;
+  transition: top 140ms ease;
+}
+.skip-link:focus-visible {
+  top: var(--space-md);
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   The sheet
+   ───────────────────────────────────────────────────────────── */
+.sheet {
+  position: relative;
+  min-height: 100svh;
+  padding-block: clamp(3rem, 9vh, 7rem) clamp(4rem, 14vh, 11rem);
+  padding-inline: var(--gutter);
+}
+
+/* a faint laid-paper grain — fixed, decorative, well under any accent budget */
+.sheet__grain {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      oklch(78% 0.016 78 / 0) 0 2px,
+      oklch(78% 0.016 78 / 0.05) 2px 3px);
+  mix-blend-mode: multiply;
+}
+
+.broadside {
+  position: relative;
+  z-index: 1;
+  max-width: var(--sheet-max);
+  margin-inline: auto;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Imprint band — the only chrome
+   ───────────────────────────────────────────────────────────── */
+.imprint {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 7vh, 5rem);
+}
+.imprint__line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--track-cap);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--ink-soft);
+  margin-inline: auto;
+  /* the wide tracking pushes the last cap past the box; nudge it back */
+  padding-left: var(--track-cap);
+}
+.imprint__press { color: var(--ink); }
+.imprint__dot { color: var(--red); }
+.imprint__edition {
+  margin-top: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.imprint__rule {
+  width: clamp(3.5rem, 12vw, 7rem);
+  height: 2px;
+  margin: var(--space-lg) auto 0;
+  border: 0;
+  background: var(--red);   /* the single hit of cinnabar — a press mark */
+}
+
+/* ─────────────────────────────────────────────────────────────
+   The title — set as a broadside poster line
+   ───────────────────────────────────────────────────────────── */
+.broadside__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: normal;            /* headers are roman — never italic */
+  font-size: var(--text-title);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--track-title);
+  color: var(--ink);
+  text-align: center;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  margin: 0;
+  /* a whisper of deboss — ink pressed into damp paper */
+  text-shadow: 0 1px 0 oklch(100% 0 0 / 0.35);
+}
+/* no forced nowrap — let the line break on narrow sheets */
+.broadside__title-2 {
+  display: block;
+  font-weight: 500;              /* roman — emphasis via weight, never italic (gate 38a) */
+  color: var(--ink-soft);
+}
+/* the drop-figure: an oversized initial in the printer's red */
+.broadside__drop {
+  font-size: 1.18em;
+  font-weight: 700;
+  color: var(--red);
+  line-height: 0;
+}
+
+.broadside__byline {
+  margin-top: var(--space-lg);
+  text-align: center;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 400;
+  font-size: var(--text-md);
+  color: var(--ink-soft);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   The poem — each line its own measure
+   ───────────────────────────────────────────────────────────── */
+.poem {
+  margin-top: clamp(3.5rem, 11vh, 7rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.1rem, 2.6vh, 2rem);
+  max-width: min(var(--measure), 100%);   /* never wider than the sheet */
+  margin-inline: auto;
+}
+.poem__line {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-lg);
+  line-height: var(--lh-poem);
+  letter-spacing: 0.002em;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+/* three indent registers give the set type its hand-composed rhythm */
+.poem__line--a { margin-left: 0; }
+.poem__line--b { margin-left: clamp(1rem, 4vw, 2.5rem); }
+.poem__line--c { margin-left: clamp(2rem, 8vw, 5rem); }
+
+/* the form mirrors the content: a held white space after "a line unset" */
+.poem__line--unset { position: relative; }
+.poem__held {
+  display: block;
+  height: clamp(1.4rem, 5vh, 3rem);
+}
+
+/* the closing line, set a touch heavier — the forme locking shut */
+.poem__line--last {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Colophon — the foot of the sheet
+   ───────────────────────────────────────────────────────────── */
+.colophon {
+  margin-top: clamp(4rem, 13vh, 8rem);
+  max-width: min(var(--measure), 100%);
+  margin-inline: auto;
+  text-align: center;
+}
+.colophon__rule {
+  width: 100%;
+  height: var(--rule-hair);
+  border: 0;
+  background: var(--ink-faint);   /* a confident printed hairline, not a ghost */
+  opacity: 0.55;
+  margin: 0 0 var(--space-xl);
+}
+.colophon__note {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 300;
+  font-size: var(--text-base);
+  line-height: var(--lh-normal);
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+.colophon__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+/* a CSS-drawn dinkus — a printer's ornament, not an emoji glyph */
+.colophon__fleuron {
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  background: var(--red);
+  flex: none;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   THE ONE ORCHESTRATED MOTION — ink settling onto the sheet.
+   Each poem line, the title, and the colophon ink in as they enter
+   the viewport: a faint rise + a blur-to-sharp, like wet ink finding
+   the paper. Pure CSS scroll-driven timeline; progressively enhanced.
+   Without support the lines are simply present — content never depends
+   on scroll or JS.
+   ───────────────────────────────────────────────────────────── */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .poem__line,
+    .broadside__byline,
+    .colophon__note,
+    .colophon__mark {
+      animation: ink-settle linear both;
+      animation-timeline: view();
+      animation-range: entry 4% cover 26%;
+    }
+    /* the title is already in view on load — give it its own settle */
+    .broadside__title { animation: ink-load 900ms var(--ease, ease-out) both; }
+  }
+}
+
+@keyframes ink-settle {
+  from {
+    opacity: 0;
+    transform: translateY(0.7rem);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes ink-load {
+  from { opacity: 0; transform: translateY(0.5rem); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);      filter: blur(0); }
+}
+
+/* Reduced motion: no settle, no load — the sheet is simply printed. */
+@media (prefers-reduced-motion: reduce) {
+  .poem__line,
+  .broadside__title,
+  .broadside__byline,
+  .colophon__note,
+  .colophon__mark {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Focus — keyboard users get an instant, high-contrast ring.
+   The skip link is the only interactive element on this sheet.
+   ───────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Narrow viewports — the sheet stays a sheet; indents relax so no
+   line crowds the right edge. (No horizontal scroll 320–1920px.)
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 34rem) {
+  /* relax the indents so no line crowds the right edge */
+  .poem__line--b { margin-left: 0.75rem; }
+  .poem__line--c { margin-left: 1.5rem; }
+
+  /* the wide-tracked mono caps are the main narrow-width overflow risk:
+     drop the tracking, let them wrap, remove the tracking-compensation pad */
+  .imprint__line {
+    flex-wrap: wrap;
+    letter-spacing: 0.18em;
+    padding-left: 0;
+  }
+  .imprint__edition { letter-spacing: 0.1em; }
+  .colophon__mark   { letter-spacing: 0.1em; flex-wrap: wrap; }
+}

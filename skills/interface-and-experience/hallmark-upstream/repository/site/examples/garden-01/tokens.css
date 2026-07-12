@@ -1,0 +1,138 @@
+/* Hallmark · tokens · theme: Garden (modern botanical almanac)
+ * Warm oat-cream paper · botanical-ink green · living leaf-green accent + earthy clay pop.
+ * Young Serif display · Hanken Grotesk body · Geist Mono specimen labels.
+ * Axes: paper-band = light (95.5% L) · display-style = roman-serif · accent-hue = chromatic-green (140).
+ * Every colour + font in styles.css references a token here — no inline values.
+ */
+
+:root,
+[data-theme="garden"] {
+  /* ── Surface + ink ─────────────────────────────────────────── */
+  --color-paper:    oklch(95.5% 0.022 92);   /* warm oat cream — never grey-sage */
+  --color-paper-2:  oklch(92.5% 0.026 92);   /* tinted band */
+  --color-paper-3:  oklch(88.5% 0.030 90);   /* hover / deeper */
+  --color-rule:     oklch(83%   0.028 115);  /* soft green-grey hairline */
+  --color-rule-2:   oklch(62%   0.045 132);  /* mossy rule */
+  --color-muted:    oklch(48%   0.040 138);  /* captions — muted green */
+  --color-neutral:  oklch(40%   0.045 142);
+  --color-ink-2:    oklch(33%   0.050 150);  /* deep green body */
+  --color-ink:      oklch(24%   0.052 152);  /* botanical ink — warm near-black green */
+
+  /* ── Accents ───────────────────────────────────────────────── */
+  --color-accent:     oklch(47% 0.13  140);  /* living leaf-green (primary) */
+  --color-accent-2:   oklch(54% 0.14  46);   /* earthy clay / terracotta pop */
+  --color-honey:      oklch(74% 0.155 80);   /* lifted: warm honey gold for the jar fills */
+  --color-honey-deep: oklch(63% 0.165 66);   /* honey, deeper — gradient base + comb caps */
+  --color-accent-ink: oklch(96% 0.02  92);   /* cream sitting on green / clay / honey fills */
+  --color-focus:      oklch(47% 0.13  140);
+
+  /* botanical tints — soft section bands */
+  --tint-moss: oklch(47% 0.13 140 / 0.10);
+  --tint-clay: oklch(54% 0.14 46  / 0.10);
+  --tint-comb: oklch(74% 0.155 80 / 0.16);   /* faint honeycomb wash */
+
+  /* ── Type ──────────────────────────────────────────────────── */
+  --font-display: "Young Serif", ui-serif, Georgia, serif;
+  --font-body:    "Hanken Grotesk", "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-label:   "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --display-weight: 400;          /* Young Serif ships one organic weight */
+  --display-style:  normal;       /* roman — no italic headers (gate 38a) */
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 1rem;
+  --text-md:   1.0625rem;
+  --text-lg:   1.25rem;
+  --text-xl:   1.5rem;
+  --text-2xl:  1.9375rem;
+  --text-3xl:  2.5rem;
+  --text-display:   clamp(2.7rem, 4.4vw + 1rem, 4.4rem);
+  --text-display-s: clamp(2.1rem, 3.2vw + 1rem, 3.1rem);
+
+  --tracking-display: -0.006em;
+  --tracking-tight:   -0.004em;
+  --tracking-normal:   0;
+  --tracking-label:    0.14em;    /* herbarium specimen tags */
+
+  --lh-tight:   1.06;
+  --lh-snug:    1.22;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.62;
+
+  /* ── Space (4pt scale, role-named) ─────────────────────────── */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6.5rem;
+  --space-4xl: 10rem;
+
+  --section-gap:      6.5rem;
+  --section-head-gap: 1.6rem;
+
+  --page-max:    74rem;
+  --page-gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure:     58ch;
+
+  /* ── Shape ─────────────────────────────────────────────────── */
+  --radius-card:  10px;
+  --radius-pill:  8px;
+  --radius-input: 8px;
+  --rule-hair:    0.5px;
+  --rule-fine:    1px;
+  --rule-card:    1px;
+  --shadow-card:  0 14px 34px -20px oklch(24% 0.05 150 / 0.22),
+                  0 1px 2px oklch(24% 0.05 150 / 0.08);
+  --shadow-card-hover: 0 26px 52px -24px oklch(24% 0.05 150 / 0.28),
+                       0 2px 4px oklch(24% 0.05 150 / 0.10);
+
+  /* ── Motion ────────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long:  420ms;
+
+  /* ── Z-scale (named, no freestyling) ───────────────────────── */
+  --z-base:        1;
+  --z-raised:      10;
+  --z-sticky:      200;
+  --z-sticky-nav:  300;
+  --z-skip:        600;   /* skip-link must out-paint the sticky nav */
+
+  --banner-height: 60px;
+
+  /* ── Interaction shades (button states) ────────────────────── */
+  --color-accent-press: oklch(42% 0.135 142);   /* solid CTA :hover on light */
+  --color-accent-lift:  oklch(54% 0.135 142);    /* solid CTA :hover on dark band */
+
+  /* ── Craft palette (hand-built jar + vials + honeycomb) ────── */
+  --glass:        oklch(92% 0.03 92 / 0.45);     /* jar glass body */
+  --glass-vial:   oklch(92% 0.03 92 / 0.40);     /* specimen vial glass */
+  --comb-edge:    oklch(74% 0.155 80 / 0.30);    /* honeycomb cell hairline */
+  --wood:         oklch(58% 0.07 62);            /* dipper + cork (raw wood) */
+  --collar:       oklch(48% 0.13 46);            /* jar collar (deep clay) */
+  --honey-spring: oklch(82% 0.13 88);            /* palest pour */
+  --honey-bass:   oklch(78% 0.135 96);           /* basswood */
+  --honey-autumn: oklch(60% 0.14 60);            /* darkest pour */
+  --shadow-jar:   0 18px 24px oklch(24% 0.05 150 / 0.18);
+  --shadow-vial:  0 6px 10px oklch(24% 0.05 150 / 0.16);
+  --mask-matte:   oklch(0% 0 0);                 /* mask alpha only — never painted */
+
+  /* ── Dark band (the standing-jar CTA on --color-ink) ───────── */
+  --ink-paper:    oklch(88% 0.012 110);          /* light body text on dark ink */
+  --ink-label:    oklch(82% 0.03  110);          /* field label on dark */
+  --ink-help:     oklch(78% 0.02  110);          /* field help on dark */
+  --ink-placeholder: oklch(70% 0.02 110);        /* placeholder on dark */
+  --ink-field:    oklch(30% 0.04 150);           /* input fill on dark */
+  --ink-field-2:  oklch(33% 0.045 150);          /* input fill :focus on dark */
+  --ink-field-hover: oklch(70% 0.05 132);        /* input border :hover on dark */
+  --on-dark-error:   oklch(74% 0.12 46);         /* error help on dark */
+  --on-dark-success: oklch(78% 0.13 142);        /* success help on dark */
+}

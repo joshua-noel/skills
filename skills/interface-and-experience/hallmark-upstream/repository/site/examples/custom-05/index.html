@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hollow Coast — field recordings by Wren Auclair</title>
+  <meta name="description" content="A scrubbable index of field recordings: shorelines, weather, rooms and machines, captured on location by sound artist Wren Auclair.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,360;9..144,460;9..144,560;9..144,640&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#signal">Skip to the recordings</a>
+
+  <!-- ── Banner ─────────────────────────────────────── -->
+  <header class="banner" role="banner">
+    <div class="banner__inner">
+      <a class="wordmark" href="#top" aria-label="Hollow Coast — home">
+        <span class="wordmark__rec" aria-hidden="true"></span>
+        <span class="wordmark__name">Hollow Coast</span>
+        <span class="wordmark__by">field recordings — Wren Auclair</span>
+      </a>
+      <p class="banner__clock" aria-live="off">
+        <span class="banner__pos" data-clock>00:00</span>
+        <span class="banner__total">/ 41:30</span>
+        <span class="banner__here" data-here>Signal</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- ── The waveform-timeline · this IS the navigation ── -->
+  <nav class="timeline" aria-label="Recordings timeline" id="timeline">
+    <div class="timeline__inner">
+      <span class="timeline__lede" aria-hidden="true">scrub the tape</span>
+
+      <!-- Drawn waveform (not audio). aria-hidden: the real nav is the link list below it. -->
+      <div class="wave" data-wave aria-hidden="true">
+        <div class="wave__played" data-played></div>
+        <svg class="wave__svg" viewBox="0 0 1000 100" preserveAspectRatio="none" focusable="false">
+          <g data-bars></g>
+        </svg>
+        <span class="wave__playhead" data-playhead></span>
+      </div>
+
+      <!-- Markers = section links. Real anchors; usable with motion off. -->
+      <ol class="markers" data-markers>
+        <li><a class="marker" href="#signal"  data-marker style="--at:0%"><span class="marker__t">00:00</span><span class="marker__n">Signal</span></a></li>
+        <li><a class="marker" href="#shore"   data-marker style="--at:18%"><span class="marker__t">07:12</span><span class="marker__n">Shorelines</span></a></li>
+        <li><a class="marker" href="#weather" data-marker style="--at:38%"><span class="marker__t">15:48</span><span class="marker__n">Weather</span></a></li>
+        <li><a class="marker" href="#rooms"   data-marker style="--at:58%"><span class="marker__t">24:03</span><span class="marker__n">Rooms &amp; machines</span></a></li>
+        <li><a class="marker" href="#method"  data-marker style="--at:80%"><span class="marker__t">33:20</span><span class="marker__n">Method</span></a></li>
+        <li><a class="marker" href="#studio"  data-marker style="--at:96%"><span class="marker__t">40:00</span><span class="marker__n">Studio</span></a></li>
+      </ol>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ── 00:00 · Signal (intro / the why) ───────────── -->
+    <section class="signal" id="signal" aria-labelledby="signal-h" tabindex="-1">
+      <div class="shell signal__grid">
+        <p class="stamp"><span class="stamp__t">00:00</span> Signal</p>
+        <h1 class="signal__title" id="signal-h">
+          Some places only<br>say what they are<br><span class="signal__em">when no one&nbsp;speaks.</span>
+        </h1>
+        <div class="signal__body">
+          <p class="lede">
+            Hollow Coast is a working index of field recordings — shorelines at the turn
+            of the tide, weather arriving over open ground, the slow breathing of empty
+            rooms and the machines that keep them. No music. Only what was already there.
+          </p>
+          <p class="signal__note">
+            The page is a single tape. Drag the waveform above, or let it run as you read.
+            Each marker is a recording — its time on the reel, its place, its length.
+          </p>
+        </div>
+        <dl class="reel" aria-label="Reel summary">
+          <div><dt>Reel</dt><dd>No. 09 — coastal winter</dd></div>
+          <div><dt>Length</dt><dd class="mono">41:30</dd></div>
+          <div><dt>Captured</dt><dd>Brindle Sound · 54.1°N</dd></div>
+          <div><dt>Format</dt><dd>96 kHz / 24-bit, ambisonic</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ── The works · a tape index, not a card grid ──── -->
+    <section class="reelworks" aria-label="Recordings">
+
+      <article class="track track--a" id="shore" aria-labelledby="shore-h" tabindex="-1">
+        <div class="shell track__grid">
+          <header class="track__head">
+            <p class="stamp"><span class="stamp__t">07:12</span> Shorelines</p>
+            <h2 class="track__title" id="shore-h">Brindle Sound, low water</h2>
+          </header>
+          <p class="track__loc mono">54.142°N&nbsp;&nbsp;3.018°W · 14:11</p>
+          <p class="track__copy">
+            Forty minutes before the lowest tide of the year. Shingle drains between waves;
+            the whole beach ticks as the water lets go of it. A curlew, twice, far off.
+            Recorded prone, mics a hand's width from the wet stone.
+          </p>
+          <figure class="minwave" aria-label="Quiet recording: long even draws of shingle with two sharp bird calls">
+            <svg viewBox="0 0 600 60" preserveAspectRatio="none" focusable="false" data-minwave></svg>
+            <figcaption class="mono">11:42 · stereo pair</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="track track--b" id="weather" aria-labelledby="weather-h" tabindex="-1">
+        <div class="shell track__grid">
+          <header class="track__head">
+            <p class="stamp"><span class="stamp__t">15:48</span> Weather</p>
+            <h2 class="track__title" id="weather-h">A front comes in over the flats</h2>
+          </header>
+          <p class="track__loc mono">54.097°N&nbsp;&nbsp;3.106°W · 06:30</p>
+          <p class="track__copy">
+            No shelter for two miles, so the wind has nothing to hold and nothing to break it.
+            It arrives as pressure first, then as a long unbroken sheet of rain on standing
+            water. The loudest thing here is also the emptiest.
+          </p>
+          <figure class="minwave" aria-label="A rising, dense recording: pressure building into a sustained wall of rain">
+            <svg viewBox="0 0 600 60" preserveAspectRatio="none" focusable="false" data-minwave></svg>
+            <figcaption class="mono">08:15 · wind-shielded mono</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="track track--a" id="rooms" aria-labelledby="rooms-h" tabindex="-1">
+        <div class="shell track__grid">
+          <header class="track__head">
+            <p class="stamp"><span class="stamp__t">24:03</span> Rooms &amp; machines</p>
+            <h2 class="track__title" id="rooms-h">The pump house, after hours</h2>
+          </header>
+          <p class="track__loc mono">53.998°N&nbsp;&nbsp;2.940°W · 23:40</p>
+          <p class="track__copy">
+            A brick room the size of a chapel, one motor turning over once a minute to keep
+            the level. Between cycles the room rings — a low, patient note you feel before
+            you hear. I left the recorder running and stood very still until it forgot me.
+          </p>
+          <figure class="minwave" aria-label="A sparse recording: a steady low hum punctuated by a slow regular mechanical pulse">
+            <svg viewBox="0 0 600 60" preserveAspectRatio="none" focusable="false" data-minwave></svg>
+            <figcaption class="mono">19:58 · ambisonic A-format</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ── 33:20 · Method (field-notes aside, broken rhythm) ── -->
+    <section class="method" id="method" aria-labelledby="method-h" tabindex="-1">
+      <div class="shell method__grid">
+        <header class="method__head">
+          <p class="stamp"><span class="stamp__t">33:20</span> Method</p>
+          <h2 class="method__title" id="method-h">How the quiet gets kept</h2>
+        </header>
+        <p class="method__lede">
+          Nothing here is sweetened. The work is choosing where to stand, how long to wait,
+          and what to leave in.
+        </p>
+        <ul class="notes" aria-label="Working notes">
+          <li class="note">
+            <span class="note__k mono">01</span>
+            <p>Arrive early enough to be boring. Wildlife and weather both ignore a person
+               who has stopped being interesting, which is usually about twenty minutes.</p>
+          </li>
+          <li class="note">
+            <span class="note__k mono">02</span>
+            <p>The room is an instrument. A pump house, a stairwell, a culvert — each has a
+               note it wants to hold. The recording is mostly about finding it.</p>
+          </li>
+          <li class="note">
+            <span class="note__k mono">03</span>
+            <p>Keep the long takes. The minute before something happens is the recording;
+               the event is just punctuation.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── 40:00 · Studio (closing, off-axis CTA) ─────── -->
+    <section class="studio" id="studio" aria-labelledby="studio-h" tabindex="-1">
+      <div class="shell studio__grid">
+        <p class="stamp stamp--ink"><span class="stamp__t">40:00</span> Studio</p>
+        <h2 class="studio__title" id="studio-h">Borrow the&nbsp;tape.</h2>
+        <p class="studio__copy">
+          Recordings are available for film, installation and broadcast, and the full reels
+          are open for listening by appointment in the studio at Brindle. Tell me the room
+          you are trying to fill.
+        </p>
+        <div class="studio__actions">
+          <a class="btn" href="#signal">Request a reel</a>
+          <a class="btn btn--ghost" href="#timeline">Back to the tape</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer · a transport bar, not a 4-column block ── -->
+  <footer class="transport" role="contentinfo">
+    <div class="shell transport__inner">
+      <p class="transport__mark">
+        <span class="transport__t mono">[ END · 41:30 ]</span>
+        Hollow Coast — field recordings by Wren Auclair
+      </p>
+      <address class="transport__addr">
+        Studio at Brindle Sound · listening by appointment<br>
+        <a href="#studio">reels@hollowcoast.example</a> · 54.1°N 3.0°W
+      </address>
+      <p class="transport__fine mono">Recorded on location. Nothing added. © 2026.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

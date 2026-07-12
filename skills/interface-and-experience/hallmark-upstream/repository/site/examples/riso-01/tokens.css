@@ -1,0 +1,110 @@
+/* Hallmark · tokens — RISO theme (catalog)
+   Risograph print · warm peach paper · riso cyan + yellow accents.
+   Public Sans 800 display, off-register CMYK misregistration via text-shadow.
+   Newsreader body serif. Space Mono outlier for catalogue labels.
+   Diversification axes — paper-band: light (L 91%) · display-style: risograph-bold · accent-hue: cool (cyan 220).
+   Every colour + font in styles.css references a token here. No inline values. */
+
+:root {
+  /* ── Palette (riso) ───────────────────────────────────────── */
+  --color-paper:      oklch(91%    0.034 30);
+  --color-paper-2:    oklch(87%    0.040 30);
+  --color-paper-3:    oklch(82%    0.046 30);
+  --color-rule:       oklch(70%    0.040 30);
+  --color-rule-2:     oklch(56%    0.060 30);
+  --color-muted:      oklch(46%    0.060 30);
+  --color-neutral:    oklch(34%    0.060 30);
+  --color-ink-2:      oklch(22%    0.060 30);
+  --color-ink:        oklch(18%    0.060 30);
+  --color-accent:     oklch(58%    0.170 220);   /* riso cyan / teal — hairlines, underlines, hovers */
+  --color-accent-deep: oklch(48%   0.170 220);   /* deeper cyan for filled buttons (AA text ≥ 5:1) */
+  --color-accent-2:   oklch(78%    0.180 95);    /* riso yellow */
+  --color-accent-3:   oklch(60%    0.200 12);    /* riso fluoro-pink (single moment) */
+  --color-accent-ink: oklch(42%    0.135 224);   /* deep cyan — AA text on peach paper (≥ 4.5:1) */
+  --color-focus:      oklch(48%    0.170 220);   /* darker cyan — AA-contrast focus ring (≥ 3:1) */
+  --color-on-accent:  oklch(98%    0.012 30);    /* paper-tint text on a cyan fill */
+  --color-on-accent-2: oklch(18%   0.060 30);    /* ink on a yellow fill */
+
+  /* overprint tints — used by the hand-built riso art (multiply blend) */
+  --ink-cyan:    oklch(58% 0.170 220 / 0.92);
+  --ink-yellow:  oklch(80% 0.180 95 / 0.90);
+  --ink-pink:    oklch(62% 0.200 12 / 0.88);
+
+  /* ── Type ─────────────────────────────────────────────────── */
+  --font-display: "Public Sans", "Albert Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Newsreader", "Tiempos", ui-serif, Georgia, serif;
+  --font-serif:   "Newsreader", ui-serif, Georgia, serif;
+  --font-label:   "Space Mono", "Geist Mono", ui-monospace, monospace;  /* catalogue labels / outlier */
+  --font-mono:    "Space Mono", "Geist Mono", ui-monospace, monospace;
+
+  --display-weight: 800;
+  --display-style:  normal;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1.0625rem;
+  --text-md:   1.1875rem;
+  --text-lg:   1.375rem;
+  --text-xl:   1.75rem;
+  --text-2xl:  2.25rem;
+  --text-3xl:  2.875rem;
+  --text-display:   clamp(3rem, 4.6vw + 1rem, 5.25rem);   /* capped for the 52-char hero — gravity, not drama */
+  --text-display-s: clamp(2.25rem, 3.5vw + 1rem, 3.5rem);
+
+  --lh-tight:   0.92;
+  --lh-snug:    1.10;
+  --lh-normal:  1.55;
+  --lh-relaxed: 1.65;
+
+  --tracking-display: -0.04em;
+  --tracking-tight:   -0.014em;
+  --tracking-normal:  0;
+  --tracking-label:   0.18em;
+
+  /* ── Space (4pt scale) ────────────────────────────────────── */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
+
+  --section-gap:      6rem;
+  --section-head-gap: 1.5rem;
+
+  --page-max:    78rem;
+  --page-gutter: clamp(1.25rem, 4vw, 3rem);
+  --measure:     62ch;
+
+  --rule-hair: 1px;
+  --rule-fine: 2px;
+
+  /* ── Shape ────────────────────────────────────────────────── */
+  --radius-card:  2px;
+  --radius-pill:  2px;
+  --radius-input: 2px;
+  --rule-card:    1px;
+  --shadow-card:  none;
+
+  /* ── Motion ───────────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long:  420ms;
+
+  /* ── Z-index (named) ──────────────────────────────────────── */
+  --z-base:        1;
+  --z-raised:      10;
+  --z-dropdown:    100;
+  --z-sticky:      200;
+  --z-sticky-nav:  300;
+  --z-modal:       400;
+  --z-toast:       500;
+  --z-tooltip:     600;
+}

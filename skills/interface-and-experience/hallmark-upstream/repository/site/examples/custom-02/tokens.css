@@ -1,0 +1,103 @@
+/* Hallmark · custom tokens — one-off system for the Cascadia Nightjar ticket.
+   Not a catalog theme; not written back to site/css/tokens.css.
+   Palette: warm unbleached ticket card stock + ink-navy night + a single
+   vermilion validation-stamp accent. Sea-teal is a structural rail tint only. */
+
+:root {
+  /* ── Surfaces · warm unbleached card stock (dusk paper), no pure #fff ── */
+  --stock:        oklch(93.5% 0.016 78);   /* the ticket card itself */
+  --stock-2:      oklch(91%   0.020 76);   /* stub / recessed panels */
+  --stock-3:      oklch(88%   0.024 72);   /* punched / fare strip */
+  --canvas:       oklch(86%   0.022 70);   /* the desk the ticket sits on */
+  --canvas-edge:  oklch(82%   0.026 66);   /* outer vignette of the desk */
+
+  /* ── Rules · printed hairlines, tinted toward the stock hue ── */
+  --rule:         oklch(78% 0.020 70);
+  --rule-strong:  oklch(64% 0.022 66);
+  --perf:         oklch(72% 0.022 68);     /* perforation notch shadow */
+
+  /* ── Ink · deep night-navy, never pure #000 ── */
+  --ink:          oklch(26% 0.030 252);    /* primary print */
+  --ink-2:        oklch(34% 0.028 250);    /* secondary print */
+  --muted:        oklch(46% 0.024 248);    /* labels, fine print */
+  --faint:        oklch(58% 0.020 246);    /* tertiary / disabled print */
+
+  /* ── Accent · vermilion validation stamp (the one signal) ── */
+  --stamp:        oklch(56% 0.190 32);
+  --stamp-ink:    oklch(97% 0.012 60);     /* text on a stamp fill */
+  --stamp-soft:   oklch(56% 0.190 32 / 0.10);
+
+  /* ── Rail · muted sea-teal · structural timeline only (kept tiny) ── */
+  --rail:         oklch(54% 0.060 215);
+  --rail-soft:    oklch(54% 0.060 215 / 0.16);
+
+  --focus:        oklch(50% 0.140 252);    /* keyboard ring — ≥3:1 on stock */
+
+  /* ── Text on the ink-filled wallet button (hint line) ── */
+  --on-ink-faint: oklch(82% 0.020 252);
+
+  /* ── Cast shadow of the lifted card (derived from ink) ── */
+  --cast-soft:    oklch(26% 0.030 252 / 0.18);
+  --cast-deep:    oklch(26% 0.030 252 / 0.45);
+
+  /* ── Type · characterful free Google faces · none on the ban-list ──
+     display: Bodoni Moda (engraved didone masthead / rail-poster nameplate)
+     body:    Spectral (refined screen serif, strong at itinerary sizes)
+     code:    Space Mono (dot-matrix booking / coach / berth / time codes) */
+  --font-display: "Bodoni Moda", "Times New Roman", Georgia, serif;
+  --font-body:    "Spectral", Georgia, "Times New Roman", serif;
+  --font-code:    "Space Mono", ui-monospace, "Cascadia Mono", monospace;
+
+  /* ── Type scale ── */
+  --text-2xs:  0.6875rem;
+  --text-xs:   0.75rem;
+  --text-sm:   0.8125rem;
+  --text-base: 0.95rem;
+  --text-md:   1.0625rem;
+  --text-lg:   1.3125rem;
+  --text-xl:   1.6875rem;
+  --text-2xl:  2.125rem;
+  --text-3xl:  clamp(2.5rem, 4vw + 1rem, 3.5rem);
+
+  --lh-tight:   1.04;
+  --lh-snug:    1.22;
+  --lh-normal:  1.5;
+  --lh-relaxed: 1.62;
+
+  --track-stamp:  0.34em;   /* wide letterspacing for printed mono labels */
+  --track-label:  0.18em;
+  --track-tight: -0.01em;
+
+  /* ── Spacing · multiples of 4px on a named scale ── */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* ── Object geometry · the drawn ticket furniture ── */
+  --ticket-w:    42rem;     /* the ticket's natural width */
+  --perf-gap:    13px;      /* notch pitch along the tear edge */
+  --perf-r:      6px;       /* notch radius */
+  --radius:      3px;       /* slight card-corner round, like cut stock */
+  --hair:        1px;
+  --node:        13px;      /* timeline station dot diameter */
+  --stamp-size:  6.6rem;    /* validation puck diameter (desktop) */
+  --stamp-size-s: 4.8rem;   /* validation puck diameter (narrow) */
+  --stamp-clear: 6rem;      /* nameplate right-inset so the title clears the puck on narrow */
+
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 130ms;
+  --dur-short: 260ms;
+  --dur-long:  680ms;
+
+  --z-base:    1;
+  --z-raised:  10;
+  --z-stamp:   20;
+}

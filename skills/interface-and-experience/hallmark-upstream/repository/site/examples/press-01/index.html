@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en" data-theme="press">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Bríd Halloran — experimental typographer · concrete poetry, variable fonts, broken-grid posters</title>
+  <meta name="description" content="Bríd Halloran sets type that won't hold still: concrete poems, variable-font specimens you can pull by hand, and posters built on a grid she breaks on purpose. A working studio in Cork." />
+
+  <!-- inline mark — a red square, the studio's only logo; avoids a favicon 404 -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23151013'/%3E%3Crect x='3' y='3' width='10' height='10' fill='%23e0452f'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=JetBrains+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- N3 · Side-rail — rotated wordmark + section dot index. The vertical
+       type is itself a small typographic argument. -->
+  <nav class="rail" aria-label="Primary">
+    <a class="rail__mark" href="#top">
+      <span class="rail__name">Bríd Halloran</span>
+      <span class="rail__role" aria-hidden="true">typographer</span>
+    </a>
+    <ul class="rail__dots" aria-label="Sections">
+      <li><a href="#living" data-label="Living specimen"><span class="rail__dot"></span></a></li>
+      <li><a href="#weights" data-label="The family"><span class="rail__dot"></span></a></li>
+      <li><a href="#concrete" data-label="Concrete poetry"><span class="rail__dot"></span></a></li>
+      <li><a href="#poster" data-label="Broken grid"><span class="rail__dot"></span></a></li>
+      <li><a href="#work" data-label="Selected work"><span class="rail__dot"></span></a></li>
+      <li><a href="#studio" data-label="The studio"><span class="rail__dot"></span></a></li>
+    </ul>
+    <a class="rail__year" href="#studio">Cork · MMXXVI</a>
+  </nav>
+
+  <div class="shell" id="top">
+    <main id="main">
+
+      <!-- ───────── HERO · the living specimen ───────── -->
+      <section class="hero" id="living" aria-labelledby="hero-h">
+        <p class="hero__slug reveal" style="--i:0">
+          Press Quaternary <span aria-hidden="true">— </span>a working type studio. Bríd Halloran sets letters that refuse to sit still.
+        </p>
+
+        <h1 class="hero__h" id="hero-h">
+          <span class="reveal" style="--i:1">A typeface is</span>
+          <span class="reveal" style="--i:2">a verb, not</span>
+          <span class="reveal" style="--i:3">a noun.</span>
+        </h1>
+
+        <!-- The colossal word IS the imagery — a live variable specimen the
+             reader can pull by hand. Ambient breathing on the weight/width axes;
+             the slider overrides it. Pure CSS + a small JS bridge. -->
+        <figure class="specimen-live reveal" style="--i:4" aria-labelledby="live-cap">
+          <div class="specimen-live__stage">
+            <span class="specimen-live__word" id="liveWord" aria-hidden="true">Restless</span>
+          </div>
+          <figcaption class="specimen-live__panel" id="live-cap">
+            <div class="axis">
+              <div class="axis__row">
+                <label class="axis__label" for="axWght">Weight<span class="axis__val" id="wghtVal">320</span></label>
+                <input class="axis__range" id="axWght" type="range" min="200" max="800" value="320" step="1"
+                  aria-describedby="axis-help" />
+              </div>
+              <div class="axis__row">
+                <label class="axis__label" for="axWdth">Width<span class="axis__val" id="wdthVal">100</span></label>
+                <input class="axis__range" id="axWdth" type="range" min="75" max="100" value="100" step="1"
+                  aria-describedby="axis-help" />
+              </div>
+              <div class="axis__row">
+                <label class="axis__label" for="axOpsz">Optical<span class="axis__val" id="opszVal">96</span></label>
+                <input class="axis__range" id="axOpsz" type="range" min="12" max="96" value="96" step="1"
+                  aria-describedby="axis-help" />
+              </div>
+              <p class="axis__help" id="axis-help">
+                Pull the axes. The word reads <em>Restless</em> by design — that is the point of a variable face.
+              </p>
+            </div>
+          </figcaption>
+        </figure>
+
+        <a class="link-arrow hero__cta reveal" style="--i:5" href="#work">
+          <span>See the work</span>
+          <svg class="link-arrow__glyph" viewBox="0 0 24 12" width="32" height="16" aria-hidden="true">
+            <path d="M0 6h22M17 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+        </a>
+      </section>
+
+      <!-- ───────── SPECIMEN · the family, set at sizes ───────── -->
+      <section class="proof" id="weights" aria-labelledby="weights-h">
+        <header class="plate-head">
+          <p class="plate-head__no" aria-hidden="true">Plate 01</p>
+          <h2 class="plate-head__title" id="weights-h">Quaternary Grotesque</h2>
+          <p class="plate-head__sub">Six masters on one weight axis, one width axis, one optical size. Drawn 2024–2026. Latin Extended, set here at the sizes it was made to do work at.</p>
+        </header>
+
+        <ol class="weights" aria-label="Weights, light to bold">
+          <li class="weights__row" data-w="240">
+            <span class="weights__tag">Thin · 240</span>
+            <p class="weights__line" style="font-variation-settings:'wght' 240,'opsz' 96;">Hairlines hold at billboard size.</p>
+          </li>
+          <li class="weights__row" data-w="340">
+            <span class="weights__tag">Book · 340</span>
+            <p class="weights__line" style="font-variation-settings:'wght' 340,'opsz' 64;">Reads quiet in a paragraph, loud on a wall.</p>
+          </li>
+          <li class="weights__row" data-w="480">
+            <span class="weights__tag">Medium · 480</span>
+            <p class="weights__line" style="font-variation-settings:'wght' 480,'opsz' 48;">A working middle, for captions and credits.</p>
+          </li>
+          <li class="weights__row" data-w="620">
+            <span class="weights__tag">Semibold · 620</span>
+            <p class="weights__line" style="font-variation-settings:'wght' 620,'opsz' 40;">Where a headline starts to push back.</p>
+          </li>
+          <li class="weights__row" data-w="800">
+            <span class="weights__tag">Black · 800</span>
+            <p class="weights__line" style="font-variation-settings:'wght' 800,'opsz' 24,'wdth' 92;">Set it once. Let it shout.</p>
+          </li>
+        </ol>
+
+        <dl class="glyphset" aria-label="Glyph and feature coverage">
+          <div class="glyphset__cell">
+            <dt>Character set</dt>
+            <dd>Latin Extended-A · 642 glyphs</dd>
+          </div>
+          <div class="glyphset__cell">
+            <dt>Figures</dt>
+            <dd>Lining, oldstyle, tabular, fractions</dd>
+          </div>
+          <div class="glyphset__cell">
+            <dt>Axes</dt>
+            <dd>Weight 200–800 · Width 75–100 · Optical 12–96</dd>
+          </div>
+          <div class="glyphset__cell">
+            <dt>Format</dt>
+            <dd>Variable OTF · WOFF2 · one file</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- ───────── CONCRETE POETRY · a calligramme, set by hand ───────── -->
+      <section class="concrete" id="concrete" aria-labelledby="concrete-h">
+        <header class="plate-head plate-head--ink">
+          <p class="plate-head__no" aria-hidden="true">Plate 02</p>
+          <h2 class="plate-head__title" id="concrete-h">Concrete poetry</h2>
+          <p class="plate-head__sub">The shape carries the meaning. Below: <em>“Rain on the Lee,”</em> set so the lines fall the way the rain does — typography as the picture, not its caption.</p>
+        </header>
+
+        <!-- Calligramme: the poem arranged into falling rain using pure CSS
+             transforms. Decorative as art, but fully readable as text. -->
+        <figure class="poem" aria-labelledby="poem-cap">
+          <p class="poem__visually-hidden">
+            Rain on the Lee, a concrete poem. The words fall down the page in slanting lines,
+            faster and heavier toward the bottom, where they pool into the single word: river.
+          </p>
+          <div class="poem__field" aria-hidden="true">
+            <span class="poem__w" style="--c:1;--r:1;--rot:-4deg;--w:300">slow</span>
+            <span class="poem__w" style="--c:4;--r:1;--rot:-7deg;--w:320">at</span>
+            <span class="poem__w" style="--c:7;--r:1;--rot:-5deg;--w:340">first</span>
+            <span class="poem__w" style="--c:2;--r:2;--rot:-9deg;--w:360">the</span>
+            <span class="poem__w" style="--c:5;--r:2;--rot:-8deg;--w:380">grey</span>
+            <span class="poem__w" style="--c:8;--r:2;--rot:-6deg;--w:360">comes</span>
+            <span class="poem__w" style="--c:1;--r:3;--rot:-11deg;--w:420">down</span>
+            <span class="poem__w" style="--c:4;--r:3;--rot:-10deg;--w:440">the</span>
+            <span class="poem__w" style="--c:7;--r:3;--rot:-9deg;--w:420">quays</span>
+            <span class="poem__w" style="--c:3;--r:4;--rot:-13deg;--w:520">harder</span>
+            <span class="poem__w" style="--c:6;--r:4;--rot:-12deg;--w:540">now</span>
+            <span class="poem__w" style="--c:2;--r:5;--rot:-15deg;--w:640">faster</span>
+            <span class="poem__w" style="--c:6;--r:5;--rot:-14deg;--w:660">heavier</span>
+            <span class="poem__w poem__w--pool" style="--c:4;--r:6;--rot:0deg;--w:800">river</span>
+          </div>
+          <figcaption class="poem__cap" id="poem-cap">
+            <span class="poem__title">Rain on the Lee</span>
+            <span class="poem__meta">Calligramme · Quaternary Grotesque · set by hand, 2025</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- ───────── BROKEN-GRID POSTER · the plate she breaks on purpose ───────── -->
+      <section class="proof" id="poster" aria-labelledby="poster-h">
+        <header class="plate-head">
+          <p class="plate-head__no" aria-hidden="true">Plate 03</p>
+          <h2 class="plate-head__title" id="poster-h">Broken-grid posters</h2>
+          <p class="plate-head__sub">A twelve-column grid is a promise. I keep it just long enough that breaking it means something. One element always crosses the line on purpose.</p>
+        </header>
+
+        <figure class="poster" aria-labelledby="poster-cap">
+          <div class="poster__plate">
+            <span class="poster__baseline" aria-hidden="true"></span>
+            <span class="poster__kicker">Lent Series · Triskel</span>
+            <h3 class="poster__title" aria-hidden="true">
+              <span class="poster__word poster__word--a">OFF</span>
+              <span class="poster__word poster__word--b">THE</span>
+              <span class="poster__word poster__word--c">GRID</span>
+            </h3>
+            <span class="poster__vis-hidden">Poster reading: Off the Grid — a night of new typography, Triskel Arts Centre.</span>
+            <p class="poster__line poster__line--date">Fri 14 March · 8pm</p>
+            <p class="poster__line poster__line--place">Triskel Arts Centre, Tobin Street</p>
+            <span class="poster__bleed" aria-hidden="true">14</span>
+          </div>
+          <figcaption class="poster__cap" id="poster-cap">
+            The numeral bleeds past the right margin — the only element allowed to cross.
+            Everything else holds the grid so the break reads as a decision, not an accident.
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- ───────── SELECTED WORK · tabular index (F3) ───────── -->
+      <section class="work" id="work" aria-labelledby="work-h">
+        <header class="plate-head plate-head--ink">
+          <p class="plate-head__no" aria-hidden="true">Index</p>
+          <h2 class="plate-head__title" id="work-h">Selected work</h2>
+          <p class="plate-head__sub">Eleven years, set in a ledger. Type design, identities, poster series, and the occasional book — each with whoever commissioned it.</p>
+        </header>
+
+        <ol class="ledger" aria-label="Selected work, newest first">
+          <li class="ledger__row">
+            <span class="ledger__year">2026</span>
+            <span class="ledger__name">Quaternary Grotesque</span>
+            <span class="ledger__kind">Variable typeface · self-released</span>
+          </li>
+          <li class="ledger__row">
+            <span class="ledger__year">2025</span>
+            <span class="ledger__name">Rain on the Lee</span>
+            <span class="ledger__kind">Concrete poem · Cork Midsummer</span>
+          </li>
+          <li class="ledger__row">
+            <span class="ledger__year">2025</span>
+            <span class="ledger__name">Off the Grid · poster series</span>
+            <span class="ledger__kind">Identity &amp; print · Triskel Arts Centre</span>
+          </li>
+          <li class="ledger__row">
+            <span class="ledger__year">2024</span>
+            <span class="ledger__name">Strand &amp; Marsh</span>
+            <span class="ledger__kind">Bespoke wordmark · a saltmarsh distillery</span>
+          </li>
+          <li class="ledger__row">
+            <span class="ledger__year">2023</span>
+            <span class="ledger__name">The Compositor’s Almanac</span>
+            <span class="ledger__kind">204-page book · designed &amp; typeset</span>
+          </li>
+          <li class="ledger__row">
+            <span class="ledger__year">2022</span>
+            <span class="ledger__name">Marsh Mono</span>
+            <span class="ledger__kind">Monospace family · for a print zine</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ───────── THE STUDIO · the close + contact ───────── -->
+      <section class="studio" id="studio" aria-labelledby="studio-h">
+        <h2 class="studio__h" id="studio-h">Set by hand, in Cork.</h2>
+        <div class="studio__cols">
+          <p class="studio__lede">
+            I draw type, set poems into shapes, and make posters that argue with their own grid.
+            Most of it starts on tracing paper and ends as one variable file. I take a few
+            commissions a year — identities that need a face nobody else has, and print
+            that wants to be read across a room.
+          </p>
+
+          <!-- Inline form-as-CTA (C2). Eight input states; helper slot reserved. -->
+          <form class="enquire" id="enquire" novalidate>
+            <label class="enquire__label" for="enq-email">Start a conversation</label>
+            <div class="enquire__row">
+              <input class="enquire__input" id="enq-email" name="email" type="email"
+                inputmode="email" autocomplete="email" placeholder="you@studio.com"
+                aria-describedby="enq-help" required />
+              <button class="btn enquire__btn" type="submit">
+                <span class="btn__label">Send a note</span>
+              </button>
+            </div>
+            <p class="enquire__help" id="enq-help" aria-live="polite">A real reply, from me, within a few days.</p>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ───────── Ft1 · Mast-headed footer ───────── -->
+    <footer class="foot" role="contentinfo">
+      <p class="foot__mark">Press Quaternary</p>
+      <p class="foot__tag">The studio of Bríd Halloran — type, poems, and posters, set against the grid.</p>
+      <p class="foot__set">
+        Set in Bricolage Grotesque &amp; Fraunces, with JetBrains Mono for the margins.
+        Proofed in Cork. <span class="foot__sep" aria-hidden="true">·</span> © 2026 Bríd Halloran.
+      </p>
+      <p class="foot__links">
+        <a href="#living">Top</a>
+        <span class="foot__sep" aria-hidden="true">·</span>
+        <a href="mailto:studio@pressquaternary.example">studio@pressquaternary.example</a>
+        <span class="foot__sep" aria-hidden="true">·</span>
+        <a href="#work">Specimen PDF</a>
+      </p>
+    </footer>
+  </div>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,633 @@
+/* Hallmark · route: custom · structure: an interactive periodic table IS the page — element-tile grid as primary nav, sticky assay panel reveals the selected blend · idea: "the menu is a taxonomy: rows = process, columns = body; selecting an element opens its dossier" · paper: oklch(95.5% 0.012 75) · accent: oklch(52.5% 0.16 36) · display: Fraunces · body: Newsreader · gates: all-pass · v1.1 */
+/* Hallmark · pre-emit critique: P5 H5 E5 S5 R4 V5 */
+/* axes: warm-parchment / characterful-soft-serif / hot-vermilion
+ * contrast: pass (46–50) · nav: edge-aligned masthead · footer: Ft5 statement · slop: pass (51–55)
+ * honest: pass (56) · chrome: pass (57) · tokens: pass (58) · responsive: pass (59) · icons: pass (60)
+ * mobile: pass (36, 59, 61–69)
+ */
+
+/* ===================================================================
+   Reset + base
+   =================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { overflow-x: clip; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--lh-body);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, p, dl, dd, ul, figure { margin: 0; }
+ul { list-style: none; padding: 0; }
+
+button { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-ink);
+}
+
+.visually-hidden,
+.skip-link:not(:focus):not(:focus-within) {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: var(--space-2xs);
+  left: var(--space-2xs);
+  z-index: 999;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: var(--space-2xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-data);
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+/* ===================================================================
+   Masthead — edge-aligned, NOT the wordmark+links+button AI default
+   =================================================================== */
+.masthead {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky-nav);
+  background: color-mix(in oklch, var(--color-paper) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.masthead__inner {
+  max-width: var(--maxw-page);
+  margin-inline: auto;
+  padding: var(--space-sm) var(--space-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.wordmark {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  column-gap: var(--space-xs);
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-ink);
+}
+
+.wordmark__mark {
+  grid-row: 1 / 3;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1;
+  width: 2.1rem; height: 2.1rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-line-2);
+  border-radius: var(--radius-sm);
+  color: var(--color-ink);
+  background: var(--color-paper-2);
+}
+
+.wordmark__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-md);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.wordmark__sub {
+  font-family: var(--font-data);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  line-height: 1.1;
+}
+
+.masthead__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.masthead__nav a {
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-2);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur) var(--ease-out),
+              color var(--dur) var(--ease-out);
+}
+.masthead__nav a:hover { color: var(--color-accent); border-color: var(--color-accent); }
+
+/* ===================================================================
+   Intro / central explainer
+   =================================================================== */
+.intro {
+  /* hero pads heavier at the bottom (gate 44): it sits INTO the table
+     below rather than floating. block-end ≈ 2× block-start. */
+  max-width: var(--maxw-page);
+  margin-inline: auto;
+  padding: var(--space-2xl) var(--space-lg) var(--space-4xl);
+}
+
+.eyebrow {
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
+}
+
+.intro__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.018em;
+  max-width: 20ch;
+  overflow-wrap: anywhere;
+  min-width: 0;
+  text-wrap: balance;
+}
+
+.intro__lede {
+  margin-top: var(--space-lg);
+  max-width: var(--maxw-prose);
+  font-size: var(--text-md);
+  color: var(--color-ink-2);
+}
+
+.axes {
+  margin-top: var(--space-xl);
+  display: grid;
+  gap: var(--space-sm);
+  max-width: 60ch;
+  border-top: 1px solid var(--color-line);
+  padding-top: var(--space-lg);
+}
+.axes__row {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: var(--space-md);
+  align-items: baseline;
+}
+.axes dt {
+  font-family: var(--font-data);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+.axes dd {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}
+
+/* ===================================================================
+   Catalog — table + assay, side by side on wide screens
+   =================================================================== */
+.catalog {
+  max-width: var(--maxw-page);
+  margin-inline: auto;
+  padding: 0 var(--space-lg) var(--space-3xl);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 21rem;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.catalog__grid-wrap { min-width: 0; }
+
+/* legend ----------------------------------------------------------- */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-md);
+  font-family: var(--font-data);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-2);
+}
+.legend li { display: inline-flex; align-items: center; gap: var(--space-2xs); }
+.legend__chip {
+  width: 0.85rem; height: 0.85rem;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--color-line-2);
+}
+.legend__chip--white  { background: var(--fam-white); }
+.legend__chip--green  { background: var(--fam-green); }
+.legend__chip--oolong { background: var(--fam-oolong); }
+.legend__chip--black  { background: var(--fam-black); }
+.legend__chip--puer   { background: var(--fam-puer); }
+.legend__chip--herb   { background: var(--fam-herb); }
+
+/* THE TABLE -------------------------------------------------------- */
+.ptable {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: var(--space-2xs);
+}
+
+/* place each cell by its declared column; rows flow by source order,
+   detached tisane row is forced to grid row 7 */
+.cell { grid-column: var(--col); }
+.cell--detached { grid-row: var(--row); }
+
+/* a touch of air above the detached row */
+.ptable::after {
+  content: "";
+  grid-row: 6;
+  grid-column: 1 / -1;
+  height: var(--space-2xs);
+}
+
+/* element tile */
+.cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: start;
+  text-align: left;
+  padding: var(--space-2xs);
+  border: 1px solid var(--color-line-2);
+  border-radius: var(--radius-sm);
+  background: var(--cell-bg);
+  color: var(--color-ink);
+  cursor: pointer;
+  box-shadow: var(--shadow-tile);
+  transition: transform var(--dur) var(--ease-out),
+              box-shadow var(--dur) var(--ease-out),
+              background-color var(--dur) var(--ease-out),
+              border-color var(--dur) var(--ease-out);
+}
+
+/* family backgrounds + hover lifts */
+.cell[data-fam="white"]  { --cell-bg: var(--fam-white);  --cell-bg-hi: var(--fam-white-hi); }
+.cell[data-fam="green"]  { --cell-bg: var(--fam-green);  --cell-bg-hi: var(--fam-green-hi); }
+.cell[data-fam="oolong"] { --cell-bg: var(--fam-oolong); --cell-bg-hi: var(--fam-oolong-hi); }
+.cell[data-fam="black"]  { --cell-bg: var(--fam-black);  --cell-bg-hi: var(--fam-black-hi); }
+.cell[data-fam="puer"]   { --cell-bg: var(--fam-puer);   --cell-bg-hi: var(--fam-puer-hi); }
+.cell[data-fam="herb"]   { --cell-bg: var(--fam-herb);   --cell-bg-hi: var(--fam-herb-hi); }
+
+.cell:hover {
+  background: var(--cell-bg-hi);
+  border-color: var(--color-ink-2);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift);
+}
+
+.cell__num {
+  font-family: var(--font-data);
+  font-size: var(--text-2xs);
+  color: var(--color-muted);
+  line-height: 1;
+}
+.cell__sym {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.1rem, 2.4vw, 1.7rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  align-self: center;
+  justify-self: center;
+}
+.cell__name {
+  font-family: var(--font-body);
+  font-size: var(--text-2xs);
+  line-height: 1.1;
+  color: var(--color-ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.cell__stat {
+  position: absolute;
+  top: var(--space-2xs);
+  right: var(--space-2xs);
+  font-family: var(--font-data);
+  font-size: var(--text-2xs);
+  line-height: 1;
+  color: var(--color-muted);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+}
+.cell__unit { font-size: 0.62rem; opacity: 0.8; }
+
+/* selected element — the only place accent fills a surface */
+.cell[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px var(--color-accent), var(--shadow-lift);
+  transform: translateY(-2px);
+}
+.cell[aria-pressed="true"] .cell__sym { color: var(--color-accent); }
+
+/* ===================================================================
+   Assay panel — the dossier of the selected blend
+   =================================================================== */
+.assay {
+  position: sticky;
+  top: calc(var(--space-3xl));
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-panel);
+}
+
+.assay__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-data);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.assay__index { color: var(--color-accent); font-weight: 700; }
+.assay__fam { color: var(--color-muted); }
+
+.assay__plate {
+  margin: var(--space-md) 0 var(--space-sm);
+  width: 5.5rem; height: 5.5rem;
+  border: 1px solid var(--color-line-2);
+  border-radius: var(--radius-sm);
+  background: var(--color-paper-3);
+  display: grid;
+  place-items: center;
+}
+.assay__sym {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+}
+
+.assay__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-xl);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.assay__origin {
+  margin-top: var(--space-3xs);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  font-style: italic; /* body emphasis only — not a heading */
+}
+
+.assay__stats {
+  margin: var(--space-md) 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-sm) var(--space-md);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+  padding: var(--space-md) 0;
+}
+.assay__stats dt {
+  font-family: var(--font-data);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.assay__stats dd {
+  font-family: var(--font-data);
+  font-size: var(--text-md);
+  color: var(--color-ink);
+  margin-top: 2px;
+  line-height: 1.1;
+}
+.assay__caf { color: var(--color-accent); font-weight: 700; }
+.assay__caf-note { font-size: var(--text-2xs); color: var(--color-muted); }
+
+.assay__notes {
+  font-size: var(--text-base);
+  line-height: var(--lh-body);
+  color: var(--color-ink-2);
+  max-width: 46ch;
+}
+
+.assay__hint {
+  margin-top: var(--space-md);
+  font-family: var(--font-data);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.03em;
+  color: var(--color-muted);
+  border-top: 1px dashed var(--color-line);
+  padding-top: var(--space-sm);
+}
+
+/* the ONE orchestrated motion: when a blend is selected, the panel's
+   inner content steps forward (lift + settle). JS toggles .is-swapping. */
+.assay__plate, .assay__name, .assay__origin,
+.assay__stats, .assay__notes, .assay__eyebrow {
+  transition: opacity var(--dur) var(--ease-out),
+              transform var(--dur) var(--ease-out);
+}
+.assay.is-swapping .assay__plate,
+.assay.is-swapping .assay__name,
+.assay.is-swapping .assay__origin,
+.assay.is-swapping .assay__stats,
+.assay.is-swapping .assay__notes,
+.assay.is-swapping .assay__eyebrow {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+/* ===================================================================
+   Coda + footer
+   =================================================================== */
+.coda {
+  max-width: var(--maxw-page);
+  margin-inline: auto;
+  padding: var(--space-2xl) var(--space-lg) var(--space-3xl);
+  border-top: 1px solid var(--color-line);
+}
+.coda__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-2xl);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.015em;
+  max-width: 18ch;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.coda__line {
+  margin-top: var(--space-md);
+  max-width: var(--maxw-prose);
+  font-size: var(--text-md);
+  color: var(--color-ink-2);
+}
+
+.site-footer {
+  background: var(--color-paper-3);
+  border-top: 1px solid var(--color-line-2);
+}
+.site-footer__statement {
+  max-width: var(--maxw-page);
+  margin-inline: auto;
+  padding: var(--space-xl) var(--space-lg);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-lg);
+  line-height: 1.3;
+  color: var(--color-ink);
+  max-width: 40ch;
+}
+.site-footer__sub {
+  display: block;
+  margin-top: var(--space-2xs);
+  font-family: var(--font-data);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+/* ===================================================================
+   Responsive
+   =================================================================== */
+@media (max-width: 60rem) {
+  .catalog {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-lg);
+  }
+  /* on narrow screens the assay stops being a sidebar and docks below
+     the nav as a sticky reading panel so selecting is still legible */
+  .assay {
+    position: sticky;
+    top: 64px;
+    order: -1;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "plate eyebrow"
+      "plate name"
+      "stats stats"
+      "notes notes"
+      "hint  hint";
+    column-gap: var(--space-md);
+    align-items: center;
+  }
+  .assay__eyebrow { grid-area: eyebrow; }
+  .assay__plate { grid-area: plate; margin: 0; width: 4.25rem; height: 4.25rem; align-self: start; }
+  .assay__sym { font-size: 1.9rem; }
+  .assay__name { grid-area: name; }
+  .assay__origin { display: none; }
+  .assay__stats { grid-area: stats; grid-template-columns: repeat(4, 1fr); }
+  .assay__notes { grid-area: notes; }
+  .assay__hint { grid-area: hint; }
+}
+
+@media (max-width: 40rem) {
+  .masthead__inner { padding: var(--space-xs) var(--space-md); gap: var(--space-sm); }
+  .masthead__nav { gap: var(--space-sm); }
+  .intro { padding-top: var(--space-2xl); padding-inline: var(--space-md); }
+  .catalog { padding-inline: var(--space-md); }
+  .coda { padding-inline: var(--space-md); }
+  .axes__row { grid-template-columns: 1fr; gap: var(--space-3xs); }
+  .axes dd { font-size: var(--text-sm); }
+  /* the table stays a table — fewer columns, still spatial.
+     re-map the wide 9-col positions onto a 5-col phone grid so the
+     taxonomy survives: rows still = process. */
+  .ptable { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+  .cell { padding: 6px; }
+  .cell__sym { font-size: clamp(1rem, 6vw, 1.4rem); }
+  /* drop the absolute --col placement so cells pack left-to-right per row */
+  .cell { grid-column: auto; }
+  .cell--detached { grid-row: auto; }
+  .ptable::after { display: none; }
+  .assay {
+    grid-template-columns: 1fr;
+    grid-template-areas: "eyebrow" "plate" "name" "stats" "notes" "hint";
+    text-align: left;
+  }
+  .assay__plate { margin-bottom: var(--space-2xs); }
+  .assay__stats { grid-template-columns: 1fr 1fr; }
+}
+
+/* Very narrow: the masthead becomes the wordmark alone — the two jump
+   links are non-essential (their targets sit just below). Keeps the bar
+   from clipping at phone widths without collapsing into a sheet. */
+@media (max-width: 34rem) {
+  .masthead__nav { display: none; }
+  .wordmark__sub { display: none; }
+  .wordmark { grid-template-rows: auto; }
+  .wordmark__name { font-size: var(--text-base); }
+  .assay { top: 56px; }
+}
+
+/* ===================================================================
+   Reduced motion — the grid + selection stay fully usable, no motion
+   =================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .cell:hover { transform: none; }
+  .cell[aria-pressed="true"] { transform: none; }
+  .assay.is-swapping .assay__plate,
+  .assay.is-swapping .assay__name,
+  .assay.is-swapping .assay__origin,
+  .assay.is-swapping .assay__stats,
+  .assay.is-swapping .assay__notes,
+  .assay.is-swapping .assay__eyebrow {
+    opacity: 1;
+    transform: none;
+  }
+}
