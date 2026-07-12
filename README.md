@@ -4,28 +4,10 @@ A category-first agent-skill library for decomposing prompts, delegating work, b
 
 ## What is included
 
-- **10 required categories** under `skills/`.
-- **59 original skills**, each with triggers, inputs, procedure, output contract, quality gates, handoffs, and boundaries.
-- **Ponytail vendored upstream** as its six original skills, unmodified, with its MIT license.
-- **Hallmark vendored wholesale** as the complete upstream repository snapshot: skill, all references, documentation, examples, tests, site assets, and MIT license.
-- A machine-readable `manifest.json`, source lock, catalog, validators, and upstream sync tooling.
-
-## Recommended entry point
-
-For a compound request:
-
-```text
-prompt-decomposer/request-fragmenter
-  -> prompt-decomposer/constraint-mapper
-  -> prompt-decomposer/acceptance-criteria-extractor
-  -> prompt-decomposer/skill-routing-plan
-  -> agent-orchestration/work-delegator
-  -> specialist skills
-  -> agent-orchestration/result-integrator
-  -> deslop/artifact-delint
-```
-
-A simple, single-domain task can enter directly through its specialist skill.
+- **10 required categories** under `skills/`
+- **59 original skills**
+- **Ponytail ([not mine](https://github.com/DietrichGebert/ponytail))** as of 12/07/26
+- **Hallmark ([not mine](https://github.com/nutlope/hallmark))** as of 12/07/26
 
 ## Category map
 
@@ -53,27 +35,6 @@ Interface skills cannot declare success on their own. They must call and pass:
 - `deslop/text-humanizer` whenever interface copy is generated or rewritten
 
 The vendored Hallmark skill is available as a specialist design engine, but the package-level deslop gates remain mandatory.
-
-## Validation
-
-From the package root:
-
-```bash
-python scripts/build_manifest.py
-python scripts/validate_skills.py
-```
-
-The validator checks category coverage, frontmatter, unique names, required sections, interface/deslop dependencies, vendored Ponytail files, every Hallmark repository file against its recorded SHA-256 digest, and manifest integrity.
-
-## Upstream status and refresh
-
-See `THIRD_PARTY_NOTICES.md`, `sources.lock.json`, and each upstream directory’s `UPSTREAM_STATUS.md`. To refresh upstream files in a network-enabled environment:
-
-```bash
-python scripts/sync_upstream.py --all
-python scripts/build_manifest.py
-python scripts/validate_skills.py
-```
 
 ## License
 
