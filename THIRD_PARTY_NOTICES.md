@@ -35,3 +35,12 @@ The following repositories informed concepts, organization, checklists, or quali
 - Emil Kowalski skills — https://github.com/emilkowalski/skills — MIT
 
 The custom skills combine these sources with established engineering, security, research, documentation, operations, accessibility, and system-design practices. They are newly written for this package and licensed under the root MIT license.
+
+## OpenAI workflow additions (2026-09-08)
+
+The active workflow set is listed in `workflow-skills.json`. Existing matching skills were adapted in place.
+Matt Pocock-derived skills retain origin metadata. The source workflow did not identify exact historical commits.
+Its current MIT license notice is included in `licenses/mattpocock-LICENSE`.
+ASD-STE100 is pinned to danyuchn/asd-ste100-skill commit `6f7bb361ae9b97a9fcb5f5c57cbac40eacf2d438`.
+The adapted skill retains its MIT license, linter, and references in `skills/documentation/asd-ste100`.
+Papercut is a local logging skill based on the workflow owner's supplied instructions.

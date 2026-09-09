@@ -21,3 +21,9 @@ Never claim that a command, test, audit, or source check passed unless it actual
 ## Composition
 
 Each fragment has one accountable owner skill. Supporting skills return gates or specialist artifacts to that owner. The orchestrator integrates outputs and validates the end-to-end acceptance criteria.
+
+## Current workflow
+
+Use the main Astra medium session as coordinator. Do not dispatch the retired task_orchestrator role.
+The selected workflow skills are listed in workflow-skills.json. The paired agents repository owns role models and installation.
+Use the new start-task launcher when an explicit entrypoint is needed. It preserves user authorization and keeps coordination in the main session.

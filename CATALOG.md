@@ -1,3 +1,56 @@
+# Current workflow skills
+
+These 46 entries are installed by the paired agents repository. Other specialist skills below remain available.
+
+| Skill | Path |
+| --- | --- |
+| accessibility-review | [skills/interface-and-experience/accessibility-review](skills/interface-and-experience/accessibility-review/SKILL.md) |
+| api-documentation | [skills/documentation/api-documentation](skills/documentation/api-documentation/SKILL.md) |
+| architecture-decision-record | [skills/documentation/architecture-decision-record](skills/documentation/architecture-decision-record/SKILL.md) |
+| artifact-delint | [skills/deslop/artifact-delint](skills/deslop/artifact-delint/SKILL.md) |
+| asd-ste100 | [skills/documentation/asd-ste100](skills/documentation/asd-ste100/SKILL.md) |
+| ask-matt | [skills/engineering/ask-matt](skills/engineering/ask-matt/SKILL.md) |
+| code-deslop | [skills/deslop/code-deslop](skills/deslop/code-deslop/SKILL.md) |
+| code-review | [skills/software-development/code-review](skills/software-development/code-review/SKILL.md) |
+| codebase-design | [skills/engineering/codebase-design](skills/engineering/codebase-design/SKILL.md) |
+| dependency-cve-audit | [skills/security/dependency-cve-audit](skills/security/dependency-cve-audit/SKILL.md) |
+| design-document | [skills/documentation/design-document](skills/documentation/design-document/SKILL.md) |
+| design-pattern-detector | [skills/deslop/design-pattern-detector](skills/deslop/design-pattern-detector/SKILL.md) |
+| diagnosing-bugs | [skills/engineering/diagnosing-bugs](skills/engineering/diagnosing-bugs/SKILL.md) |
+| domain-modeling | [skills/system-design/domain-modeling](skills/system-design/domain-modeling/SKILL.md) |
+| grill-me | [skills/productivity/grill-me](skills/productivity/grill-me/SKILL.md) |
+| grill-with-docs | [skills/system-design/grill-with-docs](skills/system-design/grill-with-docs/SKILL.md) |
+| grilling | [skills/productivity/grilling](skills/productivity/grilling/SKILL.md) |
+| handoff | [skills/productivity/handoff](skills/productivity/handoff/SKILL.md) |
+| implement | [skills/engineering/implement](skills/engineering/implement/SKILL.md) |
+| improve-codebase-architecture | [skills/engineering/improve-codebase-architecture](skills/engineering/improve-codebase-architecture/SKILL.md) |
+| interaction-design | [skills/interface-and-experience/interaction-design](skills/interface-and-experience/interaction-design/SKILL.md) |
+| papercut | [skills/operations/papercut](skills/operations/papercut/SKILL.md) |
+| project-documentation | [skills/documentation/project-documentation](skills/documentation/project-documentation/SKILL.md) |
+| prototype | [skills/engineering/prototype](skills/engineering/prototype/SKILL.md) |
+| release-notes | [skills/documentation/release-notes](skills/documentation/release-notes/SKILL.md) |
+| research | [skills/engineering/research](skills/engineering/research/SKILL.md) |
+| resolving-merge-conflicts | [skills/engineering/resolving-merge-conflicts](skills/engineering/resolving-merge-conflicts/SKILL.md) |
+| runbook-authoring | [skills/documentation/runbook-authoring](skills/documentation/runbook-authoring/SKILL.md) |
+| secrets-and-supply-chain | [skills/security/secrets-and-supply-chain](skills/security/secrets-and-supply-chain/SKILL.md) |
+| secure-code-review | [skills/security/secure-code-review](skills/security/secure-code-review/SKILL.md) |
+| setup-matt-pocock-skills | [skills/engineering/setup-matt-pocock-skills](skills/engineering/setup-matt-pocock-skills/SKILL.md) |
+| social-engineering-review | [skills/security/social-engineering-review](skills/security/social-engineering-review/SKILL.md) |
+| tdd | [skills/engineering/tdd](skills/engineering/tdd/SKILL.md) |
+| text-humanizer | [skills/deslop/text-humanizer](skills/deslop/text-humanizer/SKILL.md) |
+| threat-modeling | [skills/security/threat-modeling](skills/security/threat-modeling/SKILL.md) |
+| to-questionnaire | [skills/productivity/to-questionnaire](skills/productivity/to-questionnaire/SKILL.md) |
+| to-spec | [skills/engineering/to-spec](skills/engineering/to-spec/SKILL.md) |
+| to-tickets | [skills/engineering/to-tickets](skills/engineering/to-tickets/SKILL.md) |
+| triage | [skills/engineering/triage](skills/engineering/triage/SKILL.md) |
+| ui-deslop | [skills/deslop/ui-deslop](skills/deslop/ui-deslop/SKILL.md) |
+| voice-and-tone | [skills/deslop/voice-and-tone](skills/deslop/voice-and-tone/SKILL.md) |
+| wayfinder | [skills/engineering/wayfinder](skills/engineering/wayfinder/SKILL.md) |
+| wizard | [skills/engineering/wizard](skills/engineering/wizard/SKILL.md) |
+| writing-for-agents | [skills/productivity/writing-for-agents](skills/productivity/writing-for-agents/SKILL.md) |
+| zero-day-triage | [skills/security/zero-day-triage](skills/security/zero-day-triage/SKILL.md) |
+| start-task | [skills/start-task](skills/start-task/SKILL.md) |
+
 # Skill catalog
 
 ## prompt-decomposer
