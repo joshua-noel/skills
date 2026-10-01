@@ -11,7 +11,7 @@ Use `grilling` and `domain-modeling` for unresolved product/domain decisions. Us
 
 For work that benefits from a written handoff, use `to-spec` when a spec is useful and `to-tickets` to create independently verifiable implementation items. Each item needs its end-to-end scope, observable acceptance criteria, and actual blocking dependencies. Work only the ready frontier. Resolve remaining human decisions with the user, never by impersonating them.
 
-Run `setup-matt-pocock-skills` once when a project needs issue-tracker/domain configuration. Respect existing `docs/agents/issue-tracker.md` and `docs/agents/domain.md`; do not force tracker setup on an ordinary implementation request.
+Wayfinder bundles project setup in `skills/wayfinder/setup/README.md`. Load it only when needed to fill missing issue-tracker/domain conventions, including for specs or tickets. Respect existing `docs/agents/issue-tracker.md` and `docs/agents/domain.md`; do not force tracker setup on an ordinary implementation request or require a separate setup skill.
 
 The main coordinator owns work-item dispatch, integration, tracker mutations, and completion bookkeeping. Built-in workers return their results to it. Publishing issues, committing, pushing, or changing external systems still requires the applicable user authorization; a skill instruction alone does not grant it.
 

@@ -1,10 +1,4 @@
----
-name: setup-matt-pocock-skills
-description: "Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills."
-disable-model-invocation: true
----
-
-# Setup Matt Pocock's Skills
+# Project setup
 
 Scaffold the per-repo configuration that the engineering skills assume:
 
@@ -12,7 +6,7 @@ Scaffold the per-repo configuration that the engineering skills assume:
 - **Triage labels**: the strings used for the five canonical triage roles
 - **Domain docs**: where `GLOSSARY.md` and ADRs live, and the consumer rules for reading them
 
-This is a prompt-driven skill, not a deterministic script. Explore, present what you found, confirm with the user, then write.
+This is Wayfinder's bundled project setup guide, not a separate skill or deterministic script. Reuse existing conventions and configure only what is missing. Explore, present what you found, confirm with the user, then write.
 
 ## Process
 
@@ -101,7 +95,7 @@ The block:
 
 Include the `### Triage labels` sub-block, and write `docs/agents/triage-labels.md`, only when `triage` is installed and Section B ran. When it isn't, both are omitted.
 
-Then write the docs files using the seed templates in this skill folder as a starting point:
+Then write the docs files using the seed templates alongside this guide as a starting point:
 
 - [issue-tracker-github.md](./issue-tracker-github.md): GitHub issue tracker
 - [issue-tracker-gitlab.md](./issue-tracker-gitlab.md): GitLab issue tracker
@@ -113,4 +107,4 @@ For "other" issue trackers, write `docs/agents/issue-tracker.md` from scratch us
 
 ### 5. Done
 
-Tell the user the setup is complete and which engineering skills will now read from these files. Mention they can edit `docs/agents/*.md` directly later; re-running this skill is only necessary if they want to switch issue trackers or restart from scratch.
+Tell the user which missing conventions were configured and which engineering skills will read them. They can edit `docs/agents/*.md` directly later; revisit this guide only to change tracker or domain conventions, not for every task.

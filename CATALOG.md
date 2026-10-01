@@ -8,8 +8,7 @@ The active catalog is exactly the 11 entries in `workflow-skills.json`. OMP disc
 | [domain-modeling](skills/domain-modeling/SKILL.md) | Sharpen domain language, maintain `GLOSSARY.md`, and record consequential ADRs. |
 | [research](skills/research/SKILL.md) | Gather primary-source facts for a bounded question. |
 | [prototype](skills/prototype/SKILL.md) | Build a runnable throwaway logic/state demo or UI variants to answer a design question. |
-| [wayfinder](skills/wayfinder/SKILL.md) | Map large uncertain work as decision tickets; planning by default. |
-| [setup-matt-pocock-skills](skills/setup-matt-pocock-skills/SKILL.md) | Configure the project's tracker and domain-document layout when needed. |
+| [wayfinder](skills/wayfinder/SKILL.md) | Map large uncertain work as decision tickets; includes conditional [project setup](skills/wayfinder/setup/README.md). Planning by default. |
 | [to-spec](skills/to-spec/SKILL.md) | Synthesize agreed scope into a specification. |
 | [to-tickets](skills/to-tickets/SKILL.md) | Turn agreed scope into end-to-end implementation items with acceptance criteria and blocking edges. |
 | [ponytail](skills/ponytail/SKILL.md) | Minimize complete production changes; preserve correctness, security, accessibility, and requested behavior. |

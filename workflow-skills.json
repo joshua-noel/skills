@@ -6,7 +6,6 @@
     { "name": "research", "path": "skills/research" },
     { "name": "prototype", "path": "skills/prototype" },
     { "name": "wayfinder", "path": "skills/wayfinder" },
-    { "name": "setup-matt-pocock-skills", "path": "skills/setup-matt-pocock-skills" },
     { "name": "to-spec", "path": "skills/to-spec" },
     { "name": "to-tickets", "path": "skills/to-tickets" },
     { "name": "ponytail", "path": "skills/ponytail" },

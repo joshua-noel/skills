@@ -5,8 +5,8 @@
 - Source: https://github.com/mattpocock/skills
 - Commit: `d81f3a183412e71a5b1e84ca21bc1a35eea03a60`
 - License: MIT, Copyright (c) 2026 Matt Pocock; see `licenses/mattpocock-LICENSE`.
-- Complete source directories copied to flat `skills/<name>/`: engineering `domain-modeling`, `research`, `prototype`, `wayfinder`, `setup-matt-pocock-skills`, `to-spec`, `to-tickets`; productivity `grilling`.
-- The copied files, including referenced formats/templates and invocation metadata, are unmodified. OMP integration is original guidance in `omp/`, not a claim that upstream has native OMP commands.
+- Source bundles: engineering `domain-modeling`, `research`, `prototype`, `wayfinder`, `setup-matt-pocock-skills`, `to-spec`, `to-tickets`; productivity `grilling`.
+- The setup guide and templates are bundled under `skills/wayfinder/setup/` rather than exposed as a separate skill. Its skill frontmatter and invocation metadata were removed. Wayfinder, to-spec, and to-tickets were adapted to use that shared guide instead of the upstream setup command; other source bundles and setup templates retain their upstream contents. OMP integration guidance is in `omp/`.
 
 ## Ponytail
 

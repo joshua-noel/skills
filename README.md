@@ -20,7 +20,7 @@ python scripts/install_omp.py
 
 Use `--agent-dir PATH` to target another native OMP agent directory. The default honors `PI_CODING_AGENT_DIR`, then `OMP_PROFILE`/`PI_PROFILE`, then `~/.omp/agent`.
 
-The installer stages the 11 skills, backs up the old native skill catalog and custom native agents outside discovery, installs complete flat skill directories, and merges managed blocks into global `AGENTS.md`/`RULES.md`. It configures the skill allowlist through `omp config`, disables foreign user skill imports, and preserves unrelated settings, including model roles, advisor, tools, and memory. Failed installation restores the previous target files.
+The installer stages the 10 skills, backs up the old native skill catalog and custom native agents outside discovery, installs complete flat skill directories, and merges managed blocks into global `AGENTS.md`/`RULES.md`. It configures the skill allowlist through `omp config`, disables foreign user skill imports, and preserves unrelated settings, including model roles, advisor, tools, and memory. Failed installation restores the previous target files.
 
 Restart OMP after installation. Its main model remains the coordinator; bundled `task`, `scout`, `sonic`, `reviewer`, and `security-reviewer` remain available. No new agents or model assignments are installed. Project instructions and approval rules still apply. Skill filtering also applies to project skills: add an approved extra skill to `skills.includeSkills` when a project genuinely needs one.
 
@@ -39,7 +39,9 @@ For a request such as "do xyz", OMP follows this flow with the configured `/mode
 
 Use domain modeling, research, and prototypes when useful. Wayfinder is for large uncertain work; specs and independently verifiable tickets are optional handoffs when the work benefits from them.
 
-Invoke skills using OMP's native `/skill:<name>` commands. Read [CATALOG.md](CATALOG.md) for the full set. The upstream text is retained; [omp/AGENTS.md](omp/AGENTS.md) adapts Skill-tool calls and command spellings to OMP without another orchestration pipeline.
+Wayfinder includes its own [project setup guide](skills/wayfinder/setup/README.md), loaded only if required tracker/domain conventions are missing. There is no separate setup skill or command; specs and tickets share the same guide when needed.
+
+Invoke skills using OMP's native `/skill:<name>` commands. Read [CATALOG.md](CATALOG.md) for the full set and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the upstream sources and local adaptations. [omp/AGENTS.md](omp/AGENTS.md) adapts Skill-tool calls and command spellings to OMP without another orchestration pipeline.
 
 ## Papercuts maintenance
 
