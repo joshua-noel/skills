@@ -3,7 +3,7 @@
 
 The current main OMP session is the coordinator. Use OMP's built-in task agents and model routing; do not dispatch a custom orchestrator, require a model-specific fleet, or add a mandatory implementation/review/deslop skill chain. Preserve OMP's default tools, approvals, safety rules, and the project's instructions.
 
-For a clear request such as "do xyz", work directly. Do not require a spec, ticket, interview, or separate plan approval unless the task has a material unresolved decision or the user asks for that workflow. OMP already resolves the configured `/models` roles; do not inspect or reconfigure model routing for each task.
+For a request such as "do xyz", inspect the relevant context first, then use `grilling` to resolve intent: desired outcome, scope, constraints, meaningful tradeoffs, and what counts as done. Find repository facts yourself rather than asking the user. Confirm shared understanding before implementation; when the request already settles the decisions, keep clarification brief rather than manufacturing questions. Then implement with Ponytail and verify the result. Do not require a spec, ticket, or extra orchestration layer. OMP already resolves the configured `/models` roles; do not inspect or reconfigure model routing for each task.
 
 ## Clarify, plan, then hand off
 

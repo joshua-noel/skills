@@ -28,13 +28,16 @@ The printed backup directory contains the replaced files. To undo, close OMP, mo
 
 ## Workflow
 
-For a clear request such as "do xyz", OMP works directly with the configured `/models` roles and Ponytail. No spec, ticket, interview, or separate planning approval is required. Use the following planning tools only when the work benefits from them; Papercuts maintenance does not delay the task.
+For a request such as "do xyz", OMP follows this flow with the configured `/models` roles. No mandatory spec, ticket, or extra orchestration layer is required.
 
-1. Clarify actual unresolved decisions; research facts and prototype when useful.
-2. Use Wayfinder for large foggy work, not every small change.
-3. Resolve decision tickets, then turn the result into a spec and independently verifiable implementation items with acceptance criteria and dependencies.
-4. Ask OMP to implement the ready items normally. Ponytail minimizes the complete solution without dropping requirements or safety.
-5. Capture friction immediately. Review it at a safe boundary after five completed implementation tasks or the first active session in a new ISO calendar week.
+1. Inspect relevant context; find repository facts rather than asking the user.
+2. Use grilling to resolve intent: outcome, scope, constraints, meaningful tradeoffs, and what counts as done. Keep this brief when the request already settles those decisions.
+3. Confirm shared understanding before implementation.
+4. Implement with OMP defaults and Ponytail.
+5. Run and verify the result.
+6. Capture friction immediately. Review it at a safe boundary after five completed implementation tasks or the first active session in a new ISO calendar week; routine maintenance does not delay the task.
+
+Use domain modeling, research, and prototypes when useful. Wayfinder is for large uncertain work; specs and independently verifiable tickets are optional handoffs when the work benefits from them.
 
 Invoke skills using OMP's native `/skill:<name>` commands. Read [CATALOG.md](CATALOG.md) for the full set. The upstream text is retained; [omp/AGENTS.md](omp/AGENTS.md) adapts Skill-tool calls and command spellings to OMP without another orchestration pipeline.
 
