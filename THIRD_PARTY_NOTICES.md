@@ -1,46 +1,34 @@
 # Third-party notices
 
-This package contains exact upstream files and original skills synthesized from public design ideas. Exact upstream files remain under their original licenses and are stored beneath an `*-upstream` directory.
+## Matt Pocock planning skills
 
-## Vendored upstream
+- Source: https://github.com/mattpocock/skills
+- Commit: `d81f3a183412e71a5b1e84ca21bc1a35eea03a60`
+- License: MIT, Copyright (c) 2026 Matt Pocock; see `licenses/mattpocock-LICENSE`.
+- Source bundles: engineering `domain-modeling`, `research`, `prototype`, `wayfinder`, `setup-matt-pocock-skills`, `to-spec`, `to-tickets`; productivity `grilling`.
+- The setup guide and templates are bundled under `skills/wayfinder/setup/` rather than exposed as a separate skill. Its skill frontmatter and invocation metadata were removed. Wayfinder, to-spec, and to-tickets were adapted to use that shared guide instead of the upstream setup command; other source bundles and setup templates retain their upstream contents. OMP integration guidance is in `omp/`.
 
-### Ponytail
+## Ponytail
 
 - Source: https://github.com/DietrichGebert/ponytail
-- Ref captured: `main` (latest release observed during assembly: `v4.8.4`)
-- Retrieved: 2026-07-12
-- License: MIT
-- Vendored location: `skills/software-development/ponytail-upstream/`
-- Files are unmodified upstream skill files plus the upstream license.
+- Commit: `e3ba2aa6f1e6f0bc4d69eb09c9f0d0a93af56156` (`v4.10.0`).
+- License: MIT, Copyright (c) 2026 DietrichGebert; see `licenses/ponytail-LICENSE`.
+- Complete `skills/ponytail` directory copied unchanged to `skills/ponytail`.
+- Companion audit/debt/gain/help/review skills are not part of this installation.
 
-### Hallmark
+## Builder.io Visual Edit
 
-- Source: https://github.com/nutlope/hallmark
-- Commit captured: `aeb42fb354ff4efa36ab475773a082315a3af2ce`
-- Package version: `1.1.0`
-- Source archive SHA-256: `22508f6acc344148f5d32e777fc5799782c95a60f5c9ea32e2db2b877df4c29a`
-- Retrieved from the user-supplied full repository archive: 2026-07-12
-- License: MIT
-- Vendored location: `skills/interface-and-experience/hallmark-upstream/repository/`
-- The complete 282-file repository snapshot is preserved unchanged. Package-authored hash inventory and status metadata sit beside, not inside, the repository snapshot.
+- Source: https://github.com/BuilderIO/skills
+- Commit: `eb07be67e6d924b958445f706f5ac386243df6b4`.
+- License: MIT, Copyright (c) 2026 Builder.io; see `licenses/BuilderIO-LICENSE`.
+- Complete `skills/visual-edit` directory copied unchanged to `skills/visual-edit`.
+- Runtime tooling uses the separately distributed `@agent-native/core`; it is not vendored. Hosted Design and its account/consent requirements are not supplied by this repository.
 
-## Sources used for original synthesis
+## Papercuts
 
-The following repositories informed concepts, organization, checklists, or quality gates. Their text was not represented as byte-identical vendoring unless placed in an `*-upstream` directory.
+- Source: https://github.com/treygoff24/papercuts
+- Tested CLI package: crates.io `papercuts` version `0.2.0`, installed with `--locked`.
+- License: MIT. The CLI is an external prerequisite, not vendored code.
+- The global capture block is the user-requested text from the upstream README. The cadence helper, maintenance instructions, installer, and OMP integration are original code/guidance under the root MIT license.
 
-- Matt Pocock engineering skills — https://github.com/mattpocock/skills/tree/main/skills/engineering — MIT
-- David Ondrej skills — https://github.com/davidondrej/skills — MIT
-- AI Slop / ais-lop — https://github.com/scanaislop/aislop — MIT
-- Humanizer — https://github.com/blader/humanizer — MIT
-- Emil Kowalski skills — https://github.com/emilkowalski/skills — MIT
-
-The custom skills combine these sources with established engineering, security, research, documentation, operations, accessibility, and system-design practices. They are newly written for this package and licensed under the root MIT license.
-
-## OpenAI workflow additions (2026-09-08)
-
-The active workflow set is listed in `workflow-skills.json`. Existing matching skills were adapted in place.
-Matt Pocock-derived skills retain origin metadata. The source workflow did not identify exact historical commits.
-Its current MIT license notice is included in `licenses/mattpocock-LICENSE`.
-ASD-STE100 is pinned to danyuchn/asd-ste100-skill commit `6f7bb361ae9b97a9fcb5f5c57cbac40eacf2d438`.
-The adapted skill retains its MIT license, linter, and references in `skills/documentation/asd-ste100`.
-Papercut is a local logging skill based on the workflow owner's supplied instructions.
+The previous specialist catalog, Hallmark snapshot, custom model-fleet launcher, and Python Papercut logger have been removed by the clean OMP cutover. Their earlier history remains in Git; this branch does not claim to ship them.
