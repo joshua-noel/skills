@@ -10,6 +10,9 @@
     { "name": "to-tickets", "path": "skills/to-tickets" },
     { "name": "ponytail", "path": "skills/ponytail" },
     { "name": "visual-edit", "path": "skills/visual-edit" },
-    { "name": "papercuts-maintenance", "path": "skills/papercuts-maintenance" }
+    { "name": "papercuts-maintenance", "path": "skills/papercuts-maintenance" },
+    { "name": "ste-writing", "path": "skills/ste-writing" },
+    { "name": "visualize-diagram", "path": "skills/visualize-diagram" },
+    { "name": "visualize-webpage", "path": "skills/visualize-webpage" }
   ]
 }

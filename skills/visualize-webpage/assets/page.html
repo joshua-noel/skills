@@ -1,0 +1,150 @@
+<!doctype html>
+<!-- Template for the visualize-webpage skill. Replace each double-brace value and the example sections. -->
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+  /* Same tokens as the visualize-diagram renderer. Dark is the default; set data-theme="light" on <html> for light. */
+  :root {
+    --bg: #1c2129; --panel: #212731; --card: #272e38; --line: #3a4350; --edge: #8b98a9;
+    --ink: #e6edf3; --muted: #9ba5b3; --badge: #f0b429; --badge-ink: #1c2129;
+    --a1: #a371f7; --a2: #3fb950; --a3: #f0b429; --a4: #58a6ff; --a5: #f778ba; --a6: #39c5cf;
+    --sans: "Segoe UI", Inter, system-ui, sans-serif; --mono: "Cascadia Code", Consolas, monospace;
+  }
+  [data-theme="light"] {
+    --bg: #ffffff; --panel: #f6f8fa; --card: #ffffff; --line: #d0d7de; --edge: #94a3b8;
+    --ink: #1f2937; --muted: #6b7280; --badge: #b7791f; --badge-ink: #ffffff;
+    --a1: #7c3aed; --a2: #16a34a; --a3: #d97706; --a4: #0284c7; --a5: #db2777; --a6: #0891b2;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 var(--sans); }
+  code { font-family: var(--mono); font-size: .88em; color: var(--muted); }
+  a { color: var(--a4); }
+  header.top { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding: 12px 24px; border-bottom: 1px solid var(--line); }
+  header.top h1 { margin: 0; font-size: 18px; }
+  header.top p { margin: 0; color: var(--muted); font-size: 13px; }
+
+  /* First screen: header, diagram and step bar share exactly one window height. */
+  .first { height: 100vh; min-height: 480px; display: flex; flex-direction: column; }
+  .diagram { flex: 1; min-height: 0; }
+  .diagram svg { display: block; width: 100%; height: 100%; }
+  .stepbar { display: flex; align-items: center; gap: 8px; padding: 8px 24px; border-bottom: 1px solid var(--line); min-height: 48px; }
+  .stepbar[hidden] { display: none; }
+  .stepbar button, .tabs [role="tab"] { font: inherit; font-size: 13px; padding: 5px 12px; border: 1px solid var(--line); background: transparent; color: var(--ink); border-radius: 6px; cursor: pointer; }
+  .stepbar button[aria-pressed="true"], .tabs [role="tab"][aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .stepbar output { color: var(--muted); font-size: 13px; }
+  .badge { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: var(--badge); color: var(--badge-ink); font-size: 11px; font-weight: 700; margin-right: 6px; }
+
+  /* Content */
+  main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+  section { margin: 0 0 40px; }
+  section > h2 { font-size: 20px; margin: 0 0 6px; }
+  section > p.lead { color: var(--muted); margin: 0 0 16px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent, var(--a1)); border-radius: 4px; padding: 12px 14px; }
+  .card h3 { margin: 0; font-size: 14px; }
+  .card code { display: block; margin: 2px 0 6px; }
+  .card p { margin: 0; font-size: 13.5px; }
+  .tabs [role="tablist"] { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .tabs [role="tabpanel"] { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
+  details { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin: 8px 0; }
+  details summary { cursor: pointer; font-weight: 600; }
+  ol.steps { padding-left: 0; list-style: none; }
+  ol.steps li { margin: 6px 0; }
+  :focus-visible { outline: 2px solid var(--a4); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+  @media print { .stepbar { display: none; } .first { height: auto; } }
+</style>
+</head>
+<body>
+<div class="first">
+<header class="top">
+  <h1>{{TITLE}}</h1>
+  <p>{{ONE_LINE_SUMMARY}} Source: {{SOURCE}}.</p>
+</header>
+
+<!-- scripts/inline.mjs puts the rendered SVG here. Delete this section if the page has no diagram. -->
+<div class="diagram">
+{{SVG}}
+</div>
+<nav class="stepbar" aria-label="Walk through the numbered flow" hidden>
+  <button type="button" data-step="prev">Previous</button>
+  <button type="button" data-step="next">Next</button>
+  <button type="button" data-step="all" aria-pressed="true">All</button>
+  <output aria-live="polite">Select Next to walk through the flow.</output>
+</nav>
+</div>
+
+<main>
+  <!-- Example section: one card for each part. Set --accent to the colour of its diagram column (--a1 .. --a6). -->
+  <section>
+    <h2>{{SECTION_TITLE}}</h2>
+    <p class="lead">{{SECTION_LEAD}}</p>
+    <div class="cards">
+      <article class="card" style="--accent: var(--a1)"><h3>{{PART}}</h3><code>{{path/to/file}}</code><p>{{What it does, in 1 or 2 sentences.}}</p></article>
+    </div>
+  </section>
+
+  <!-- Example section: tabs for parallel views (layers, modules, roles). -->
+  <section class="tabs">
+    <h2>{{SECTION_TITLE}}</h2>
+    <div role="tablist" aria-label="{{TABS_LABEL}}">
+      <button role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">{{TAB_1}}</button>
+      <button role="tab" id="tab-2" aria-controls="panel-2" aria-selected="false" tabindex="-1">{{TAB_2}}</button>
+    </div>
+    <div role="tabpanel" id="panel-1" aria-labelledby="tab-1">{{PANEL_1}}</div>
+    <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden>{{PANEL_2}}</div>
+  </section>
+
+  <!-- Example section: details for depth the reader may skip. -->
+  <section>
+    <h2>{{SECTION_TITLE}}</h2>
+    <details><summary>{{QUESTION}}</summary><p>{{ANSWER}}</p></details>
+  </section>
+</main>
+
+<script>
+// Step-through: uses the methods that render.mjs adds to the SVG.
+(() => {
+  const svg = document.querySelector(".diagram svg"), bar = document.querySelector(".stepbar");
+  if (!svg || !svg.highlightStep) return;
+  const steps = JSON.parse(svg.dataset.steps || "[]");
+  if (!steps.length) return;
+  bar.hidden = false;
+  const out = bar.querySelector("output"), all = bar.querySelector('[data-step="all"]');
+  let cur = 0;
+  const go = n => {
+    cur = n;
+    all.setAttribute("aria-pressed", n === 0);
+    if (n === 0) { svg.clearHighlight(); out.textContent = "Showing all steps."; return; }
+    svg.highlightStep(n);
+    out.innerHTML = `<span class="badge">${n}</span>`;
+    out.append(steps[n - 1]);
+  };
+  bar.addEventListener("click", e => {
+    const a = e.target.dataset.step;
+    if (a === "next") go(cur >= steps.length ? 1 : cur + 1);
+    if (a === "prev") go(cur <= 1 ? steps.length : cur - 1);
+    if (a === "all") go(0);
+  });
+})();
+// Tabs: click and arrow keys.
+document.querySelectorAll(".tabs [role=tablist]").forEach(list => {
+  const tabs = [...list.querySelectorAll("[role=tab]")];
+  const select = t => tabs.forEach(x => {
+    const on = x === t;
+    x.setAttribute("aria-selected", on); x.tabIndex = on ? 0 : -1;
+    document.getElementById(x.getAttribute("aria-controls")).hidden = !on;
+    if (on) x.focus();
+  });
+  list.addEventListener("click", e => e.target.matches("[role=tab]") && select(e.target));
+  list.addEventListener("keydown", e => {
+    const i = tabs.indexOf(document.activeElement), d = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+    if (i >= 0 && d) select(tabs[(i + d + tabs.length) % tabs.length]);
+  });
+});
+</script>
+</body>
+</html>

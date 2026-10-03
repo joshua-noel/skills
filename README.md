@@ -1,10 +1,10 @@
 # OMP planning skills
 
-Clarify with Matt Pocock's planning skills. Develop approved work items with Oh My Pi's built-in coordinator, bundled agents, repository conventions, and Ponytail. Record friction with Papercuts and address it at work-item boundaries. Use Builder.io Visual Edit when requested.
+Clarify with Matt Pocock's planning skills. Develop approved work items with Oh My Pi's built-in coordinator, bundled agents, repository conventions, and Ponytail. Record friction with Papercuts and address it at work-item boundaries. Use Builder.io Visual Edit when requested. Explain code and systems with clear writing, interactive diagrams, and interactive web pages.
 
 ## Install
 
-Requires Python 3, [Oh My Pi](https://github.com/can1357/oh-my-pi), Node/npm for Visual Edit, and [Papercuts](https://github.com/treygoff24/papercuts). Install the tested CLI version once:
+Requires Python 3, [Oh My Pi](https://github.com/can1357/oh-my-pi), Node for the visualize skills and Visual Edit (npm for Visual Edit), and [Papercuts](https://github.com/treygoff24/papercuts). Install the tested CLI version once:
 
 ```sh
 cargo install papercuts --version 0.2.0 --locked
@@ -20,7 +20,7 @@ python scripts/install_omp.py
 
 Use `--agent-dir PATH` to target another native OMP agent directory. The default honors `PI_CODING_AGENT_DIR`, then `OMP_PROFILE`/`PI_PROFILE`, then `~/.omp/agent`.
 
-The installer stages the 10 skills, backs up the old native skill catalog and custom native agents outside discovery, installs complete flat skill directories, and merges managed blocks into global `AGENTS.md`/`RULES.md`. It configures the skill allowlist through `omp config`, disables foreign user skill imports, and preserves unrelated settings, including model roles, advisor, tools, and memory. Failed installation restores the previous target files.
+The installer stages the 13 skills, backs up the old native skill catalog and custom native agents outside discovery, installs complete flat skill directories, and merges managed blocks into global `AGENTS.md`/`RULES.md`. It configures the skill allowlist through `omp config`, disables foreign user skill imports, and preserves unrelated settings, including model roles, advisor, tools, and memory. Failed installation restores the previous target files.
 
 Restart OMP after installation. Its main model remains the coordinator; bundled `task`, `scout`, `sonic`, `reviewer`, and `security-reviewer` remain available. No new agents or model assignments are installed. Project instructions and approval rules still apply. Skill filtering also applies to project skills: add an approved extra skill to `skills.includeSkills` when a project genuinely needs one.
 
@@ -56,6 +56,31 @@ Small reversible local helper/tooling/doc fixes are automatic within the authori
 `/skill:visual-edit` uses hosted `https://design.agent-native.com` plus the target local app and local bridge. OMP's headed browser supports page WebMCP, so the hosted MCP connector is not required. Node/npm must be available. The bridge CLI is fetched on demand with `npx @agent-native/core@latest`; version `0.198.7` was checked for this setup.
 
 The skill is installed globally, not into the target app. It does not start a local Design server. Authentication, local-network permissions, sharing, and folder write consent are not preapproved by this installation. Connect a live app only when the user requests it; pull source-edit handoffs, verify the applied changes, then acknowledge their revision.
+
+## Explaining code: writing, diagrams, web pages
+
+Three skills help a reader understand a model's output faster: controlled writing helps, a diagram helps more, and an interactive page helps most.
+
+| Skill | Ask for | Output |
+| --- | --- | --- |
+| [ste-writing](skills/ste-writing/SKILL.md) | "STE", "simplified technical English", "make this clearer" | Text at about 80% of ASD-STE100: short sentences, active voice, one word for one thing, lists for steps. Technical names stay free. |
+| [visualize-diagram](skills/visualize-diagram/SKILL.md) | "diagram", "draw", "visualize", "map this repo" | One self-contained interactive `.svg` in `./.tmp/visuals/`. |
+| [visualize-webpage](skills/visualize-webpage/SKILL.md) | "in HTML", "interactive page", "explorable" | One self-contained `.html` in `./.tmp/visuals/`: the diagram, a step-through bar, cards, tabs and details. |
+
+**Diagrams.** The model reads the real code, then writes a JSON spec of columns, nodes, edges and numbered steps. `scripts/render.mjs` does the layout, routing, theme and interaction. Every box must map to a real file, symbol, table or domain term.
+
+```sh
+node skills/visualize-diagram/scripts/render.mjs spec.json out.svg           # dark (default)
+node skills/visualize-diagram/scripts/render.mjs spec.json out.svg --light   # light, on request
+```
+
+- 16:9 sheet that fills the browser window, same background colour at the edges.
+- Hover or tab to a box: it lights the box's edges, follows forward edges downstream and upstream, and adds back edges one hop. A box with no edges dims nothing. A card shows the path and a short explanation.
+- Numbered steps with a legend. Pages call `svg.highlightStep(n)` to walk through them.
+
+**Web pages.** The model copies `assets/page.html`, fills the text, and runs `scripts/inline.mjs` to put the rendered SVG in place. The page needs no build step, CDN or network.
+
+Both skills write their labels and prose with `ste-writing`. The visualize skills do not yet look for a project knowledge base; that is planned for the next version.
 
 ## Sources
 
