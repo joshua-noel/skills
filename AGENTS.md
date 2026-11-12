@@ -12,4 +12,4 @@ This repository contains the reduced OMP planning catalog and a backup-first ins
 - Respect user approval and provider/browser consent boundaries. A skill's instruction is not authorization for an external side effect.
 - This repository is public. Never commit machine paths, usernames, private project or business names, people's names (other than credited authors), or secrets. Machine-specific practice belongs in a user's local overlay, which stays outside the repository; document the overlay's shape, never its contents.
 - Write new skills in our own words. Credit ideas that shaped them in `THIRD_PARTY_NOTICES.md`; vendor third-party text only with its licence file in `licenses/`.
-- A new skill needs its directory, an entry in `workflow-skills.json`, a row in `CATALOG.md` and in the README skills table, and a changelog line. `tests/test_overlay_and_catalog.py` checks these stay in step.
+- A new skill needs its directory, an entry in `workflow-skills.json`, a row in `CATALOG.md` and in the README skills table, and a changelog line. `tests/test_overlay_and_catalog.py` checks that the manifest, directories, `CATALOG.md` and the README stay in step.

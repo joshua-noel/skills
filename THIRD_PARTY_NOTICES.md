@@ -39,7 +39,7 @@ These sources shaped our own skills. No text or code was copied; the skills are 
 
 - **Elephant-Goldfish Model (EGM)**: https://github.com/google/elephant-goldfish-model, Apache-2.0, Copyright Google LLC and contributors. The fresh-context "goldfish" review practice behind `skills/goldfish-review`. No EGM file is vendored, so no Apache-2.0 notice text is redistributed here. Not an officially supported Google product.
 - **LangChain, "What is eval-driven development"**: https://www.langchain.com/blog/what-is-eval-driven-development. The eval-first steps summarised in `skills/eval-driven`.
-- **Meta Engineering, "How we built Forum with AI-native engineering"**: https://engineering.fb.com/2026/10/15/ml-applications/how-meta-built-forum-ai-native-engineering/. The verification-first operating model referenced in `skills/eval-driven`.
+- **Meta Engineering, "How Meta Built Forum With AI-Native Engineering"**: https://engineering.fb.com/2026/10/15/ml-applications/how-meta-built-forum-ai-native-engineering/. The verification-first operating model referenced in `skills/eval-driven`.
 - **ASD-STE100**: the Simplified Technical English specification, owned by ASD. `skills/ste-writing` summarises rules in our own words and does not reproduce the specification or its dictionary.
 
 ## Not bundled

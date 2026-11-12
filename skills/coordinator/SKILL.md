@@ -9,7 +9,7 @@ A coordinator keeps a large piece of work moving without exceeding the machine, 
 
 ## Machine specifics come from the overlay
 
-Before spawning anything, check whether the user has a local overlay (see the README: "Local overlay"). It may supply a skill such as `machine-practice`, or instructions inside the global block, with real values for the limits below. Use those. If there is none, use the defaults here and tell the user which defaults you chose. Never invent machine facts and never write them back into this repository.
+Before spawning anything, look for the user's local overlay: extra skills (for example one named `machine-practice`) or text after the house principles at the end of the managed instructions. It holds the real values for the limits below. Use them. If there are none, use the suggested defaults here and tell the user which ones you chose. Never invent machine facts and never write them back into this repository.
 
 | Limit | Suggested default if the overlay is silent | What to do |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ Keep one shared record of every agent you start: name, task, start time, status,
 Read the usage meter whenever an agent finishes or messages. Then:
 
 - **Below the warning level:** keep going and start the next ready work as slots free.
-- **At the warning level (about 85%):** every agent pushes its work after every step; start nothing new that cannot finish.
+- **At the warning level (about 85%):** every agent commits locally and writes a progress note after every step (push only where the user has authorized it); start nothing new that cannot finish.
 - **At the stop level (about 95%):** every agent writes a progress note and stops cleanly. You write the resume plan. After the window resets, resume from the notes.
 
 ## Progress notes

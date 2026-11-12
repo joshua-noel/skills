@@ -19,7 +19,7 @@ No spec, ticket or extra layer is required.
 - `wayfinder` is for large, uncertain, multi-session work; its tickets resolve decisions, not implementation slices. Never push a known small change through it.
 - `to-spec` writes a spec and `to-tickets` writes independently verifiable items (end-to-end scope, observable acceptance criteria, true blocking edges) when a written handoff helps. Work only the ready frontier. Human decisions go to the user, never answered on their behalf.
 - Wayfinder bundles project setup in `skills/wayfinder/setup/README.md`. Load it only when tracker or domain conventions are missing. Respect an existing `docs/agents/issue-tracker.md` and `docs/agents/domain.md`.
-- The coordinator owns dispatch, integration, tracker changes and completion bookkeeping; workers report back to it. A skill's instruction never grants authorization for an external action.
+- The coordinator owns dispatch, integration, tracker changes and completion bookkeeping; workers report back to it. Publishing issues, committing, pushing or changing external systems still needs the applicable user authorization; a skill's instruction never grants it.
 
 ## Develop with OMP defaults and Ponytail
 
@@ -49,7 +49,7 @@ Read the matching skill before the job it covers:
 
 Use `visual-edit` when the user asks to inspect or edit their running local app in Builder.io Design. Read `skill://visual-edit` first. Node/npm and the local Agent-Native bridge are required. Use OMP's browser WebMCP path: read `xd://eval/browser`, open a headed tab at `https://design.agent-native.com/visual-edit`, list page tools with `tab.webmcpList()`, and call the exact authorized tool with `tab.webmcpInvoke()`. A page evaluator is a fallback and runs in the main page world. No hosted MCP connector is needed.
 
-Start only the target dev app and the local bridge, never a local Design server, and leave servers you did not start alone. Do not bypass login, local-network permission prompts or write consent. Do not upload private app data or expose bridge tokens. Apply source changes only when authorized, verify them, and acknowledge the exact pending revision after applying, never before.
+Start only the target dev app and the local bridge, never a local Design server, and leave servers you did not start alone. Do not bypass login, local-network permission prompts or write consent. Do not upload private app data, expose bridge tokens, or open a live local-app connection without the user's authorization. Apply source changes only when authorized, verify them, and acknowledge the exact pending revision after applying, never before.
 
 ## Session-driven Papercuts maintenance
 

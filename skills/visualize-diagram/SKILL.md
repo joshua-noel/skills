@@ -51,16 +51,16 @@ The renderer puts columns from left to right, with an optional shared row under 
 
 ```json
 {
-  "title": "Example shop: architecture",
+  "title": "Example notes app: architecture",
   "source": "commit abc1234",
-  "legendTitle": "CSV import flow",
+  "legendTitle": "Export flow",
   "columns": [
-    { "actors": true, "nodes": [ { "id": "merchant", "title": "Merchant", "sub": "owner, admin", "desc": "Manages one private catalogue." } ] },
-    { "title": "apps/web", "sub": "Next.js 16", "nodes": [ { "id": "web_import", "title": "CSV import service", "sub": "server/csv-import-service.ts", "desc": "Checks the CSV headers and creates an import job." } ] }
+    { "actors": true, "nodes": [ { "id": "user", "title": "User", "sub": "signed in", "desc": "Writes and exports notes." } ] },
+    { "title": "web", "sub": "browser app", "nodes": [ { "id": "web_export", "title": "Export service", "sub": "src/export.ts", "desc": "Reads the saved notes and builds one export file." } ] }
   ],
-  "shared": { "title": "packages/*", "sub": "shared code", "nodes": [ { "id": "pk_db", "title": "db", "sub": "roles, migrations", "desc": "Postgres client and migration runner." } ] },
-  "edges": [ { "from": "merchant", "to": "web_import", "step": 1, "label": "Merchant uploads a CSV file" } ],
-  "steps": [ "The merchant uploads a CSV file." ]
+  "shared": { "title": "lib/*", "sub": "shared code", "nodes": [ { "id": "lib_db", "title": "db", "sub": "schema, migrations", "desc": "Database client and migration runner." } ] },
+  "edges": [ { "from": "user", "to": "web_export", "step": 1, "label": "User asks for an export" } ],
+  "steps": [ "The user asks for an export." ]
 }
 ```
 

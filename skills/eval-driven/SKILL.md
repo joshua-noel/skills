@@ -40,4 +40,4 @@ A deterministic function with ordinary unit tests does not need this. It is for 
 
 ## Related
 
-The same discipline applies to claims about your own tooling: "this setup makes agents build better" needs a with-and-without comparison on the same tasks, not an anecdote (principle: our own projects are examples, not proof).
+The same discipline applies to claims about your own tooling: "this setup makes agents build better" needs a with-and-without comparison on the same tasks, not an anecdote. A result from one project is an example, not proof.

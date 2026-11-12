@@ -20,7 +20,7 @@ The user's attention is the scarcest resource in the session. Every message shou
 - Ask **one question at a time**, and give **one recommendation** with a one-line reason. The user can answer "yes".
 - If the answer is a choice, offer at most three options, each with its main cost.
 - Do not ask what a tool, the repository or a file can tell you. Look it up.
-- If several decisions are independent, list them as numbered questions in one message, each with its own recommendation, so the answers can be short (`1 yes, 2 B`). If one answer changes the next question, ask them in order.
+- If several decisions are pending, ask the one that blocks the most work first and keep the rest in a short decision list. If one answer changes the next question, always ask in order.
 - When the user is away, queue questions in one place (a decision document) and keep working on what they do not block.
 
 ## Tables

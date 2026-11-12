@@ -31,7 +31,7 @@ def make_repo(base):
     return repo
 
 
-def make_overlay(root, agents="local agents text", rules="local rules text", skill="machine-practice"):
+def make_overlay(root, agents="local agents text", rules="local rules text", skill="machine-practice", declared=None):
     root.mkdir(parents=True)
     if agents is not None:
         (root / "AGENTS.md").write_text(agents, encoding="utf-8")
@@ -39,7 +39,7 @@ def make_overlay(root, agents="local agents text", rules="local rules text", ski
         (root / "RULES.md").write_text(rules, encoding="utf-8")
     if skill:
         (root / "skills" / skill).mkdir(parents=True)
-        (root / "skills" / skill / "SKILL.md").write_text("---\nname: x\ndescription: x\n---\nsecret-ish detail\n", encoding="utf-8")
+        (root / "skills" / skill / "SKILL.md").write_text(f"---\nname: {declared or skill}\ndescription: x\n---\nsecret-ish detail\n", encoding="utf-8")
 
 
 class OverlayTests(unittest.TestCase):
@@ -101,6 +101,7 @@ class OverlayTests(unittest.TestCase):
             "markers": lambda root: make_overlay(root, agents=installer.START + "x" + installer.END),
             "collision": lambda root: make_overlay(root, skill="example"),
             "bad name": lambda root: make_overlay(root, skill="Bad_Name"),
+            "name mismatch": lambda root: make_overlay(root, declared="other"),
         }
         for label, build in cases.items():
             with self.subTest(label), tempfile.TemporaryDirectory() as temporary:
@@ -179,7 +180,7 @@ class CatalogTests(unittest.TestCase):
     def test_public_repository_has_no_machine_paths(self):
         # Generic shapes only; checks for specific private names are done at review time.
         pattern = re.compile(r"\b[A-Za-z]:[\\/](?:Users|[A-Za-z0-9_-]+[\\/])|/home/[a-z][\w.-]*/|/Users/[A-Za-z][\w.-]*/")
-        skip = {".git", "__pycache__"}
+        skip = {".git", "__pycache__", ".tmp", "node_modules"}
         for path in ROOT.rglob("*"):
             if path.is_dir() or skip & set(path.parts) or path.suffix in {".png", ".webp", ".ico"}:
                 continue

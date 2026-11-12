@@ -98,8 +98,13 @@ def load_overlay(agent_dir, repo, explicit, taken):
                 raise ValueError(f"{source}: invalid flat skill name {source.name!r}")
             if source.name.casefold() in taken:
                 raise ValueError(f"{source}: overlay skill name collides with a repository skill")
-            if not (source / "SKILL.md").is_file():
+            skill_file = source / "SKILL.md"
+            if not skill_file.is_file():
                 raise ValueError(f"{source}: missing SKILL.md")
+            front = re.match(r"---\r?\n(.*?)\r?\n---", read_text(skill_file), re.DOTALL)
+            declared = re.search(r"(?m)^name:\s*[\"']?([^\s\"']+)", front.group(1)) if front else None
+            if not declared or declared.group(1) != source.name:
+                raise ValueError(f"{skill_file}: frontmatter name must equal the directory name {source.name!r}")
             skills.append((source.name, source))
     return {"root": root, "fragments": fragments, "skills": skills}
 
