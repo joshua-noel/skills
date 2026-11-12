@@ -7,8 +7,6 @@ description: Test-first method for anything where a model or prompt makes decisi
 
 Software with a model in the loop does not fail the same way twice, so a change that looks better in one example can be worse overall. This skill makes "better" measurable before you change anything.
 
-Credit: the practice follows the LangChain article "What is eval-driven development" (<https://www.langchain.com/blog/what-is-eval-driven-development>) and the verification-first operating model in Meta's engineering post on Forum (<https://engineering.fb.com/2026/10/15/ml-applications/how-meta-built-forum-ai-native-engineering/>). This is an independent summary in our own words; no text is copied. See `THIRD_PARTY_NOTICES.md`.
-
 ## Steps, in order
 
 1. **Write the spec as pass/fail.** Say what "good" means as statements that can be checked: what the system must do, what it must not do, and what must keep working. If you cannot phrase it as pass/fail, it is not ready to build.
@@ -37,7 +35,3 @@ Credit: the practice follows the LangChain article "What is eval-driven developm
 ## When it is overkill
 
 A deterministic function with ordinary unit tests does not need this. It is for outputs that vary: prompts, models, agents, ranking, classification, automated approvals, anything graded by judgement.
-
-## Related
-
-The same discipline applies to claims about your own tooling: "this setup makes agents build better" needs a with-and-without comparison on the same tasks, not an anecdote. A result from one project is an example, not proof.

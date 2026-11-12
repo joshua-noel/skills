@@ -18,6 +18,5 @@ A demo that is not checked wastes the reviewer's time and teaches them to distru
 
 ## Process notes
 
-- Browser runs are heavy. Queue them behind whatever limits the session has (see `skill://coordinator`); that is a reason to wait, never to skip.
 - Give the user one link or file that opens with a double-click, and the first screen should answer "what am I looking at and what do you want from me?"
 - If a check could not be done, say which and why in the "How this was checked" box.

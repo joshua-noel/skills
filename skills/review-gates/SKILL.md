@@ -1,76 +1,46 @@
 ---
 name: review-gates
-description: Rules for reviewing and merging risky changes. Use when a change touches auth, personal data, deletion or migration, money, admin scripts or credentials; before merging any pull request; when starting or ending a review loop; or when asked for a security review.
+description: Rules for reviewing and merging. Use when a change touches auth, personal data, deletion or migration, money, admin scripts or credentials; before merging any pull request; when starting a review loop; or before approving a spec, audit, design or multi-session plan.
 ---
 
 # Review gates
 
-A gate is a check that must pass before work moves on. The aim is that what ships is exactly what was reviewed.
+A gate is a check that must pass before work moves on. The aim: what ships is exactly what was reviewed.
 
-## When a change needs a security review
+## Code: when a change needs a security review
 
-Any change that touches one of these:
+Any change touching authentication or authorization, personal data, deleting or migrating data, money, admin scripts, credentials, elevated rights, or untrusted input. Other changes follow the project's normal review.
 
-- authentication, authorization, sessions
-- personal or sensitive data
-- deleting or migrating data
-- money, payments, entitlements
-- admin scripts, credentials, secrets handling
-- anything that runs with elevated rights or accepts untrusted input
+1. **Fresh reviewer.** A new agent that did not write or fix the code. Give it the diff, the goal and the threat surface, not your conclusions.
+2. **Review the exact head.** Record the reviewed SHA. A later push, rebase or squash means the review no longer covers the head.
+3. **Never merge on red,** and never merge an unreviewed head: required checks are green and the head SHA equals the reviewed SHA, both read from the live source.
+4. **Merge only when authorized:** the user's OK or a standing authorization that covers this change. A passing review is not authorization.
+5. **Post the review** on the pull request. Each finding has a severity (`blocker`, `major`, `minor`), the file and line, the harm, the evidence, and the smallest fix. A worry without evidence is a question, not a finding.
+6. **Fixes are new commits** and get re-checked. Never fix your own findings silently.
+7. **Narrow re-check.** Give the reviewer only the new commits and its earlier findings. It answers per finding: closed, open or worse, then scans the new diff. Go back to a full review only if the fix changed the design or the trust boundary.
+8. If the change adds a dependency or copies third-party text, check its licence first.
 
-Everything else follows the project's normal review.
+## Documents: fresh-eyes ("goldfish") review
 
-## Rules
+Before approving a spec, audit, design or multi-session plan, have an agent with no history read only the document and the paths it cites. Long context anchors the author; a cold reader finds what the page does not say. (Idea credit: see `THIRD_PARTY_NOTICES.md`.)
 
-1. **Fresh reviewer.** The reviewer is a new agent that did not write or fix the code and has none of the author's history. Give it the diff, the goal, and the threat surface, not your conclusions.
-2. **Review the exact head.** Record the commit SHA you reviewed. If anyone pushes, rebases or squashes afterwards, the review no longer covers the head.
-3. **Never merge on red.** Required checks must be green on the head you are merging, read from the live source, not from memory.
-4. **Never merge an unreviewed head.** Merge only when the head SHA equals the reviewed SHA. A new commit needs a narrow re-check (below).
-5. **Merge only when authorized.** Authorization is the user's OK, or a standing authorization they gave that covers this change. A passing review is not authorization.
-6. **Post the review** on the pull request, so it outlives the session.
-7. **Do not fix your own findings silently.** Fixes are new commits, and they get re-checked.
-
-## Review file format
-
-Write the review as one file or pull request comment. Keep this shape so reviews are comparable and scannable:
-
-```
-Review of <pull request or change>
-Head reviewed: <full SHA>
-Scope: <files or areas read> / <what was not read>
-Verdict: APPROVE | CHANGES REQUESTED | BLOCKED
-
-Findings
-- [severity] <one-line title>
-  Where: <file:line>
-  Why it matters: <the harm, in one sentence>
-  Evidence: <command, input or code path that shows it>
-  Fix: <smallest change that closes it>
-
-Checked and fine
-- <the things you looked at that were correct, so the author does not re-check them>
-
-Not checked
-- <anything out of scope or not possible to check>
-```
-
-Severities: `blocker` (must fix before merge), `major` (fix before merge unless the user accepts the risk), `minor` (may follow later). Every finding needs evidence; a worry without evidence is a question, not a finding.
-
-## Narrow re-checks
-
-After fixes, do not repeat the full review. Give the reviewer the new commits only, plus the list of earlier findings. The reviewer answers, per finding: closed, open, or made worse; then looks at the new diff for fresh problems. Record the new head SHA.
-
-Go back to a full review only if the fix changed the design, the trust boundary or more than the finding's area.
+1. Spawn a fresh `reviewer`. If you cannot create a fresh context, say so; do not role-play one.
+2. Give it the document type, who will act on it, and these questions. Do not give it your opinion.
+   - **Clarity:** could someone with no context act on this? Which terms or steps are undefined?
+   - **Consistency:** do any parts, names or numbers contradict each other?
+   - **Evidence:** which claims have no source? Is the design judged against the stated problem and outside evidence, with the author's own past projects as examples only?
+   - **Reality:** is each named file, command, number and API true now?
+   - **Gaps and scope:** what decision, risk or owner is missing? What was not asked for?
+   - **Safety:** any secrets, private data or dangerous instructions?
+3. Ask for findings that quote the line, say what is wrong and what fixes it, not rewrites. Fix the right ones, reject the wrong ones with a reason; confidence is not evidence.
+4. Re-check narrowly, as in code review.
 
 ## Stopping rules
 
-Set these before the first round, write them down, and keep to them:
+Set these before round one and write them down.
 
-- A **round limit**: usually two rounds after the first review for a normal change, three for a high-risk one.
-- A **convergence rule**: stop when a round produces no blocker or major finding.
-- A **non-convergence rule**: if round limit is reached with blockers open, stop and take the problem to the user with a recommendation. Do not start another round to "be sure".
-- Findings that repeat the same point in new words are a sign to stop, not to continue.
+- A round limit: normally the first review plus two re-checks; high-risk changes may take three.
+- Stop when a round finds no blocker or major finding.
+- If the limit is reached with blockers open, take the problem to the user with a recommendation. Do not start another round "to be sure". Findings that repeat in new words mean stop.
 
-## Audits and plans
-
-Reviews of specs, audits and multi-session plans use `skill://goldfish-review`. Do the same before approval, with the same stop rules.
+A review does not replace tests or the user's judgement.

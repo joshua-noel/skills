@@ -12,7 +12,7 @@ The user gets one sitting. If a script fails halfway, that sitting is lost and t
 - **One paste.** The user copies one block and runs it. If the work needs elevated rights, tell them once, at the top, and make it a single elevated session. Never split the work across several prompts.
 - **Short lines that cannot wrap.** Keep each line under about 80 characters. A wrapped line can split a command in the paste. Break long commands with the shell's own continuation, or put the steps in a script file and run that.
 - **Plain output.** Each step prints one line saying what it is doing and one saying it worked. No stack traces on the happy path.
-- **No secrets in the script.** Read credentials from where the user keeps them; never print them (principle: no secrets).
+- **No secrets in the script.** Read credentials from where the user keeps them; never print them.
 
 ## Order
 
