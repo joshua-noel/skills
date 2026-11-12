@@ -17,6 +17,7 @@ START = "<!-- omp-workflow:start -->"
 END = "<!-- omp-workflow:end -->"
 INSTRUCTIONS = ("AGENTS.md", "RULES.md")
 BACKUP_ITEMS = ("skills", "agents", *INSTRUCTIONS, "config.yml")
+BUNDLED_AGENTS = frozenset({"task", "scout", "sonic", "reviewer", "security-reviewer"})
 
 
 def managed_block(text, description):
@@ -87,7 +88,58 @@ def default_agent_dir():
     return Path.home() / ".omp" / "agent"
 
 
-def preflight(repo, agent_dir):
+def load_overlay(agent_dir, repo, explicit, taken):
+    """Read extra skills and custom agents from the optional local overlay.
+
+    Returns None when there is no overlay, else (root, [(name, skill_dir)], [(name, agent_file)]).
+    Contents are never printed.
+    """
+    root = (explicit if explicit is not None else agent_dir / "local-overlay").expanduser().resolve()
+    if not root.is_dir():
+        if explicit is not None:
+            raise ValueError(f"{root}: overlay directory does not exist")
+        return None
+    repo_root = repo.resolve()
+    if root == repo_root or repo_root in root.parents:
+        raise ValueError(f"{root}: the overlay must live outside this repository")
+    for name in ("skills", "agents"):
+        replaced = (agent_dir / name).resolve()
+        if root == replaced or replaced in root.parents:
+            raise ValueError(f"{root}: the overlay must not live inside {replaced}, which the install replaces")
+    skills = []
+    skills_dir = root / "skills"
+    for source in sorted(skills_dir.iterdir()) if skills_dir.is_dir() else ():
+        if not source.is_dir():
+            continue
+        if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", source.name):
+            raise ValueError(f"{source}: invalid flat skill name {source.name!r}")
+        if source.name.casefold() in taken:
+            raise ValueError(f"{source}: overlay skill name collides with a repository skill")
+        skill_file = source / "SKILL.md"
+        if not skill_file.is_file():
+            raise ValueError(f"{source}: missing SKILL.md")
+        front = re.match(r"---\r?\n(.*?)\r?\n---", read_text(skill_file), re.DOTALL)
+        declared = re.search(r"(?m)^name:\s*[\"']?([^\s\"']+)", front.group(1)) if front else None
+        if not declared or declared.group(1) != source.name:
+            raise ValueError(f"{skill_file}: frontmatter name must equal the directory name {source.name!r}")
+        skills.append((source.name, source))
+    agents = []
+    agents_dir = root / "agents"
+    for source in sorted(agents_dir.glob("*.md")) if agents_dir.is_dir() else ():
+        name = source.stem
+        if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
+            raise ValueError(f"{source}: invalid agent name {name!r}")
+        if name in BUNDLED_AGENTS:
+            raise ValueError(f"{source}: overlay agent name collides with a bundled OMP agent")
+        front = re.match(r"---\r?\n(.*?)\r?\n---", read_text(source), re.DOTALL)
+        declared = re.search(r"(?m)^name:\s*[\"']?([^\s\"']+)", front.group(1)) if front else None
+        if not declared or declared.group(1) != name:
+            raise ValueError(f"{source}: frontmatter name must equal the file name {name!r}")
+        agents.append((name, source))
+    return root, skills, agents
+
+
+def preflight(repo, agent_dir, overlay_path=None):
     manifest_path = repo / "workflow-skills.json"
     manifest = json.loads(read_text(manifest_path))
     if not isinstance(manifest, dict) or manifest.get("version") != 2:
@@ -134,6 +186,9 @@ def preflight(repo, agent_dir):
         if source_root == target or target in source_root.parents:
             raise ValueError(f"{target}: installing here would move the source repository")
 
+    overlay = load_overlay(agent_dir, repo, overlay_path, names)
+    if overlay:
+        skills.extend(overlay[1])
     instructions = {}
     for name in INSTRUCTIONS:
         template_path = repo / "omp" / name
@@ -142,7 +197,7 @@ def preflight(repo, agent_dir):
         existing = read_text(target) if target.exists() else ""
         instructions[name] = merge_instructions(existing, template, str(target))
     omp, papercuts = prerequisite_commands()
-    return skills, instructions, omp, papercuts
+    return skills, instructions, omp, papercuts, overlay
 
 
 def config_values(skills):
@@ -190,13 +245,15 @@ def rollback(agent_dir, backup, moved, replaced, config_started, original_config
             target.unlink()
 
 
-def install(repo, agent_dir, dry_run=False):
-    skills, instructions, omp, papercuts = preflight(repo, agent_dir)
+def install(repo, agent_dir, dry_run=False, overlay_path=None):
+    skills, instructions, omp, papercuts, overlay = preflight(repo, agent_dir, overlay_path)
     values = config_values(skills)
     print(f"Agent directory: {agent_dir}")
     print(f"OMP: {omp}")
     print(f"Papercuts: {papercuts}")
     print("Native skills: " + ", ".join(name for name, _ in skills))
+    if overlay:
+        print(f"Local overlay: {overlay[0]} ({len(overlay[1])} skills, {len(overlay[2])} agents); contents not shown")
     if dry_run:
         print(f"Dry run: backups will be stored outside discovery under {agent_dir.parent / 'backups'}")
         print("Would stage the catalog, retire native custom agents, preserve unmanaged instructions,")
@@ -217,6 +274,10 @@ def install(repo, agent_dir, dry_run=False):
             shutil.copytree(source, incoming / name, symlinks=True)
         for name, content in instructions.items():
             write_text(stage / name, content)
+        if overlay and overlay[2]:
+            (stage / "agents").mkdir()
+            for name, source in overlay[2]:
+                shutil.copy2(source, stage / "agents" / f"{name}.md")
 
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
         backup = Path(tempfile.mkdtemp(prefix=f"omp-workflow-{stamp}-", dir=backup_root))
@@ -240,6 +301,9 @@ def install(repo, agent_dir, dry_run=False):
                     moved.append(name)
             incoming.rename(agent_dir / "skills")
             replaced.append("skills")
+            if overlay and overlay[2]:
+                (stage / "agents").rename(agent_dir / "agents")
+                replaced.append("agents")
             for name in INSTRUCTIONS:
                 replaced.append(name)
                 shutil.copy2(stage / name, agent_dir / name)
@@ -273,12 +337,16 @@ def main(argv=None):
         "--agent-dir", type=Path,
         help="OMP agent directory (default: PI_CODING_AGENT_DIR, active profile, or ~/.omp/agent)",
     )
+    parser.add_argument(
+        "--overlay", type=Path,
+        help="directory outside this repository with extra skills in skills/ (default: <agent-dir>/local-overlay if present)",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Validate and show changes without writing anything")
     args = parser.parse_args(argv)
     repo = Path(__file__).resolve().parent.parent
     try:
         target = args.agent_dir if args.agent_dir is not None else default_agent_dir()
-        install(repo, target.expanduser().resolve(), args.dry_run)
+        install(repo, target.expanduser().resolve(), args.dry_run, args.overlay)
     except (OSError, ValueError, RuntimeError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1

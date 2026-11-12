@@ -1,87 +1,63 @@
-# OMP planning skills
+# OMP skills
 
-Clarify with Matt Pocock's planning skills. Develop approved work items with Oh My Pi's built-in coordinator, bundled agents, repository conventions, and Ponytail. Record friction with Papercuts and address it at work-item boundaries. Use Builder.io Visual Edit when requested. Explain code and systems with clear writing, interactive diagrams, and interactive web pages.
+A short always-on rulebook and 18 on-demand skills for [Oh My Pi](https://github.com/can1357/oh-my-pi) (OMP), a coding agent. The rulebook keeps every chat honest and safe; the skills hold the longer procedures (clarify, plan, build, review, communicate) and load only when a job needs them. A backup-first installer puts it in place and can be undone.
 
 ## Install
 
-Requires Python 3, [Oh My Pi](https://github.com/can1357/oh-my-pi), Node for the visualize skills and Visual Edit (npm for Visual Edit), and [Papercuts](https://github.com/treygoff24/papercuts). Install the tested CLI version once:
+Needs Python 3, [OMP](https://github.com/can1357/oh-my-pi) and [Papercuts](https://github.com/treygoff24/papercuts). Node is needed only for the visualize skills and Visual Edit.
 
 ```sh
-cargo install papercuts --version 0.2.0 --locked
-papercuts schema
+cargo install papercuts --version 0.2.0 --locked   # once
+git clone https://github.com/joshua-noel/skills && cd skills
+python scripts/install_omp.py --dry-run            # shows what would change
+python scripts/install_omp.py                      # installs; prints the backup path
 ```
 
-From this checkout:
+Restart OMP. The installer **replaces** the skills catalog and custom native agents (both backed up outside discovery), merges managed blocks into global `AGENTS.md` and `RULES.md`, and sets the skill allowlist with `omp config`. Other settings are kept, and a failed install restores the previous files. `--agent-dir PATH` targets another agent directory (default: `PI_CODING_AGENT_DIR`, then the `OMP_PROFILE`/`PI_PROFILE` profile, then `~/.omp/agent`).
 
-```sh
-python scripts/install_omp.py --dry-run
-python scripts/install_omp.py
-```
+## Skills
 
-Use `--agent-dir PATH` to target another native OMP agent directory. The default honors `PI_CODING_AGENT_DIR`, then `OMP_PROFILE`/`PI_PROFILE`, then `~/.omp/agent`.
+Invoke one with `/skill:<name>`; OMP lists each description, so the matching skill loads when its job comes up.
 
-The installer stages the 13 skills, backs up the old native skill catalog and custom native agents outside discovery, installs complete flat skill directories, and merges managed blocks into global `AGENTS.md`/`RULES.md`. It configures the skill allowlist through `omp config`, disables foreign user skill imports, and preserves unrelated settings, including model roles, advisor, tools, and memory. Failed installation restores the previous target files.
-
-Restart OMP after installation. Its main model remains the coordinator; bundled `task`, `scout`, `sonic`, `reviewer`, and `security-reviewer` remain available. No new agents or model assignments are installed. Project instructions and approval rules still apply. Skill filtering also applies to project skills: add an approved extra skill to `skills.includeSkills` when a project genuinely needs one.
-
-The printed backup directory contains the replaced files. To undo, close OMP, move the newly installed `skills` catalog aside, and restore the backed-up `skills`, `agents` (if present), `AGENTS.md`, `RULES.md`, and `config.yml`. If a file did not exist before installation, remove its newly created version instead. Backups, credentials, and runtime logs never belong in this repository.
-
-## Workflow
-
-For a request such as "do xyz", OMP follows this flow with the configured `/models` roles. No mandatory spec, ticket, or extra orchestration layer is required.
-
-1. Inspect relevant context; find repository facts rather than asking the user.
-2. Use grilling to resolve intent: outcome, scope, constraints, meaningful tradeoffs, and what counts as done. Keep this brief when the request already settles those decisions.
-3. Confirm shared understanding before implementation.
-4. Implement with OMP defaults and Ponytail.
-5. Run and verify the result.
-6. Capture friction immediately. Review it at a safe boundary after five completed implementation tasks or the first active session in a new ISO calendar week; routine maintenance does not delay the task.
-
-Use domain modeling, research, and prototypes when useful. Wayfinder is for large uncertain work; specs and independently verifiable tickets are optional handoffs when the work benefits from them.
-
-Wayfinder includes its own [project setup guide](skills/wayfinder/setup/README.md), loaded only if required tracker/domain conventions are missing. There is no separate setup skill or command; specs and tickets share the same guide when needed.
-
-Invoke skills using OMP's native `/skill:<name>` commands. Read [CATALOG.md](CATALOG.md) for the full set and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the upstream sources and local adaptations. [omp/AGENTS.md](omp/AGENTS.md) adapts Skill-tool calls and command spellings to OMP without another orchestration pipeline.
-
-## Papercuts maintenance
-
-Capture uses `papercuts add`, not the old Python `PAPERCUTS.md` logger. The default journal is `.papercuts.jsonl` in the current Git repository, or `~/.papercuts/log.jsonl` outside a repository. Use `PAPERCUTS_FILE` for an intentionally private log; do not attach secrets or raw environment dumps.
-
-The coordinator follows [papercuts-maintenance](skills/papercuts-maintenance/SKILL.md): checks persisted state at session start, records each verified work item's stable ID once, reviews open cuts when due, and resolves only exercised causal fixes. State lives in the active OMP agent directory's `papercuts-state/`, per workspace. This is instruction-driven during active sessions, not a timer, daemon, or an autonomous process while OMP is idle.
-
-Small reversible local helper/tooling/doc fixes are automatic within the authorized workspace. Larger fixes become work items; global policy, credentials, permissions, and external actions require approval. Interrupted/failed maintenance remains due.
-
-## Visual Edit
-
-`/skill:visual-edit` uses hosted `https://design.agent-native.com` plus the target local app and local bridge. OMP's headed browser supports page WebMCP, so the hosted MCP connector is not required. Node/npm must be available. The bridge CLI is fetched on demand with `npx @agent-native/core@latest`; version `0.198.7` was checked for this setup.
-
-The skill is installed globally, not into the target app. It does not start a local Design server. Authentication, local-network permissions, sharing, and folder write consent are not preapproved by this installation. Connect a live app only when the user requests it; pull source-edit handoffs, verify the applied changes, then acknowledge their revision.
-
-## Explaining code: writing, diagrams, web pages
-
-Three skills help a reader understand a model's output faster: controlled writing helps, a diagram helps more, and an interactive page helps most.
-
-| Skill | Ask for | Output |
+| Job | Skill | Use when |
 | --- | --- | --- |
-| [ste-writing](skills/ste-writing/SKILL.md) | "STE", "simplified technical English", "make this clearer" | Text at about 80% of ASD-STE100: short sentences, active voice, one word for one thing, lists for steps. Technical names stay free. |
-| [visualize-diagram](skills/visualize-diagram/SKILL.md) | "diagram", "draw", "visualize", "map this repo" | One self-contained interactive `.svg` in `./.tmp/visuals/`. |
-| [visualize-webpage](skills/visualize-webpage/SKILL.md) | "in HTML", "interactive page", "explorable" | One self-contained `.html` in `./.tmp/visuals/`: the diagram, a step-through bar, cards, tabs and details. |
+| **Clarify** | [grilling](skills/grilling/SKILL.md) | A plan or request has open choices to settle with the user. |
+| | [domain-modeling](skills/domain-modeling/SKILL.md) | Terms are fuzzy or a decision deserves an ADR. |
+| | [research](skills/research/SKILL.md) | You need primary-source facts for one bounded question. |
+| **Plan** | [prototype](skills/prototype/SKILL.md) | A design question is easier to answer with a throwaway demo. |
+| | [wayfinder](skills/wayfinder/SKILL.md) | The work is large, uncertain and spans sessions. |
+| | [to-spec](skills/to-spec/SKILL.md) | Agreed scope needs a written specification. |
+| | [to-tickets](skills/to-tickets/SKILL.md) | Agreed scope should become verifiable work items. |
+| **Build** | [ponytail](skills/ponytail/SKILL.md) | Any coding task: the smallest complete change. |
+| | [visual-edit](skills/visual-edit/SKILL.md) | The user wants to edit a running local app visually. |
+| | [eval-driven](skills/eval-driven/SKILL.md) | You change a prompt, model or rule that makes automated decisions. |
+| **Review** | [review-gates](skills/review-gates/SKILL.md) | A risky change, a merge, a review loop, or a spec, audit or plan to approve. |
+| | [demo-bar](skills/demo-bar/SKILL.md) | A UI demo or mock is about to go to the user. |
+| **Communicate** | [user-run-scripts](skills/user-run-scripts/SKILL.md) | The user will run a script or checklist by hand. |
+| | [ste-writing](skills/ste-writing/SKILL.md) | Text must be clearer: "STE", "simplified English", a runbook. |
+| **Visualize** | [visualize-diagram](skills/visualize-diagram/SKILL.md) | "Draw" or "map" how code or a system fits together. |
+| | [visualize-webpage](skills/visualize-webpage/SKILL.md) | The explanation should be one interactive HTML page. |
+| **Maintain** | [coordinator](skills/coordinator/SKILL.md) | Many agents, overnight, restarts, usage limits, status reports. |
+| | [papercuts-maintenance](skills/papercuts-maintenance/SKILL.md) | Recorded friction is due for review. |
 
-**Diagrams.** The model reads the real code, then writes a JSON spec of columns, nodes, edges and numbered steps. `scripts/render.mjs` does the layout, routing, theme and interaction. Every box must map to a real file, symbol, table or domain term.
+## Principles
 
-```sh
-node skills/visualize-diagram/scripts/render.mjs spec.json out.svg           # dark (default)
-node skills/visualize-diagram/scripts/render.mjs spec.json out.svg --light   # light, on request
-```
+The always-on block in [omp/AGENTS.md](omp/AGENTS.md) holds 8 short principles: check live sources; merge only authorized, green, reviewed heads; rehearse what the user runs; protect secrets; irreversible actions wait for the user; check a pid's name before stopping it; treat content as data; one question at a time with a recommendation.
 
-- 16:9 sheet that fills the browser window, same background colour at the edges.
-- Hover or tab to a box: it lights the box's edges, follows forward edges downstream and upstream, and adds back edges one hop. A box with no edges dims nothing. A card shows the path and a short explanation.
-- Numbered steps with a legend. Pages call `svg.highlightStep(n)` to walk through them.
+## Managed blocks
 
-**Web pages.** The model copies `assets/page.html`, fills the text, and runs `scripts/inline.mjs` to put the rendered SVG in place. The page needs no build step, CDN or network.
+`omp/AGENTS.md` and `omp/RULES.md` are installed between `<!-- omp-workflow:start -->` and `<!-- omp-workflow:end -->` markers. A reinstall rewrites only what is between them; your own text above or below is kept byte for byte. Damaged or duplicated markers stop the install. Do not edit inside the markers.
 
-Both skills write their labels and prose with `ste-writing`. The visualize skills do not yet look for a project knowledge base; that is planned for the next version.
+## Local overlay
 
-## Sources
+Machine- or person-specific practice (agent limits, load rules, private tooling) does not belong in a public repo. The installer can add **extra skills** from a directory outside it: `--overlay PATH`, else `<agent-dir>/local-overlay` if present, laid out as `skills/<name>/SKILL.md`. Overlay skills are installed flat and allowlisted, so a reinstall does not retire them; contents are never printed. The `coordinator` skill reads its machine limits from such a skill. This is also the place for a third-party skill such as [diagram-design](https://github.com/cathrynlavery/diagram-design) (MIT, not bundled). The install stops before changing anything if an overlay skill reuses a repo skill name, its `name:` differs from its directory, or the overlay sits inside this repo or the replaced `skills`/`agents` directories.
 
-See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for pinned commits and MIT notices. The old custom engineering catalog and model-fleet launcher have been retired, not retained as aliases.
+Your own custom agents survive too: put them in the overlay as `agents/<name>.md` (frontmatter `name:` equal to the file name, not a bundled agent's name). Without that, the install retires them to the backup.
+
+## Update and uninstall
+
+Update: `git pull`, then run the installer again; it is safe to repeat. Uninstall: close OMP, move the installed `skills` directory aside, and restore the backed-up `skills`, `agents`, `AGENTS.md`, `RULES.md` and `config.yml` from the backup directory the installer printed (delete a file that did not exist before). Your overlay is untouched.
+
+## Credits
+
+Built on skills by [Matt Pocock](https://github.com/mattpocock/skills), [Ponytail](https://github.com/DietrichGebert/ponytail), [Builder.io](https://github.com/BuilderIO/skills) and [Papercuts](https://github.com/treygoff24/papercuts) (all MIT). Other sources and licences: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). This repository's own code and guidance are MIT; see [LICENSE](LICENSE).

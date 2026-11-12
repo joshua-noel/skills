@@ -10,6 +10,8 @@ The output is one `.svg` file. It opens directly in a browser, fills the window,
 - Hover or tab to a box to light its path and show a short explanation card.
 - Numbered steps show one flow through the system, with a legend.
 
+Scope: this skill explains how code or a system fits together. For branded editorial diagrams or charts (timelines, Sankey, quadrants and similar), use the separate `diagram-design` skill if the user has installed it.
+
 The bundled renderer does the layout, routing, styling and interaction. You write a JSON spec. Do not hand-write SVG.
 
 ## Procedure
@@ -49,16 +51,16 @@ The renderer puts columns from left to right, with an optional shared row under 
 
 ```json
 {
-  "title": "Sunday Market: architecture",
-  "source": "commit 1a7cbf6",
-  "legendTitle": "CSV import flow",
+  "title": "Example notes app: architecture",
+  "source": "commit abc1234",
+  "legendTitle": "Export flow",
   "columns": [
-    { "actors": true, "nodes": [ { "id": "merchant", "title": "Merchant", "sub": "owner, admin", "desc": "Manages one private catalogue." } ] },
-    { "title": "apps/web", "sub": "Next.js 16", "nodes": [ { "id": "web_import", "title": "CSV import service", "sub": "server/csv-import-service.ts", "desc": "Checks the CSV headers and creates an import job." } ] }
+    { "actors": true, "nodes": [ { "id": "user", "title": "User", "sub": "signed in", "desc": "Writes and exports notes." } ] },
+    { "title": "web", "sub": "browser app", "nodes": [ { "id": "web_export", "title": "Export service", "sub": "src/export.ts", "desc": "Reads the saved notes and builds one export file." } ] }
   ],
-  "shared": { "title": "packages/*", "sub": "shared code", "nodes": [ { "id": "pk_db", "title": "db", "sub": "roles, migrations", "desc": "Postgres client and migration runner." } ] },
-  "edges": [ { "from": "merchant", "to": "web_import", "step": 1, "label": "Merchant uploads a CSV file" } ],
-  "steps": [ "The merchant uploads a CSV file." ]
+  "shared": { "title": "lib/*", "sub": "shared code", "nodes": [ { "id": "lib_db", "title": "db", "sub": "schema, migrations", "desc": "Database client and migration runner." } ] },
+  "edges": [ { "from": "user", "to": "web_export", "step": 1, "label": "User asks for an export" } ],
+  "steps": [ "The user asks for an export." ]
 }
 ```
 
