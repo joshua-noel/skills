@@ -1,12 +1,12 @@
 ---
 name: papercuts-maintenance
 description: Review and fix captured Papercuts when the user requests maintenance, asks to clear recurring tooling friction, or the repository cadence reports a periodic review due. Prioritize blockers, major issues, and recurring defects; verify real fixes before resolving entries.
-compatibility: OMP coordinator, Python 3 standard library, and the installed Papercuts CLI.
+compatibility: Python 3 standard library and the installed Papercuts CLI.
 ---
 
 # Papercuts maintenance
 
-Maintain the current repository or workspace, not the user's global environment by default. The main OMP session coordinates this work using bundled agents/defaults; this skill does not introduce an implementation pipeline or model fleet. Capturing new friction remains governed by the global Papercuts rule.
+Maintain the current repository or workspace, not the user's global environment by default. The main coordinating agent does this work with its normal tools and agents; this skill adds no implementation pipeline or model fleet. Capturing new friction remains governed by the global Papercuts rule.
 
 ## Cadence
 
@@ -26,7 +26,7 @@ python "<skill-root>/scripts/maintenance.py" reviewed --root "<workspace>"
 
 The helper defaults `--root` to the current directory and normalizes it to the Git repository root when Git is available; non-Git directories are separate workspaces. Canonical paths select individual SHA-256-named state files, each storing its root. Subdirectories of a Git repository share cadence; distinct worktrees/workspaces do not. State uses atomic replacement and OS-released file locks; a crashed process leaves no stale-lock deadlock.
 
-State defaults to `papercuts-state` beneath the active OMP agent directory: `PI_CODING_AGENT_DIR` if set; otherwise `~/.omp/profiles/<profile>/agent` for `OMP_PROFILE` or `PI_PROFILE`; otherwise `~/.omp/agent`. Pass `--state-dir "<directory>"` to override it. For deterministic checks, all commands accept `--now "2026-09-30T12:00:00+00:00"`; otherwise the local system datetime applies. ISO weeks include the ISO week-year, not just a week number.
+State defaults to a `papercuts-state` directory: `$PAPERCUTS_STATE_DIR` if set; otherwise the agent configuration directory of a tool that has one (see the tool notes next to this file, if present); otherwise `~/.papercuts/state`. Pass `--state-dir "<directory>"` to override it. For deterministic checks, all commands accept `--now "2026-09-30T12:00:00+00:00"`; otherwise the local system datetime applies. ISO weeks include the ISO week-year, not just a week number.
 
 Every successful helper command emits one JSON object with the same fields:
 

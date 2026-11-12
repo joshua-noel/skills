@@ -13,13 +13,13 @@ The output is one `.html` file that opens with a double-click. It needs no build
 
 ## Procedure
 
-1. **Find the facts.** Read the real code and docs first. For a large repo, use a `scout` task. Every part, path and claim on the page must come from the code or docs. Mark a guess as `[INFERENCE]`.
+1. **Find the facts.** Read the real code and docs first. For a large repo, hand the reading to a read-only research agent if you have one. Every part, path and claim on the page must come from the code or docs. Mark a guess as `[INFERENCE]`.
 2. **Plan the page.** Decide the one question the page answers. Then choose the sections. A good default:
    - **Overview:** the diagram and the step bar.
    - **Parts:** one card for each box in the diagram, grouped by column.
    - **Flows:** one tab for each important flow, with numbered steps and the files that do each step.
    - **Details:** the decisions, limits and risks a new reader needs. Use `details` so the page stays short.
-3. **Make the diagram.** Follow `skill://visualize-diagram` steps 1 to 4. Render to `./.tmp/visuals/<slug>.svg`. Add `--light` only when the user asks for light.
+3. **Make the diagram.** Follow steps 1 to 4 of the visualize-diagram skill. Render to `./.tmp/visuals/<slug>.svg`. Add `--light` only when the user asks for light.
 4. **Build the page.**
    - Copy `<skill-root>/assets/page.html` to `./.tmp/visuals/<slug>.html`. `<skill-root>` is the directory of this `SKILL.md`.
    - Replace the `{{...}}` text values and the example sections by hand. Keep, repeat or delete the example sections. Do not touch `{{SVG}}`.
@@ -31,8 +31,8 @@ The output is one `.html` file that opens with a double-click. It needs no build
 
      The script prints any `{{...}}` value that is still in the file. Fix each one. Do not use `<img>` or `<object>` for the diagram: the step bar needs the inline SVG.
    - For light, set `data-theme="light"` on `<html>` and render the SVG with `--light`.
-   - Write all text at about 80% of ASD-STE100: read `skill://ste-writing`.
-5. **Check the result.** Open the page in a browser tab (`xd://eval/browser`). Then:
+   - Write all text at about 80% of ASD-STE100: follow the ste-writing skill.
+5. **Check the result.** Open the page in a real browser, with a screenshot tool if you have one. Then:
    - Make sure that the page has no `{{` text and no console errors.
    - Take a screenshot of the first screen. The diagram must fill it without a scroll bar.
    - Select Next in the step bar 2 times. Make sure that the highlighted edges and the step text change.

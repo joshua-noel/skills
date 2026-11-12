@@ -23,11 +23,10 @@ def make_repo(base):
     (repo / "workflow-skills.json").write_text(json.dumps({
         "version": 2, "skills": [{"name": "example", "path": "skills/example"}],
     }), encoding="utf-8")
+    (repo / "AGENTS.md").write_text("core instructions\n", encoding="utf-8")
     (repo / "omp").mkdir()
-    for name in installer.INSTRUCTIONS:
-        (repo / "omp" / name).write_text(
-            installer.START + f"\nrepo {name}\n" + installer.END, encoding="utf-8",
-        )
+    (repo / "omp" / "AGENTS.md").write_text("OMP add-on\n", encoding="utf-8")
+    (repo / "omp" / "RULES.md").write_text(installer.START + "\nrepo rules\n" + installer.END, encoding="utf-8")
     return repo
 
 
