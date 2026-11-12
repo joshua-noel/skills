@@ -24,7 +24,7 @@ Any change touching authentication or authorization, personal data, deleting or 
 
 Before approving a spec, audit, design or multi-session plan, have an agent with no history read only the document and the paths it cites. Long context anchors the author; a cold reader finds what the page does not say. (Idea credit: see `THIRD_PARTY_NOTICES.md`.)
 
-1. Spawn a fresh `reviewer`. If you cannot create a fresh context, say so; do not role-play one.
+1. Start a fresh reviewing agent (a subagent, or a separate session). If you cannot create a fresh context, say so; do not role-play one.
 2. Give it the document type, who will act on it, and these questions. Do not give it your opinion.
    - **Clarity:** could someone with no context act on this? Which terms or steps are undefined?
    - **Consistency:** do any parts, names or numbers contradict each other?

@@ -16,9 +16,9 @@ The bundled renderer does the layout, routing, styling and interaction. You writ
 
 ## Procedure
 
-1. **Find the facts.** Read the real code and docs first. For a large repo, use a `scout` task. Every box and every arrow must map to a real file, symbol, module, table, service or domain term. Do not invent parts. Mark a guess as `[INFERENCE]` in the box description.
+1. **Find the facts.** Read the real code and docs first. For a large repo, hand the reading to a read-only research agent if you have one. Every box and every arrow must map to a real file, symbol, module, table, service or domain term. Do not invent parts. Mark a guess as `[INFERENCE]` in the box description.
 2. **Choose the view.** Use the table below. Draw one question per diagram. If the user asks for more, make more diagrams, not one dense diagram.
-3. **Write the spec.** Save it to `./.tmp/visuals/<slug>.json` in the current repo. Use the schema below. Write all text at about 80% of ASD-STE100: read `skill://ste-writing`.
+3. **Write the spec.** Save it to `./.tmp/visuals/<slug>.json` in the current repo. Use the schema below. Write all text at about 80% of ASD-STE100: follow the ste-writing skill.
 4. **Render.**
 
    ```sh
@@ -26,7 +26,7 @@ The bundled renderer does the layout, routing, styling and interaction. You writ
    ```
 
    Add `--light` only when the user asks for a light theme. `<skill-root>` is the directory of this `SKILL.md`.
-5. **Check the result.** Open the SVG in a browser tab (`xd://eval/browser`). Then:
+5. **Check the result.** Open the SVG in a real browser, with a screenshot tool if you have one. Then:
    - Take a screenshot. Look for overlapping boxes, clipped text and lines that cross many boxes.
    - Hover 2 or 3 boxes. Make sure that the lit path is correct and the card text is complete.
    - Make sure that there are no console errors.

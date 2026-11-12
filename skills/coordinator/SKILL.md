@@ -5,7 +5,7 @@ description: Running a long session that spawns many agents. Use when you coordi
 
 # Coordinator
 
-Keep a large piece of work moving without exceeding the machine, the budget or your own memory. This skill is generic. **Numbers that belong to one machine live in the user's local overlay** (an extra skill, such as `machine-practice`, installed beside this one). Use its values; if there is none, use the defaults below and say which you chose. Never write machine facts into this repository.
+Keep a large piece of work moving without exceeding the machine, the budget or your own memory. This skill is generic. **Numbers that belong to one machine live in the user's own local practice** (for example a local skill named `machine-practice`, kept outside this repository). Use its values; if there is none, use the defaults below and say which you chose. Never write machine facts into this repository.
 
 | Limit | Default | Rule |
 | --- | --- | --- |

@@ -15,15 +15,21 @@ import time
 
 
 def default_state_dir():
+    explicit = os.environ.get("PAPERCUTS_STATE_DIR")
+    if explicit:
+        return Path(explicit).expanduser()
     override = os.environ.get("PI_CODING_AGENT_DIR")
+    profile = os.environ.get("OMP_PROFILE") or os.environ.get("PI_PROFILE")
     if override:
         agent_dir = Path(override).expanduser()
     else:
-        profile = os.environ.get("OMP_PROFILE") or os.environ.get("PI_PROFILE")
         agent_dir = Path.home() / ".omp"
         if profile:
             agent_dir = agent_dir / "profiles" / profile
         agent_dir = agent_dir / "agent"
+        if not profile and not agent_dir.is_dir():
+            # No OMP installation: use a tool-neutral location.
+            return Path.home() / ".papercuts" / "state"
     return agent_dir / "papercuts-state"
 
 

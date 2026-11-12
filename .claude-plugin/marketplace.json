@@ -1,0 +1,12 @@
+{
+  "name": "joshua-noel-skills",
+  "owner": { "name": "joshua-noel", "url": "https://github.com/joshua-noel" },
+  "description": "Workflow skills for coding agents.",
+  "plugins": [
+    {
+      "name": "workflow-skills",
+      "source": "./",
+      "description": "Skills for clarifying, planning, building, reviewing, communicating, visualizing and maintaining agent work."
+    }
+  ]
+}

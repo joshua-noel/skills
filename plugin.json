@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "workflow-skills",
+  "version": "1.0.0",
+  "description": "Workflow skills for coding agents: clarify, plan, build, review, communicate, visualize, maintain.",
+  "author": { "name": "joshua-noel", "url": "https://github.com/joshua-noel" },
+  "homepage": "https://github.com/joshua-noel/skills",
+  "repository": "https://github.com/joshua-noel/skills",
+  "license": "MIT",
+  "keywords": ["skills", "workflow", "review", "planning"]
+}

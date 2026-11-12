@@ -12,51 +12,14 @@ import subprocess
 import sys
 import tempfile
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from skillkit import (  # noqa: E402
+    END, START, core_instructions, load_manifest, managed_block, merge_instructions, read_text, write_text,
+)
 
-START = "<!-- omp-workflow:start -->"
-END = "<!-- omp-workflow:end -->"
 INSTRUCTIONS = ("AGENTS.md", "RULES.md")
 BACKUP_ITEMS = ("skills", "agents", *INSTRUCTIONS, "config.yml")
 BUNDLED_AGENTS = frozenset({"task", "scout", "sonic", "reviewer", "security-reviewer"})
-
-
-def managed_block(text, description):
-    """Return a managed block, rejecting ambiguous or damaged markers."""
-    if START not in text and END not in text:
-        return None
-    if text.count(START) != 1 or text.count(END) != 1:
-        raise ValueError(f"{description}: expected exactly one start/end marker pair")
-    start = text.index(START)
-    end = text.index(END)
-    if end < start:
-        raise ValueError(f"{description}: managed block end precedes its start")
-    return start, end + len(END)
-
-
-def merge_instructions(existing, template, description):
-    template_span = managed_block(template, description + " template")
-    block = (
-        template[slice(*template_span)]
-        if template_span
-        else START + "\n" + template.rstrip("\r\n") + "\n" + END
-    )
-    existing_span = managed_block(existing, description)
-    if existing_span:
-        start, end = existing_span
-        return existing[:start] + block + existing[end:]
-    separator = "" if not existing else ("\n" if existing.endswith("\n") else "\n\n")
-    return existing + separator + block + "\n"
-
-
-def read_text(path):
-    # Do not normalize line endings in unrelated user text.
-    with path.open("r", encoding="utf-8", newline="") as stream:
-        return stream.read()
-
-
-def write_text(path, text):
-    with path.open("w", encoding="utf-8", newline="") as stream:
-        stream.write(text)
 
 
 def prerequisite_commands():
@@ -140,33 +103,8 @@ def load_overlay(agent_dir, repo, explicit, taken):
 
 
 def preflight(repo, agent_dir, overlay_path=None):
-    manifest_path = repo / "workflow-skills.json"
-    manifest = json.loads(read_text(manifest_path))
-    if not isinstance(manifest, dict) or manifest.get("version") != 2:
-        raise ValueError(f"{manifest_path}: expected manifest version 2")
-    entries = manifest.get("skills")
-    if not isinstance(entries, list) or not entries:
-        raise ValueError(f"{manifest_path}: skills must be a nonempty list")
-    names = set()
-    skills = []
-    for entry in entries:
-        if not isinstance(entry, dict):
-            raise ValueError(f"{manifest_path}: every skill must contain name and path")
-        name = entry.get("name")
-        if not isinstance(name, str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
-            raise ValueError(f"{manifest_path}: invalid flat skill name {name!r}")
-        if name.casefold() in names:
-            raise ValueError(f"{manifest_path}: duplicate skill name {name!r}")
-        names.add(name.casefold())
-        expected = "skills/" + name
-        if entry.get("path") != expected:
-            raise ValueError(f"{manifest_path}: {name!r} must use path {expected!r}")
-        source = repo / expected
-        if source.is_symlink() or not source.is_dir():
-            raise ValueError(f"{source}: expected a real skill directory")
-        if not (source / "SKILL.md").is_file():
-            raise ValueError(f"{source}: missing SKILL.md")
-        skills.append((name, source))
+    skills = load_manifest(repo)
+    names = {name.casefold() for name, _ in skills}
 
     if agent_dir == (agent_dir.parent / "backups").resolve():
         raise ValueError(f"{agent_dir}: choose an agent directory distinct from its sibling backups directory")
@@ -191,8 +129,10 @@ def preflight(repo, agent_dir, overlay_path=None):
         skills.extend(overlay[1])
     instructions = {}
     for name in INSTRUCTIONS:
-        template_path = repo / "omp" / name
-        template = read_text(template_path)
+        template = read_text(repo / "omp" / name)
+        if name == "AGENTS.md":
+            # The tool-neutral core, then the OMP-only add-on.
+            template = core_instructions(repo) + "\n" + template
         target = agent_dir / name
         existing = read_text(target) if target.exists() else ""
         instructions[name] = merge_instructions(existing, template, str(target))
@@ -256,7 +196,8 @@ def install(repo, agent_dir, dry_run=False, overlay_path=None):
         print(f"Local overlay: {overlay[0]} ({len(overlay[1])} skills, {len(overlay[2])} agents); contents not shown")
     if dry_run:
         print(f"Dry run: backups will be stored outside discovery under {agent_dir.parent / 'backups'}")
-        print("Would stage the catalog, retire native custom agents, preserve unmanaged instructions,")
+        print("Would stage the catalog, move the native agents directory to the backup (agents from the")
+        print("overlay are reinstalled), preserve unmanaged instructions,")
         print("and set only these OMP configuration values:")
         for key, value in values.items():
             print(f"  {key} = {json.dumps(value)}")
@@ -326,7 +267,8 @@ def install(repo, agent_dir, dry_run=False, overlay_path=None):
                 ) from exc
             raise RuntimeError(f"Installation failed; previous installation restored. Backup: {backup}. {exc}") from exc
 
-    print("Installed the manifest skills and global managed instructions; custom agents are retired.")
+    print("Installed the manifest skills and global managed instructions; overlay skills and agents are reinstalled.")
+    print("Other native agents were moved to the backup; restore any you still want from there or add them to the overlay.")
     print("Existing model roles, tools, advisor, memory, providers, and other configuration are unchanged.")
     print("Start a new OMP session to reload skills and global instructions.")
 
