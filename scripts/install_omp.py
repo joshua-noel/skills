@@ -17,6 +17,7 @@ START = "<!-- omp-workflow:start -->"
 END = "<!-- omp-workflow:end -->"
 INSTRUCTIONS = ("AGENTS.md", "RULES.md")
 BACKUP_ITEMS = ("skills", "agents", *INSTRUCTIONS, "config.yml")
+BUNDLED_AGENTS = frozenset({"task", "scout", "sonic", "reviewer", "security-reviewer"})
 
 
 def managed_block(text, description):
@@ -88,9 +89,9 @@ def default_agent_dir():
 
 
 def load_overlay(agent_dir, repo, explicit, taken):
-    """Read extra skills from the optional local overlay's skills/ directory.
+    """Read extra skills and custom agents from the optional local overlay.
 
-    Returns None when there is no overlay, else (root, [(name, source)]).
+    Returns None when there is no overlay, else (root, [(name, skill_dir)], [(name, agent_file)]).
     Contents are never printed.
     """
     root = (explicit if explicit is not None else agent_dir / "local-overlay").expanduser().resolve()
@@ -122,7 +123,20 @@ def load_overlay(agent_dir, repo, explicit, taken):
         if not declared or declared.group(1) != source.name:
             raise ValueError(f"{skill_file}: frontmatter name must equal the directory name {source.name!r}")
         skills.append((source.name, source))
-    return root, skills
+    agents = []
+    agents_dir = root / "agents"
+    for source in sorted(agents_dir.glob("*.md")) if agents_dir.is_dir() else ():
+        name = source.stem
+        if not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name):
+            raise ValueError(f"{source}: invalid agent name {name!r}")
+        if name in BUNDLED_AGENTS:
+            raise ValueError(f"{source}: overlay agent name collides with a bundled OMP agent")
+        front = re.match(r"---\r?\n(.*?)\r?\n---", read_text(source), re.DOTALL)
+        declared = re.search(r"(?m)^name:\s*[\"']?([^\s\"']+)", front.group(1)) if front else None
+        if not declared or declared.group(1) != name:
+            raise ValueError(f"{source}: frontmatter name must equal the file name {name!r}")
+        agents.append((name, source))
+    return root, skills, agents
 
 
 def preflight(repo, agent_dir, overlay_path=None):
@@ -239,7 +253,7 @@ def install(repo, agent_dir, dry_run=False, overlay_path=None):
     print(f"Papercuts: {papercuts}")
     print("Native skills: " + ", ".join(name for name, _ in skills))
     if overlay:
-        print(f"Local overlay: {overlay[0]} ({len(overlay[1])} skills); contents not shown")
+        print(f"Local overlay: {overlay[0]} ({len(overlay[1])} skills, {len(overlay[2])} agents); contents not shown")
     if dry_run:
         print(f"Dry run: backups will be stored outside discovery under {agent_dir.parent / 'backups'}")
         print("Would stage the catalog, retire native custom agents, preserve unmanaged instructions,")
@@ -260,6 +274,10 @@ def install(repo, agent_dir, dry_run=False, overlay_path=None):
             shutil.copytree(source, incoming / name, symlinks=True)
         for name, content in instructions.items():
             write_text(stage / name, content)
+        if overlay and overlay[2]:
+            (stage / "agents").mkdir()
+            for name, source in overlay[2]:
+                shutil.copy2(source, stage / "agents" / f"{name}.md")
 
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S.%fZ")
         backup = Path(tempfile.mkdtemp(prefix=f"omp-workflow-{stamp}-", dir=backup_root))
@@ -283,6 +301,9 @@ def install(repo, agent_dir, dry_run=False, overlay_path=None):
                     moved.append(name)
             incoming.rename(agent_dir / "skills")
             replaced.append("skills")
+            if overlay and overlay[2]:
+                (stage / "agents").rename(agent_dir / "agents")
+                replaced.append("agents")
             for name in INSTRUCTIONS:
                 replaced.append(name)
                 shutil.copy2(stage / name, agent_dir / name)

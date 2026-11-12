@@ -5,7 +5,7 @@
 - Add 8 house principles to the managed block in `omp/AGENTS.md` and shorten the existing workflow text. The block is about 40 lines.
 - Add on-demand skills written in our own words: `review-gates` (code gates plus fresh-eyes document review, crediting the Elephant-Goldfish Model in the notices), `user-run-scripts`, `demo-bar`, `eval-driven` and `coordinator` (which also holds the status-report format). The catalog is now 18 skills.
 - Move the Visual Edit browser steps into `skills/visual-edit/OMP.md`; the global block keeps one trigger line.
-- Add an optional local overlay: extra skills from `--overlay PATH` or `<agent-dir>/local-overlay`, outside the repository. Contents are never printed, and collisions, mismatched names and unsafe locations stop the install before anything changes.
+- Add an optional local overlay: extra skills and custom agents (`agents/<name>.md`, so the install no longer retires them) from `--overlay PATH` or `<agent-dir>/local-overlay`, outside the repository. Contents are never printed, and collisions, mismatched names and unsafe locations stop the install before anything changes.
 - Decide `diagram-design` versus `visualize-*`: keep both, vendor neither's counterpart. `diagram-design` (MIT, Cathryn Lavery) is an optional external companion installed through the overlay.
 - Rewrite the README around install, one skills list, the overlay, update and uninstall. `CATALOG.md` is removed; the README holds the only skills list.
 - Make the `visualize-diagram` example spec generic. Remove the unused `licenses/Skills-Lab-LICENSE`.

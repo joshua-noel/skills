@@ -52,6 +52,8 @@ The always-on block in [omp/AGENTS.md](omp/AGENTS.md) holds 8 short principles: 
 
 Machine- or person-specific practice (agent limits, load rules, private tooling) does not belong in a public repo. The installer can add **extra skills** from a directory outside it: `--overlay PATH`, else `<agent-dir>/local-overlay` if present, laid out as `skills/<name>/SKILL.md`. Overlay skills are installed flat and allowlisted, so a reinstall does not retire them; contents are never printed. The `coordinator` skill reads its machine limits from such a skill. This is also the place for a third-party skill such as [diagram-design](https://github.com/cathrynlavery/diagram-design) (MIT, not bundled). The install stops before changing anything if an overlay skill reuses a repo skill name, its `name:` differs from its directory, or the overlay sits inside this repo or the replaced `skills`/`agents` directories.
 
+Your own custom agents survive too: put them in the overlay as `agents/<name>.md` (frontmatter `name:` equal to the file name, not a bundled agent's name). Without that, the install retires them to the backup.
+
 ## Update and uninstall
 
 Update: `git pull`, then run the installer again; it is safe to repeat. Uninstall: close OMP, move the installed `skills` directory aside, and restore the backed-up `skills`, `agents`, `AGENTS.md`, `RULES.md` and `config.yml` from the backup directory the installer printed (delete a file that did not exist before). Your overlay is untouched.

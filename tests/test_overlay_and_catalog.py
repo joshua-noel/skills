@@ -31,10 +31,15 @@ def make_repo(base):
     return repo
 
 
-def make_overlay(root, skill="machine-practice", declared=None):
-    (root / "skills" / skill).mkdir(parents=True)
-    (root / "skills" / skill / "SKILL.md").write_text(
-        f"---\nname: {declared or skill}\ndescription: x\n---\nsecret-ish detail\n", encoding="utf-8")
+def make_overlay(root, skill="machine-practice", declared=None, agent=None, agent_declared=None):
+    if skill:
+        (root / "skills" / skill).mkdir(parents=True)
+        (root / "skills" / skill / "SKILL.md").write_text(
+            f"---\nname: {declared or skill}\ndescription: x\n---\nsecret-ish detail\n", encoding="utf-8")
+    if agent:
+        (root / "agents").mkdir(parents=True, exist_ok=True)
+        (root / "agents" / f"{agent}.md").write_text(
+            f"---\nname: {agent_declared or agent}\ndescription: x\n---\nsecret-ish agent prompt\n", encoding="utf-8")
 
 
 class OverlayTests(unittest.TestCase):
@@ -75,6 +80,35 @@ class OverlayTests(unittest.TestCase):
             "collision": lambda root: make_overlay(root, skill="example"),
             "bad name": lambda root: make_overlay(root, skill="Bad_Name"),
             "name mismatch": lambda root: make_overlay(root, declared="other"),
+        }
+        for label, build in cases.items():
+            with self.subTest(label), tempfile.TemporaryDirectory() as temporary:
+                base = Path(temporary)
+                repo, target, overlay = make_repo(base), base / "home/agent", base / "overlay"
+                build(overlay)
+                with self.assertRaises(ValueError):
+                    self.run_install(repo, target, overlay)
+                self.assertFalse((target / "skills").exists())
+
+    def test_overlay_agents_replace_the_retired_ones_and_survive_reinstall(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            repo, target = make_repo(base), base / "home/agent"
+            make_overlay(target / "local-overlay", skill=None, agent="researcher")
+            (target / "agents").mkdir()
+            (target / "agents/old.md").write_text("old agent", encoding="utf-8")
+            for _ in range(2):
+                _, out = self.run_install(repo, target)
+                self.assertIn("secret-ish agent prompt", (target / "agents/researcher.md").read_text(encoding="utf-8"))
+                self.assertFalse((target / "agents/old.md").exists())
+                self.assertIn("1 agents", out)
+                self.assertNotIn("secret-ish", out)
+
+    def test_bad_overlay_agents_are_rejected_before_any_change(self):
+        cases = {
+            "bundled name": lambda root: make_overlay(root, skill=None, agent="scout"),
+            "name mismatch": lambda root: make_overlay(root, skill=None, agent="triage", agent_declared="other"),
+            "bad name": lambda root: make_overlay(root, skill=None, agent="Bad_Name"),
         }
         for label, build in cases.items():
             with self.subTest(label), tempfile.TemporaryDirectory() as temporary:
