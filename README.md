@@ -63,7 +63,6 @@ cargo install papercuts --version 0.2.0 --locked   # once
 python scripts/install_omp.py --dry-run
 python scripts/install_omp.py
 ```
-
 This **replaces** the skills catalog and the native `agents` directory (both backed up outside discovery), merges managed blocks into global `AGENTS.md` and `RULES.md`, and sets the skill allowlist with `omp config`. The block is the tool-neutral core plus an OMP-only add-on (`omp/AGENTS.md`). Other settings are kept; a failed install restores the previous files. `--agent-dir PATH` targets another agent directory.
 
 *Local overlay (OMP).* Machine- or person-specific practice does not belong in a public repo, so the installer merges extra **skills and custom agents** from a directory outside it: `--overlay PATH`, else `<agent-dir>/local-overlay`, laid out as `skills/<name>/SKILL.md` and `agents/<name>.md`. Overlay items are reinstalled each time and their contents are never printed. This is also where a third-party skill such as [diagram-design](https://github.com/cathrynlavery/diagram-design) (MIT, not bundled) or a machine-limits skill for `coordinator` goes. The install stops before changing anything if an overlay name clashes with a repository skill or bundled agent, a `name:` differs from its file or directory, or the overlay sits inside this repo or the replaced directories.

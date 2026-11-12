@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Make the repository tool-neutral. `AGENTS.md` is now the one source of the core instructions (workflow plus the 8 principles); `CLAUDE.md` imports it; the OMP-specific text moved to an OMP-only add-on (`omp/AGENTS.md`) that the OMP installer appends. Skill bodies no longer name OMP tools or URIs; unavoidable OMP steps are in optional `OMP.md` files (`visualize-diagram`, `visualize-webpage`, `papercuts-maintenance`, `visual-edit`).
+- Add installers for Claude Code (`scripts/install_claude.py`) and Codex (`scripts/install_codex.py`) next to the OMP one, all reading `workflow-skills.json`, with `--dry-run`, backups, and byte-preserving managed-block merges. Add plugin layouts: `.claude-plugin/` (plugin and marketplace manifests) and a root `plugin.json` with `.agents/plugins/marketplace.json` for Codex.
+- The papercuts helper's default state directory is now `$PAPERCUTS_STATE_DIR`, else the OMP agent directory when OMP is present, else `~/.papercuts/state`.
+- Fix the OMP installer message that said custom agents are retired; overlay agents are reinstalled.
 - Add 8 house principles to the managed block in `omp/AGENTS.md` and shorten the existing workflow text. The block is about 40 lines.
 - Add on-demand skills written in our own words: `review-gates` (code gates plus fresh-eyes document review, crediting the Elephant-Goldfish Model in the notices), `user-run-scripts`, `demo-bar`, `eval-driven` and `coordinator` (which also holds the status-report format). The catalog is now 18 skills.
 - Move the Visual Edit browser steps into `skills/visual-edit/OMP.md`; the global block keeps one trigger line.

@@ -112,6 +112,24 @@ class OmpCoreTests(unittest.TestCase):
             self.assertLess(len(text.splitlines()), 60)
 
 
+class StateDirTests(unittest.TestCase):
+    def test_papercuts_state_dir_prefers_explicit_then_neutral_default(self):
+        spec = importlib.util.spec_from_file_location("maintenance", ROOT / "skills/papercuts-maintenance/scripts/maintenance.py")
+        maintenance = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(maintenance)
+        with tempfile.TemporaryDirectory() as temporary:
+            home = Path(temporary)
+            env = {"HOME": str(home), "USERPROFILE": str(home), "PAPERCUTS_STATE_DIR": str(home / "explicit")}
+            with patch.dict("os.environ", env, clear=True):
+                self.assertEqual(maintenance.default_state_dir(), home / "explicit")
+            del env["PAPERCUTS_STATE_DIR"]
+            with patch.dict("os.environ", env, clear=True):
+                self.assertEqual(maintenance.default_state_dir(), home / ".papercuts" / "state")
+            (home / ".omp" / "agent").mkdir(parents=True)
+            with patch.dict("os.environ", env, clear=True):
+                self.assertEqual(maintenance.default_state_dir(), home / ".omp" / "agent" / "papercuts-state")
+
+
 class LayoutTests(unittest.TestCase):
     def test_claude_and_codex_plugin_manifests_agree_with_the_repository(self):
         claude = json.loads((ROOT / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
