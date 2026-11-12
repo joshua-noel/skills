@@ -153,7 +153,7 @@ class LayoutTests(unittest.TestCase):
 
     def test_core_and_skill_bodies_are_tool_neutral(self):
         forbidden = re.compile(r"skill://|/skill:|proc://|xd://|agent://|\bOMP\b|\bomp\b|\.omp\b")
-        files = [ROOT / "AGENTS.md", *(ROOT / "skills" / name / "SKILL.md" for name in MANIFEST_NAMES)]
+        files = [ROOT / "core" / "AGENTS.md", *(ROOT / "skills" / name / "SKILL.md" for name in MANIFEST_NAMES)]
         for path in files:
             self.assertIsNone(forbidden.search(path.read_text(encoding="utf-8")), path.relative_to(ROOT))
 

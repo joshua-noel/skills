@@ -6,7 +6,7 @@ compatibility: Python 3 standard library and the installed Papercuts CLI.
 
 # Papercuts maintenance
 
-Maintain the current repository or workspace, not the user's global environment by default. The main coordinating agent does this work with its normal tools and agents; this skill adds no implementation pipeline or model fleet. Capturing new friction remains governed by the global Papercuts rule.
+Maintain the current repository or workspace, not the user's global environment by default. The main coordinating agent does this work with its normal tools and agents; this skill adds no implementation pipeline or model fleet. Capturing new friction remains governed by your Papercuts capture rule, if you have one (see the tool notes beside this file, if present).
 
 ## Cadence
 

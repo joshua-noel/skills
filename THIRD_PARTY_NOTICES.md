@@ -48,4 +48,4 @@ These sources shaped our own skills. No text or code was copied; the skills are 
 
 ## Original to this repository
 
-`skills/visualize-diagram`, `skills/visualize-webpage`, `skills/ste-writing`, `skills/papercuts-maintenance`, `skills/review-gates`, `skills/eval-driven`, `skills/user-run-scripts`, `skills/demo-bar`, `skills/coordinator`, the `OMP.md` files beside skills, the installers (`scripts/`), the plugin manifests, `AGENTS.md`, `CLAUDE.md`, and the `omp/` instruction blocks (apart from the Papercuts capture text noted above) are original work under the root MIT licence.
+`skills/visualize-diagram`, `skills/visualize-webpage`, `skills/ste-writing`, `skills/papercuts-maintenance`, `skills/review-gates`, `skills/eval-driven`, `skills/user-run-scripts`, `skills/demo-bar`, `skills/coordinator`, the `OMP.md` files beside skills, the installers (`scripts/`), the plugin manifests, `core/AGENTS.md`, `AGENTS.md`, `CLAUDE.md`, and the `omp/` instruction blocks (apart from the Papercuts capture text noted above) are original work under the root MIT licence.

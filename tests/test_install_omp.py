@@ -38,7 +38,8 @@ class InstallerTests(unittest.TestCase):
             (repo / "workflow-skills.json").write_text(json.dumps({
                 "version": 2, "skills": [{"name": "example", "path": "skills/example"}],
             }), encoding="utf-8")
-            (repo / "AGENTS.md").write_text("core instructions\n", encoding="utf-8")
+            (repo / "core").mkdir()
+            (repo / "core" / "AGENTS.md").write_text("core instructions\n", encoding="utf-8")
             (repo / "omp").mkdir()
             (repo / "omp" / "AGENTS.md").write_text("OMP add-on\n", encoding="utf-8")
             (repo / "omp" / "RULES.md").write_text(

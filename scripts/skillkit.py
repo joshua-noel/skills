@@ -86,8 +86,8 @@ def load_manifest(repo=REPO):
 
 
 def core_instructions(repo=REPO):
-    """The tool-neutral core instructions: the root AGENTS.md."""
-    return read_text(repo / "AGENTS.md").rstrip("\r\n") + "\n"
+    """The tool-neutral core instructions: `core/AGENTS.md`."""
+    return read_text(repo / "core" / "AGENTS.md").rstrip("\r\n") + "\n"
 
 
 def install_copy(repo, skills_dir, instructions_file, backup_root, markers, label,
@@ -122,14 +122,14 @@ def install_copy(repo, skills_dir, instructions_file, backup_root, markers, labe
         skills_dir.mkdir(parents=True, exist_ok=True)
         for name, source in skills:
             target = skills_dir / name
-            staged = skills_dir / f".{name}.incoming"
-            if staged.exists():
-                shutil.rmtree(staged)
+            # Stage outside the scanned skills directory so an interrupted run leaves nothing to discover.
+            staged = Path(tempfile.mkdtemp(prefix=".skillkit-", dir=skills_dir.parent)) / name
             shutil.copytree(source, staged, symlinks=True)
             if target.exists():
                 shutil.copytree(target, backup / "skills" / name, symlinks=True)
                 shutil.rmtree(target)
-            staged.rename(target)
+            shutil.move(str(staged), str(target))
+            staged.parent.rmdir()
     if merged is not None:
         if instructions_file.exists():
             shutil.copy2(instructions_file, backup / instructions_file.name)
