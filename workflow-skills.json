@@ -10,9 +10,16 @@
     { "name": "to-tickets", "path": "skills/to-tickets" },
     { "name": "ponytail", "path": "skills/ponytail" },
     { "name": "visual-edit", "path": "skills/visual-edit" },
-    { "name": "papercuts-maintenance", "path": "skills/papercuts-maintenance" },
+    { "name": "review-gates", "path": "skills/review-gates" },
+    { "name": "goldfish-review", "path": "skills/goldfish-review" },
+    { "name": "eval-driven", "path": "skills/eval-driven" },
+    { "name": "user-comms", "path": "skills/user-comms" },
+    { "name": "user-run-scripts", "path": "skills/user-run-scripts" },
+    { "name": "demo-bar", "path": "skills/demo-bar" },
     { "name": "ste-writing", "path": "skills/ste-writing" },
     { "name": "visualize-diagram", "path": "skills/visualize-diagram" },
-    { "name": "visualize-webpage", "path": "skills/visualize-webpage" }
+    { "name": "visualize-webpage", "path": "skills/visualize-webpage" },
+    { "name": "coordinator", "path": "skills/coordinator" },
+    { "name": "papercuts-maintenance", "path": "skills/papercuts-maintenance" }
   ]
 }

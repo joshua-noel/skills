@@ -32,19 +32,76 @@ def managed_block(text, description):
     return start, end + len(END)
 
 
-def merge_instructions(existing, template, description):
+def merge_instructions(existing, template, description, overlay=""):
     template_span = managed_block(template, description + " template")
     block = (
         template[slice(*template_span)]
         if template_span
         else START + "\n" + template.rstrip("\r\n") + "\n" + END
     )
+    if overlay.strip():
+        if START in overlay or END in overlay:
+            raise ValueError(f"{description} overlay: remove the managed-block markers")
+        block = block[: -len(END)].rstrip("\r\n") + "\n\n" + overlay.strip() + "\n" + END
     existing_span = managed_block(existing, description)
     if existing_span:
         start, end = existing_span
         return existing[:start] + block + existing[end:]
     separator = "" if not existing else ("\n" if existing.endswith("\n") else "\n\n")
     return existing + separator + block + "\n"
+
+
+def unmanaged_text(text):
+    span = managed_block(text, "instructions")
+    return text[: span[0]] + text[span[1]:] if span else text
+
+
+def overlay_skill_name_ok(name):
+    return bool(re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", name))
+
+
+def load_overlay(agent_dir, repo, explicit, taken):
+    """Read the optional local overlay: instruction fragments and extra skills.
+
+    Returns None when there is no overlay. Contents are never printed.
+    """
+    if explicit is None and os.environ.get("OMP_SKILLS_OVERLAY"):
+        explicit = Path(os.environ["OMP_SKILLS_OVERLAY"])
+    root = (explicit if explicit is not None else agent_dir / "local-overlay").expanduser().resolve()
+    if not root.is_dir():
+        if explicit is not None:
+            raise ValueError(f"{root}: overlay directory does not exist")
+        return None
+    repo_root = repo.resolve()
+    if root == repo_root or repo_root in root.parents:
+        raise ValueError(f"{root}: the overlay must live outside this repository")
+    for name in ("skills", "agents"):
+        moved = (agent_dir / name).resolve()
+        if root == moved or moved in root.parents:
+            raise ValueError(f"{root}: the overlay must not live inside {moved}, which the install replaces")
+    fragments = {}
+    for name in INSTRUCTIONS:
+        path = root / name
+        if path.is_file():
+            text = read_text(path)
+            if START in text or END in text:
+                raise ValueError(f"{path}: overlay instructions must not contain managed-block markers")
+            if text.strip():
+                fragments[name] = text
+    skills = []
+    skills_dir = root / "skills"
+    if skills_dir.is_dir():
+        for source in sorted(skills_dir.iterdir()):
+            if not source.is_dir():
+                continue
+            if not overlay_skill_name_ok(source.name):
+                raise ValueError(f"{source}: invalid flat skill name {source.name!r}")
+            if source.name.casefold() in taken:
+                raise ValueError(f"{source}: overlay skill name collides with a repository skill")
+            if not (source / "SKILL.md").is_file():
+                raise ValueError(f"{source}: missing SKILL.md")
+            skills.append((source.name, source))
+    return {"root": root, "fragments": fragments, "skills": skills}
 
 
 def read_text(path):
@@ -87,7 +144,7 @@ def default_agent_dir():
     return Path.home() / ".omp" / "agent"
 
 
-def preflight(repo, agent_dir):
+def preflight(repo, agent_dir, overlay_path=None):
     manifest_path = repo / "workflow-skills.json"
     manifest = json.loads(read_text(manifest_path))
     if not isinstance(manifest, dict) or manifest.get("version") != 2:
@@ -134,15 +191,25 @@ def preflight(repo, agent_dir):
         if source_root == target or target in source_root.parents:
             raise ValueError(f"{target}: installing here would move the source repository")
 
+    overlay = load_overlay(agent_dir, repo, overlay_path, names)
+    if overlay:
+        skills.extend(overlay["skills"])
     instructions = {}
+    warnings = []
     for name in INSTRUCTIONS:
         template_path = repo / "omp" / name
         template = read_text(template_path)
         target = agent_dir / name
         existing = read_text(target) if target.exists() else ""
-        instructions[name] = merge_instructions(existing, template, str(target))
+        fragment = overlay["fragments"].get(name, "") if overlay else ""
+        instructions[name] = merge_instructions(existing, template, str(target), fragment)
+        if re.search(r"^#{1,3}\s+House principles\b", unmanaged_text(existing), re.MULTILINE):
+            warnings.append(
+                f"{target} has a 'House principles' section outside the managed block. "
+                "The managed block now carries the principles; remove your copy to avoid duplicates."
+            )
     omp, papercuts = prerequisite_commands()
-    return skills, instructions, omp, papercuts
+    return skills, instructions, omp, papercuts, overlay, warnings
 
 
 def config_values(skills):
@@ -190,13 +257,18 @@ def rollback(agent_dir, backup, moved, replaced, config_started, original_config
             target.unlink()
 
 
-def install(repo, agent_dir, dry_run=False):
-    skills, instructions, omp, papercuts = preflight(repo, agent_dir)
+def install(repo, agent_dir, dry_run=False, overlay_path=None):
+    skills, instructions, omp, papercuts, overlay, warnings = preflight(repo, agent_dir, overlay_path)
     values = config_values(skills)
     print(f"Agent directory: {agent_dir}")
     print(f"OMP: {omp}")
     print(f"Papercuts: {papercuts}")
     print("Native skills: " + ", ".join(name for name, _ in skills))
+    if overlay:
+        found = [*overlay["fragments"], *(f"skills/{name}" for name, _ in overlay["skills"])]
+        print(f"Local overlay: {overlay['root']} ({', '.join(found) or 'empty'}); contents not shown")
+    for warning in warnings:
+        print(f"Warning: {warning}", file=sys.stderr)
     if dry_run:
         print(f"Dry run: backups will be stored outside discovery under {agent_dir.parent / 'backups'}")
         print("Would stage the catalog, retire native custom agents, preserve unmanaged instructions,")
@@ -273,12 +345,16 @@ def main(argv=None):
         "--agent-dir", type=Path,
         help="OMP agent directory (default: PI_CODING_AGENT_DIR, active profile, or ~/.omp/agent)",
     )
+    parser.add_argument(
+        "--overlay", type=Path,
+        help="local overlay directory outside this repository (default: OMP_SKILLS_OVERLAY, then <agent-dir>/local-overlay if present)",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Validate and show changes without writing anything")
     args = parser.parse_args(argv)
     repo = Path(__file__).resolve().parent.parent
     try:
         target = args.agent_dir if args.agent_dir is not None else default_agent_dir()
-        install(repo, target.expanduser().resolve(), args.dry_run)
+        install(repo, target.expanduser().resolve(), args.dry_run, args.overlay)
     except (OSError, ValueError, RuntimeError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1

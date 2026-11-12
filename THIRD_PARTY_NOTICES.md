@@ -32,3 +32,20 @@
 - The global capture block is the user-requested text from the upstream README. The cadence helper, maintenance instructions, installer, and OMP integration are original code/guidance under the root MIT license.
 
 The previous specialist catalog, Hallmark snapshot, custom model-fleet launcher, and Python Papercut logger have been removed by the clean OMP cutover. Their earlier history remains in Git; this branch does not claim to ship them.
+
+## Ideas credited, nothing copied
+
+These sources shaped our own skills. No text or code was copied; the skills are written independently.
+
+- **Elephant-Goldfish Model (EGM)**: https://github.com/google/elephant-goldfish-model, Apache-2.0, Copyright Google LLC and contributors. The fresh-context "goldfish" review practice behind `skills/goldfish-review`. No EGM file is vendored, so no Apache-2.0 notice text is redistributed here. Not an officially supported Google product.
+- **LangChain, "What is eval-driven development"**: https://www.langchain.com/blog/what-is-eval-driven-development. The eval-first steps summarised in `skills/eval-driven`.
+- **Meta Engineering, "How we built Forum with AI-native engineering"**: https://engineering.fb.com/2026/10/15/ml-applications/how-meta-built-forum-ai-native-engineering/. The verification-first operating model referenced in `skills/eval-driven`.
+- **ASD-STE100**: the Simplified Technical English specification, owned by ASD. `skills/ste-writing` summarises rules in our own words and does not reproduce the specification or its dictionary.
+
+## Not bundled
+
+- **diagram-design**: https://github.com/cathrynlavery/diagram-design, MIT, Copyright (c) 2025 Cathryn Lavery. A recommended companion for branded editorial diagrams. It is not vendored; install it from upstream and add it through the local overlay. If it is ever vendored, its licence file must go in `licenses/` first.
+
+## Original to this repository
+
+`skills/visualize-diagram`, `skills/visualize-webpage`, `skills/ste-writing`, `skills/papercuts-maintenance`, `skills/review-gates`, `skills/goldfish-review`, `skills/eval-driven`, `skills/user-comms`, `skills/user-run-scripts`, `skills/demo-bar`, `skills/coordinator`, the installer, and the `omp/` instruction blocks (apart from the Papercuts capture text noted above) are original work under the root MIT licence.

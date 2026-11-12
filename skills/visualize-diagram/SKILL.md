@@ -10,6 +10,8 @@ The output is one `.svg` file. It opens directly in a browser, fills the window,
 - Hover or tab to a box to light its path and show a short explanation card.
 - Numbered steps show one flow through the system, with a legend.
 
+Scope: this skill explains how code or a system fits together. For branded editorial diagrams or charts (timelines, Sankey, quadrants and similar), use the separate `diagram-design` skill if the user has installed it.
+
 The bundled renderer does the layout, routing, styling and interaction. You write a JSON spec. Do not hand-write SVG.
 
 ## Procedure
@@ -49,8 +51,8 @@ The renderer puts columns from left to right, with an optional shared row under 
 
 ```json
 {
-  "title": "Sunday Market: architecture",
-  "source": "commit 1a7cbf6",
+  "title": "Example shop: architecture",
+  "source": "commit abc1234",
   "legendTitle": "CSV import flow",
   "columns": [
     { "actors": true, "nodes": [ { "id": "merchant", "title": "Merchant", "sub": "owner, admin", "desc": "Manages one private catalogue." } ] },
